@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交互式 DTP/医院节点监控</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fb;
+            color: #2f3e55;
+            min-height: 100%;
+        }
+        body {
+            padding: 20px;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .page-header h1 {
+            font-size: 2.4rem;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: #556073;
+            font-size: 1rem;
+        }
+        .panel {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 14px 30px rgba(20, 40, 80, 0.08);
+            padding: 24px;
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            color: #1a73e8;
+            margin-bottom: 16px;
+        }
+        .radio-group,
+        .search-group,
+        .node-list {
+            margin-bottom: 24px;
+        }
+        .radio-group label {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid #d9e4f5;
+            background: #f8fbff;
+            transition: all 0.25s ease;
+        }
+        .radio-group input {
+            margin-right: 10px;
+        }
+        .radio-group input:checked + span {
+            color: #0f4db1;
+            font-weight: 700;
+        }
+        .search-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #d9e4f5;
+            font-size: 1rem;
+            background: #f8fbff;
+            color: #2f3e55;
+        }
+        .facility-group {
+            margin-bottom: 24px;
+        }
+        .facility-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #d9e4f5;
+            background: #f8fbff;
+            color: #2f3e55;
+            font-size: 1rem;
+        }
+        .facility-status {
+            margin-bottom: 24px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: #edf7ee;
+            border: 1px solid #c8e3cd;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+        }
+        .facility-status h4 {
+            margin: 0;
+            color: #1f6d33;
+            font-size: 1.1rem;
+        }
+        .facility-status p {
+            margin: 0;
+            color: #234d2f;
+            font-size: 0.95rem;
+        }
+        .facility-checks {
+            margin-top: 14px;
+            padding: 16px;
+            border-radius: 14px;
+            background: #f4fbf4;
+            border: 1px solid #d6ead7;
+        }
+        .facility-checks h4 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            color: #1f6d33;
+        }
+        .facility-checks li {
+            margin-bottom: 8px;
+            color: #2e4f39;
+            line-height: 1.6;
+        }
+        .facility-pill {
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: #1f6d33;
+            background: #c7ebc4;
+        }
+        .overview-section {
+            margin-bottom: 24px;
+        }
+        .overview-section h2 {
+            margin-bottom: 14px;
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .overview-item {
+            background: #eef4ff;
+            border: 1px solid #d9e4f5;
+            border-radius: 14px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+        .overview-item:hover,
+        .overview-item.active {
+            background: #d8e7ff;
+            transform: translateX(2px);
+        }
+        .overview-item h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: #16418f;
+        }
+        .overview-item p {
+            font-size: 0.92rem;
+            color: #4b5f7b;
+            line-height: 1.5;
+        }
+        .node-list button {
+            width: 100%;
+            text-align: left;
+            background: #eef4ff;
+            border: 1px solid #d9e4f5;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            color: #2f3e55;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+        .node-list button:hover,
+        .node-list button.active {
+            background: #d8e7ff;
+            transform: translateX(2px);
+        }
+        .node-detail {
+            background: #f8fbff;
+            border: 1px solid #d9e4f5;
+            border-radius: 16px;
+            padding: 24px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .node-detail h3 {
+            font-size: 1.5rem;
+            color: #173d94;
+            margin-bottom: 18px;
+        }
+        .node-detail section {
+            margin-bottom: 20px;
+        }
+        .node-detail section:last-child {
+            margin-bottom: 0;
+        }
+        .node-detail section h4 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: #1a4ba8;
+        }
+        .node-detail section p,
+        .node-detail section ul {
+            color: #3e4f6a;
+            line-height: 1.75;
+        }
+        .node-detail section ul {
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+        .note {
+            font-size: 0.95rem;
+            color: #6a788f;
+            border-top: 1px solid #d9e4f5;
+            padding-top: 16px;
+            margin-top: 20px;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .tag {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #e9f1ff;
+            color: #1a73e8;
+            font-size: 0.9rem;
+        }
+        .status-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            border-radius: 16px;
+            border: 1px solid #d3e8d7;
+            background: #edf7ee;
+        }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: #1f6d33;
+            background: #c7ebc4;
+        }
+        .status-box p {
+            margin: 0;
+            color: #234d2f;
+            line-height: 1.6;
+        }
+        .empty-state {
+            color: #5f6c86;
+            font-size: 1rem;
+            margin-top: 40px;
+            text-align: center;
+        }
+        @media (max-width: 1024px) {
+            .panel {
+                grid-template-columns: 1fr;
+            }
+            .node-detail {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-header">
+            <h1>监管视角：DTP 药房与医院节点合规监控</h1>
+            <p>从监管部门的角度审视 DTP 药房和医院在授权、质量、冷链、变更和风险升级上的合规状态。</p>
+            <p style="margin-top: 12px; color: #43556b; font-size: 0.98rem;">页面展示监管入口、机构授权状态、监控节点总览与节点合规详情，便于审计、审核和持续监管。</p>
+        </div>
+
+        <div class="panel">
+            <div class="card">
+                <div class="facility-group">
+                    <h2>机构选择</h2>
+                    <select id="facilitySelect"></select>
+                </div>
+
+                <div class="radio-group">
+                    <h2>监管入口选择</h2>
+                    <label><input type="radio" name="entry" value="dtp" checked><span>DTP 药房监管</span></label>
+                    <label><input type="radio" name="entry" value="hospital"><span>医院监管</span></label>
+                </div>
+
+                <div class="search-group">
+                    <h2>节点查询</h2>
+                    <input id="searchInput" type="text" placeholder="输入节点名称或关键词搜索...">
+                </div>
+
+                <div class="overview-section">
+                    <h2>监控节点总览</h2>
+                    <p style="color: #4f637d; font-size: 0.95rem; margin-bottom: 14px; line-height: 1.6;">展示每个机构在监管重点节点的实时合规监控方向。选择节点后，可查看监管要求、合规状态与变更升级策略。</p>
+                    <div class="overview-grid" id="overviewList">
+                        <!-- 监控节点总览由脚本渲染 -->
+                    </div>
+                </div>
+
+                <div class="node-list" id="nodeList">
+                    <!-- 节点按钮将由脚本渲染 -->
+                </div>
+            </div>
+
+            <div class="card node-detail" id="detailPanel">
+                <div id="facilityStatus"></div>
+                <div id="detailContent">
+                    <h3>请选择左侧节点查看监管详情</h3>
+                    <p>页面将展示每个节点的监管合规点、检查标准、已授权状态及持续监管建议，支持审计与风险评估。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            dtp: {
+                title: 'DTP 药房',
+                nodes: [
+                    {
+                        title: '资质授权与文件管理',
+                        monitoring: [
+                            '定期审核营业执照、GSP 资质、药品经营许可证。',
+                            '建立授权人员名单并按月核对培训与岗位资格。',
+                            '文件直传平台同步上传资质材料，支持审批历史追踪。'
+                        ],
+                        change: [
+                            '资质到期前 30/15/7 天自动提醒并要求提交更新文件。',
+                            '新增授权人员或岗位变更时，自动触发变更审批流程。',
+                            '变更后快速生成补充培训计划和授权状态更新通知。'
+                        ],
+                        owner: '渠道准入 / 质量管理',
+                        tags: ['授权管理', '文件直传', '人员资质']
+                    },
+                    {
+                        title: '冷链设备与环境监控',
+                        monitoring: [
+                            '设备温度记录仪全天候采集，导入质量体系平台存档。',
+                            '关键设备（冰箱、液氮罐、温湿度传感器）定期校准并保留校准报告。',
+                            '环境验证数据按周汇总，异常实时报警并生成偏差单。'
+                        ],
+                        change: [
+                            '设备更换或新增时，更新设备资产清单并同步校准计划。',
+                            '校准失效或异常时自动触发区域停用与整改。',
+                            '环境条件变更（冷链容量、清洁等级）须先行评估并完成验证。'
+                        ],
+                        owner: '物流 / 质量管理',
+                        tags: ['温控', '设备校准', '环境验证']
+                    },
+                    {
+                        title: '物流运输与偏差处理',
+                        monitoring: [
+                            '运输计划前置审核，确认冷链方案、备用路线和应急方案。',
+                            '运输全程温度记录与物流轨迹同步，偏差时自动发起整改。',
+                            '运输完成后进行到货检查，并归档偏差与处置记录。'
+                        ],
+                        change: [
+                            '出现运输偏差时，立即执行偏差调查并更新运输 SOP。',
+                            '物流合同、承运商资质、运输工具变更时进行重新评估。',
+                            '优化运输节点由内部审核人员定期复盘，并输出改进方案。'
+                        ],
+                        owner: '物流 / 供应链',
+                        tags: ['运输偏差', '冷链执行', '应急处理']
+                    },
+                    {
+                        title: '文件上传与直接审核',
+                        monitoring: [
+                            '建立 DTP 药房直接上传通道，授权文件和变更文件即时进入审核队列。',
+                            '审核记录与补充通知可追溯，支持在线确认和审批意见。',
+                            '系统自动统计上传响应率和审核周期。'
+                        ],
+                        change: [
+                            '新增文件类型或审核要求时，更新上传模板与校验规则。',
+                            '审核不通过时生成“补充清单”，并设定补件时限。',
+                            '变更审核流程优化为“3-5 个工作日”内完成并自动升级超期案件。'
+                        ],
+                        owner: '质量管理 / 渠道准入',
+                        tags: ['直传审核', '响应率', '流程优化']
+                    },
+                    {
+                        title: '变更通知与风险升级',
+                        monitoring: [
+                            '对关键要素（资质、设备、SOP、人员）建立变更触发规则。',
+                            '使用自动通知确保 DTP 药房及时接收变更要求与执行清单。',
+                            '变更执行情况由 COS 和质量部门共同记录并归档。'
+                        ],
+                        change: [
+                            '在变更后 7 天内完成现场校核或文件确认。',
+                            '变更引发的风险点应同步到风险地图并按优先级处理。',
+                            '重大变更须输出修订说明，并纳入下一次审计范围。'
+                        ],
+                        owner: '质量管理 / COS',
+                        tags: ['变更管理', '自动通知', '风险升级']
+                    }
+                ]
+            },
+            hospital: {
+                title: '医院',
+                nodes: [
+                    {
+                        title: '患者回输准备与资质审查',
+                        monitoring: [
+                            '评估患者治疗计划、回输科室资质与床位可用性。',
+                            '确认医院具备 CAR-T 相关临床路径和不良事件应急预案。',
+                            '回输前完成知情同意、患者档案与用药校对。'
+                        ],
+                        change: [
+                            '医院回输路径、科室布局或流程调整时，进行再评估与验证。',
+                            '医院人员变更或资质更新时，补充培训并更新授权记录。',
+                            '回输流程改造后，应开展一次现场演练。'
+                        ],
+                        owner: '临床团队 / 医疗质量',
+                        tags: ['患者回输', '科室资质', '临床路径']
+                    },
+                    {
+                        title: '医院冷链与现场条件',
+                        monitoring: [
+                            '医院接收区、储存区与操作区温湿度连续监控。',
+                            '核对接收设备、运输车辆、门禁和安全存放条件。',
+                            '与医院质量部门协同检查清洁等级和环境验证结果。'
+                        ],
+                        change: [
+                            '医院存储或操作区调整后，重新进行现场验证。',
+                            '设备新增或替换时补充校准/验证并更新设备清单。',
+                            '出现环境异常时立即执行整改并记录恢复情况。'
+                        ],
+                        owner: '医院质量 / 物流',
+                        tags: ['环境监控', '接收条件', '现场验证']
+                    },
+                    {
+                        title: '不良事件监测与报告',
+                        monitoring: [
+                            '建立不良事件上报机制，支持临床、护理、质量等多方反馈。',
+                            '对回输后 24-72 小时关键观察指标设立闭环监控。',
+                            '不良事件处理记录纳入 CAPA 和风险改进分析。'
+                        ],
+                        change: [
+                            '若事件频发，应调整回输评估标准和风险管理流程。',
+                            '评估报告模板、上报路径、审核时限的优化方案。',
+                            '将典型问题纳入培训教材和现场 SOP。'
+                        ],
+                        owner: '临床 / 质量管理',
+                        tags: ['不良事件', 'CAPA', '闭环监控']
+                    },
+                    {
+                        title: '培训与人员资格监控',
+                        monitoring: [
+                            '医院回输团队需按周期完成 CAR-T 专项培训。',
+                            '关键岗位人员执业证书、技能考核、培训记录要实时更新。',
+                            '建立培训到期提醒与复训计划。'
+                        ],
+                        change: [
+                            '新岗位或流程调整时，快速补充专项培训。',
+                            '培训内容更新后，及时覆盖回输、冷链、急救、质量管理等要点。',
+                            '培训效果通过考核和现场观察进行验证。'
+                        ],
+                        owner: '医院培训 / 临床质量',
+                        tags: ['培训管理', '人员资格', '复训']
+                    },
+                    {
+                        title: '变更升级与现场复核',
+                        monitoring: [
+                            '对医院关键流程、设备、授权人员和场地条件的变更建立复核机制。',
+                            '变更记录要明确影响范围、责任方、恢复措施和审核结果。',
+                            '现场复核结果纳入质量管理系统，并作为后续审计依据。'
+                        ],
+                        change: [
+                            '对重大变更进行多部门评审，并制定验证/确认方案。',
+                            '变更后 7-14 天内应安排现场跟踪检查和效果评估。',
+                            '将变更结果归档并纳入持续改进项目。'
+                        ],
+                        owner: '医疗质量 / 审计',
+                        tags: ['现场复核', '变更升级', '审计依据']
+                    }
+                ]
+            }
+        };
+
+        const nodeList = document.getElementById('nodeList');
+        const overviewList = document.getElementById('overviewList');
+        const facilityStatus = document.getElementById('facilityStatus');
+        const facilitySelect = document.getElementById('facilitySelect');
+        const detailContent = document.getElementById('detailContent');
+        const searchInput = document.getElementById('searchInput');
+        const entryInputs = Array.from(document.querySelectorAll('input[name="entry"]'));
+
+        const facilities = {
+            dtp: [
+                {
+                    name: '北京 DTP 药房 A',
+                    status: '已授权',
+                    description: '该药房的授权已通过，监管节点均已检查完成。',
+                    checks: [
+                        '单采室管理：单采状态符合规范',
+                        '单采师授权状态：已审核并在有效期内',
+                        '设备耗材状态：库存充足且校准记录齐全',
+                        '环境监控：温湿度稳定，洁净度合格'
+                    ]
+                },
+                {
+                    name: '深圳 DTP 药房 B',
+                    status: '已授权',
+                    description: '该药房在质量、冷链与文件管理上符合要求。',
+                    checks: [
+                        '单采室管理：单采状态正常，人员配置完备',
+                        '单采师授权状态：已通过内部审查',
+                        '设备耗材状态：运输设备运行良好',
+                        '环境监控：场地验证报告有效'
+                    ]
+                }
+            ],
+            hospital: [
+                {
+                    name: '上海基因治疗中心',
+                    status: '已授权',
+                    description: '该医院授权已完成，正在持续监控回输与不良事件管理。',
+                    checks: [
+                        '单采室管理：回输准备区符合隔离与防护要求',
+                        '单采师授权状态：人员资质有效并完成专项培训',
+                        '设备耗材状态：关键设备校准记录完备',
+                        '环境监控：洁净环境验证结果符合标准'
+                    ]
+                },
+                {
+                    name: '广州细胞治疗院',
+                    status: '已授权',
+                    description: '该中心已通过资质与流程验证，授权状态稳定。',
+                    checks: [
+                        '单采室管理：流程清晰，状态可追溯',
+                        '单采师授权状态：连续培训与考核记录完整',
+                        '设备耗材状态：物资补给与备件维护到位',
+                        '环境监控：实时监控系统正常运行'
+                    ]
+                }
+            ]
+        };
+
+        let currentEntry = 'dtp';
+        let activeNodeIndex = null;
+
+        function renderFacilityOptions() {
+            const options = facilities[currentEntry].map((facility, index) => {
+                return `<option value="${index}">${facility.name}</option>`;
+            }).join('');
+            facilitySelect.innerHTML = options;
+            renderFacilityStatus();
+        }
+
+        function renderFacilityStatus() {
+            const facility = facilities[currentEntry][facilitySelect.value || 0];
+            const statusText = facility.status === '已授权' ? '授权状态：已授权（合格）' : `授权状态：${facility.status}`;
+            facilityStatus.innerHTML = `
+                <div>
+                    <h4>${facility.name}</h4>
+                    <p>${facility.description}</p>
+                    <div class="facility-checks">
+                        <h4>监管检查节点</h4>
+                        <ul>${facility.checks.map(check => `<li>${check}</li>`).join('')}</ul>
+                    </div>
+                </div>
+                <div class="facility-pill">${statusText}</div>
+            `;
+        }
+
+        facilitySelect.addEventListener('change', renderFacilityStatus);
+
+        function renderNodeList() {
+            const entryData = data[currentEntry];
+            const filterText = searchInput.value.trim().toLowerCase();
+            nodeList.innerHTML = '';
+            const filtered = entryData.nodes.filter((node) => {
+                return node.title.toLowerCase().includes(filterText) || node.monitoring.join(' ').toLowerCase().includes(filterText) || node.change.join(' ').toLowerCase().includes(filterText);
+            });
+
+            if (!filtered.length) {
+                overviewList.innerHTML = '<p class="empty-state">当前入口暂无监控节点匹配，请尝试更换关键词。</p>';
+                nodeList.innerHTML = '<p class="empty-state">未找到匹配节点，请尝试更换关键词或入口。</p>';
+                detailContent.innerHTML = '<h3>请选择左侧节点查看详情</h3><p>当前没有匹配结果。</p>';
+                return;
+            }
+
+            renderOverview(filtered);
+            filtered.forEach((node, index) => {
+                const button = document.createElement('button');
+                button.textContent = node.title;
+                button.className = index === activeNodeIndex ? 'active' : '';
+                button.addEventListener('click', () => {
+                    activeNodeIndex = index;
+                    renderDetail(node);
+                    renderNodeList();
+                });
+                nodeList.appendChild(button);
+            });
+
+            if (activeNodeIndex === null || activeNodeIndex >= filtered.length) {
+                activeNodeIndex = 0;
+                renderDetail(filtered[0]);
+                const firstButton = nodeList.querySelector('button');
+                if (firstButton) {
+                    firstButton.classList.add('active');
+                }
+            }
+        }
+
+        function renderOverview(filtered) {
+            overviewList.innerHTML = '';
+            filtered.forEach((node, index) => {
+                const item = document.createElement('div');
+                item.className = index === activeNodeIndex ? 'overview-item active' : 'overview-item';
+                item.innerHTML = `
+                    <h3>${node.title}</h3>
+                    <p>${node.monitoring[0] || ''}</p>
+                `;
+                item.addEventListener('click', () => {
+                    activeNodeIndex = index;
+                    renderDetail(node);
+                    renderNodeList();
+                });
+                overviewList.appendChild(item);
+            });
+        }
+
+        function renderDetail(node) {
+            const regulatoryText = node.regulatory || '依据 GMP/GSP 要求，重点监管该节点的授权、记录、温控、变更闭环和持续追踪。';
+            const tagsHtml = node.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            const qualified = node.qualified !== false;
+            detailContent.innerHTML = `
+                <div class="status-box">
+                    <span class="status-pill">${qualified ? '合格' : '待审'}</span>
+                    <p>${qualified ? '该监管节点已通过检查，授权成功，可进入下一阶段管理环节。' : '该节点当前为待审状态，需补充资料或进一步审核。'}</p>
+                </div>
+                <h3>${node.title}</h3>
+                <section>
+                    <h4>监管要点</h4>
+                    <p>${regulatoryText}</p>
+                </section>
+                <section>
+                    <h4>监控方式</h4>
+                    <ul>${node.monitoring.map(item => `<li>${item}</li>`).join('')}</ul>
+                </section>
+                <section>
+                    <h4>变更与升级建议</h4>
+                    <ul>${node.change.map(item => `<li>${item}</li>`).join('')}</ul>
+                </section>
+                <section>
+                    <h4>责任部门</h4>
+                    <p>${node.owner}</p>
+                </section>
+                <div class="note">
+                    <strong>入口：</strong>${data[currentEntry].title}  |  <strong>标签：</strong>
+                    <span class="tags">${tagsHtml}</span>
+                </div>
+            `;
+        }
+
+        function updateEntry() {
+            currentEntry = document.querySelector('input[name="entry"]:checked').value;
+            activeNodeIndex = null;
+            searchInput.value = '';
+            renderFacilityOptions();
+            renderNodeList();
+        }
+
+        entryInputs.forEach((input) => {
+            input.addEventListener('change', updateEntry);
+        });
+
+        searchInput.addEventListener('input', () => {
+            activeNodeIndex = null;
+            renderNodeList();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFacilityOptions();
+            renderNodeList();
+        });
+    </script>
+</body>
+</html>
