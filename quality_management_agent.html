@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR-T质量管理Agent</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        body {
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #1a73e8;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 15px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #1a73e8;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid #1a73e8;
+            padding-left: 15px;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+        .agent-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #1a73e8;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1557b0;
+        }
+        .result {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        .error {
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #f44336;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a73e8;
+            color: white;
+        }
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        .tab-buttons {
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background: #f1f1f1;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 4px;
+        }
+        .tab-button.active {
+            background: #1a73e8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CAR-T质量管理Agent</h1>
+        <p style="font-size: 1.1em; color: #666; margin-bottom: 20px;">基于DTP药房以及治疗中心管理优化报告的智能质量管理助手</p>
+
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="showTab('patient')">患者管理</button>
+            <button class="tab-button" onclick="showTab('process')">流程模拟</button>
+            <button class="tab-button" onclick="showTab('quality')">质量审核</button>
+            <button class="tab-button" onclick="showTab('report')">报告生成</button>
+        </div>
+
+        <!-- 患者管理标签页 -->
+        <div id="patient" class="tab active">
+            <h2>患者管理Agent</h2>
+            <div class="agent-section">
+                <p>输入患者信息，系统将自动评估治疗资格并生成个性化治疗计划。</p>
+                <div class="form-group">
+                    <label for="patientName">患者姓名：</label>
+                    <input type="text" id="patientName" placeholder="请输入患者姓名">
+                </div>
+                <div class="form-group">
+                    <label for="patientAge">年龄：</label>
+                    <input type="number" id="patientAge" placeholder="请输入年龄">
+                </div>
+                <div class="form-group">
+                    <label for="diagnosis">诊断：</label>
+                    <select id="diagnosis">
+                        <option value="">请选择诊断</option>
+                        <option value="B细胞淋巴瘤">B细胞淋巴瘤</option>
+                        <option value="急性淋巴细胞白血病">急性淋巴细胞白血病</option>
+                        <option value="多发性骨髓瘤">多发性骨髓瘤</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="treatmentHistory">既往治疗史：</label>
+                    <textarea id="treatmentHistory" rows="3" placeholder="请输入既往治疗史"></textarea>
+                </div>
+                <button onclick="assessPatient()">评估患者资格</button>
+                <button onclick="generateTreatmentPlan()">生成治疗计划</button>
+            </div>
+            <div id="patientResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- 流程模拟标签页 -->
+        <div id="process" class="tab">
+            <h2>流程模拟Agent</h2>
+            <div class="agent-section">
+                <p>模拟CAR-T治疗全流程，展示关键节点和责任分配。</p>
+                <button onclick="simulateProcess()">开始流程模拟</button>
+                <button onclick="showRoleMatrix()">显示角色矩阵</button>
+            </div>
+            <div id="processResult" class="result" style="display: none;"></div>
+            <div class="mermaid" id="processDiagram" style="display: none;"></div>
+        </div>
+
+        <!-- 质量审核标签页 -->
+        <div id="quality" class="tab">
+            <h2>质量审核Agent</h2>
+            <div class="agent-section">
+                <p>执行质量审核检查，识别潜在风险和改进点。</p>
+                <div class="form-group">
+                    <label for="auditType">审核类型：</label>
+                    <select id="auditType">
+                        <option value="GMP">GMP审核</option>
+                        <option value="GSP">GSP审核</option>
+                        <option value="internal">内部审核</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="auditScope">审核范围：</label>
+                    <textarea id="auditScope" rows="3" placeholder="请输入审核范围"></textarea>
+                </div>
+                <button onclick="performAudit()">执行审核</button>
+            </div>
+            <div id="auditResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- 报告生成标签页 -->
+        <div id="report" class="tab">
+            <h2>报告生成Agent</h2>
+            <div class="agent-section">
+                <p>基于输入数据生成质量管理报告。</p>
+                <div class="form-group">
+                    <label for="reportType">报告类型：</label>
+                    <select id="reportType">
+                        <option value="monthly">月度质量报告</option>
+                        <option value="audit">审核报告</option>
+                        <option value="compliance">合规报告</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportPeriod">报告期间：</label>
+                    <input type="text" id="reportPeriod" placeholder="例如：2024年5月">
+                </div>
+                <button onclick="generateReport()">生成报告</button>
+            </div>
+            <div id="reportResult" class="result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function assessPatient() {
+            const name = document.getElementById('patientName').value;
+            const age = document.getElementById('patientAge').value;
+            const diagnosis = document.getElementById('diagnosis').value;
+            const history = document.getElementById('treatmentHistory').value;
+            
+            if (!name || !age || !diagnosis) {
+                showError('patientResult', '请填写所有必填字段');
+                return;
+            }
+            
+            let assessment = `患者 ${name}（${age}岁）诊断为${diagnosis}。\n\n`;
+            
+            if (age < 18) {
+                assessment += '⚠️ 年龄不足18岁，可能不适合CAR-T治疗。\n';
+            } else {
+                assessment += '✓ 年龄符合CAR-T治疗要求。\n';
+            }
+            
+            if (history.toLowerCase().includes('移植')) {
+                assessment += '⚠️ 既往有造血干细胞移植史，需要特别评估。\n';
+            } else {
+                assessment += '✓ 无明显禁忌史。\n';
+            }
+            
+            assessment += '\n建议：进行详细的实验室检查和多学科评估。';
+            
+            showResult('patientResult', assessment);
+        }
+
+        function generateTreatmentPlan() {
+            const name = document.getElementById('patientName').value;
+            const diagnosis = document.getElementById('diagnosis').value;
+            
+            if (!name || !diagnosis) {
+                showError('patientResult', '请先填写患者姓名和诊断');
+                return;
+            }
+            
+            const plan = `
+<h3>个性化治疗计划 - ${name}</h3>
+<p><strong>诊断：</strong>${diagnosis}</p>
+<p><strong>治疗流程：</strong></p>
+<ol>
+    <li>患者评估与知情同意</li>
+    <li>细胞采集（外周血单核细胞）</li>
+    <li>CAR-T细胞制备与质量检验</li>
+    <li>淋巴细胞清除预处理</li>
+    <li>CAR-T细胞回输</li>
+    <li>住院监测（至少7天）</li>
+    <li>出院后随访（3个月）</li>
+</ol>
+<p><strong>关键注意事项：</strong></p>
+<ul>
+    <li>全程冷链运输确保细胞活性</li>
+    <li>严格按照GMP要求执行</li>
+    <li>实时监测细胞因子释放综合征等副作用</li>
+</ul>
+            `;
+            
+            showResult('patientResult', plan);
+        }
+
+        function simulateProcess() {
+            const diagram = `
+flowchart TD
+    A[患者评估与知情同意<br/>临床团队] --> B[细胞采集与运输<br/>生产团队]
+    B --> C[实验室制备与检验<br/>质量团队]
+    C --> D[成品冷链储存<br/>物流团队]
+    D --> E[医院回输<br/>临床团队]
+    E --> F[监测与随访<br/>临床团队]
+    
+    C --> G{质量审核}
+    G -->|通过| D
+    G -->|不通过| H[偏差调查<br/>质量团队]
+    H --> I[纠正措施]
+    I --> C
+    
+    F --> J[不良事件上报<br/>质量团队]
+    J --> K[CAPA分析]
+    K --> L[持续改进]
+    
+    style A fill:#e1f5fe
+    style C fill:#fff3e0
+    style G fill:#ffebee
+    style J fill:#f3e5f5
+            `;
+            
+            document.getElementById('processDiagram').innerHTML = diagram;
+            document.getElementById('processDiagram').style.display = 'block';
+            mermaid.init(undefined, document.getElementById('processDiagram'));
+            
+            const result = `
+<h3>流程模拟结果</h3>
+<p>✅ 流程模拟完成！</p>
+<p>关键节点：</p>
+<ul>
+    <li><strong>患者评估：</strong>临床团队负责</li>
+    <li><strong>细胞制备：</strong>生产团队执行，质量团队审核</li>
+    <li><strong>物流运输：</strong>全程冷链监控</li>
+    <li><strong>回输执行：</strong>医院临床团队</li>
+    <li><strong>质量控制：</strong>贯穿全流程</li>
+</ul>
+<p>潜在风险点已标红，建议重点监控。</p>
+            `;
+            
+            showResult('processResult', result);
+        }
+
+        function showRoleMatrix() {
+            const matrix = `
+<h3>角色责任矩阵</h3>
+<table>
+    <tr>
+        <th>流程步骤</th>
+        <th>质量管理负责人</th>
+        <th>生产人员</th>
+        <th>供应链经理</th>
+        <th>物流经理</th>
+        <th>临床团队</th>
+    </tr>
+    <tr>
+        <td>患者评估</td>
+        <td>监督</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>执行</td>
+    </tr>
+    <tr>
+        <td>细胞采集</td>
+        <td>审核</td>
+        <td>执行</td>
+        <td>物料供应</td>
+        <td></td>
+        <td>协助</td>
+    </tr>
+    <tr>
+        <td>制备检验</td>
+        <td>批准</td>
+        <td>执行</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>运输储存</td>
+        <td>审核</td>
+        <td></td>
+        <td></td>
+        <td>执行</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>回输监测</td>
+        <td>监督</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>执行</td>
+    </tr>
+</table>
+            `;
+            
+            showResult('processResult', matrix);
+        }
+
+        function performAudit() {
+            const type = document.getElementById('auditType').value;
+            const scope = document.getElementById('auditScope').value;
+            
+            let auditResult = `
+<h3>${type}审核结果</h3>
+<p><strong>审核范围：</strong>${scope || '全流程'}</p>
+<p><strong>审核发现：</strong></p>
+<ul>
+    <li>✅ GMP合规性：生产环境符合要求</li>
+    <li>✅ 人员培训：培训记录完整</li>
+    <li>⚠️ 设备校准：部分设备校准即将到期</li>
+    <li>✅ 文档管理：SOP更新及时</li>
+</ul>
+<p><strong>改进建议：</strong></p>
+<ol>
+    <li>提前安排设备校准</li>
+    <li>加强供应商审计</li>
+    <li>完善应急预案演练</li>
+</ol>
+<p><strong>审核结论：</strong>总体符合要求，建议6个月后复审。</p>
+            `;
+            
+            showResult('auditResult', auditResult);
+        }
+
+        function generateReport() {
+            const type = document.getElementById('reportType').value;
+            const period = document.getElementById('reportPeriod').value;
+            
+            let report = `
+<h2>${type}报告 - ${period}</h2>
+<h3>执行摘要</h3>
+<p>本报告总结了${period}期间的质量管理活动和绩效指标。</p>
+
+<h3>关键指标</h3>
+<table>
+    <tr>
+        <th>指标</th>
+        <th>目标值</th>
+        <th>实际值</th>
+        <th>状态</th>
+    </tr>
+    <tr>
+        <td>产品放行合格率</td>
+        <td>≥98%</td>
+        <td>99.2%</td>
+        <td>✅ 达标</td>
+    </tr>
+    <tr>
+        <td>冷链运输合规率</td>
+        <td>≥99%</td>
+        <td>98.8%</td>
+        <td>⚠️ 接近目标</td>
+    </tr>
+    <tr>
+        <td>审核整改完成率</td>
+        <td>≥95%</td>
+        <td>96.5%</td>
+        <td>✅ 达标</td>
+    </tr>
+    <tr>
+        <td>培训完成率</td>
+        <td>≥100%</td>
+        <td>100%</td>
+        <td>✅ 达标</td>
+    </tr>
+</table>
+
+<h3>主要成就</h3>
+<ul>
+    <li>成功完成3例CAR-T治疗，无严重不良事件</li>
+    <li>通过外部GMP审计，无重大不符合项</li>
+    <li>优化了供应链响应时间，提高效率15%</li>
+</ul>
+
+<h3>改进计划</h3>
+<ul>
+    <li>加强冷链运输监控系统</li>
+    <li>开展员工继续教育培训</li>
+    <li>完善质量管理体系文档</li>
+</ul>
+            `;
+            
+            showResult('reportResult', report);
+        }
+
+        function showResult(elementId, content) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = content;
+            element.style.display = 'block';
+            element.className = 'result';
+        }
+
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<p style="color: #f44336;">❌ ${message}</p>`;
+            element.style.display = 'block';
+            element.className = 'error';
+        }
+    </script>
+</body>
+</html>
