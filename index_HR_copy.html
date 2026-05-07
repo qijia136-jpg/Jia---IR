@@ -629,6 +629,9 @@
         <a href="#matrix">能力矩阵</a>
         <a href="#interview">验证问题</a>
         <a href="#risk">决策风险</a>
+        <a href="#linkedin-search">搜索策略</a>
+        <a href="#evaluation">评估体系</a>
+        <a href="#outreach">外联模板</a>
       </nav>
     </header>
 
@@ -871,6 +874,133 @@
         </div>
       </section>
 
+      <section id="linkedin-search" class="section">
+        <div class="section-head">
+          <div>
+            <h2>LinkedIn 搜索策略</h2>
+            <p>按岗位提供精准关键词、目标地点和经验筛选条件，可直接复制到 LinkedIn 高级搜索。</p>
+          </div>
+        </div>
+        <div class="role-grid" id="linkedinSearchGrid"></div>
+        <div class="output-grid" style="margin-top:16px;">
+          <article class="output-card">
+            <h3>通用 Boolean 搜索式</h3>
+            <p><strong>用于 LinkedIn 搜索栏：</strong></p>
+            <ul>
+              <li><code>("Head of Technology Platform" OR "VP New Technologies") AND (Biotech OR "Cell Therapy" OR "Gene Editing")</code></li>
+              <li><code>("AI Drug Discovery" OR "Computational Biology") AND (Pharma OR Biotech) AND (Head OR VP OR Director)</code></li>
+              <li><code>("Global Clinical Operations" OR "Clinical Development") AND (FDA OR EMA OR MRCT) AND (Oncology OR "Rare Disease")</code></li>
+              <li><code>("Global Medical Affairs" OR "Medical Strategy") AND (KOL OR RWE OR "Evidence Generation")</code></li>
+              <li><code>("Regulatory Affairs" OR "Regulatory Strategy") AND (FDA OR EMA) AND ("Cell Therapy" OR Biologics)</code></li>
+              <li><code>("Supply Chain" OR "Cold Chain") AND ("Cell Therapy" OR Biologics) AND (GMP OR GSP OR Logistics)</code></li>
+              <li><code>("Commercial" OR "Market Access") AND (Oncology OR "Rare Disease") AND (Launch OR Reimbursement OR HTA)</code></li>
+              <li><code>(CFO OR "Chief Financial Officer") AND (Biotech OR Biopharma) AND (IPO OR "Capital Markets" OR IFRS)</code></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="evaluation" class="section">
+        <div class="section-head">
+          <div>
+            <h2>候选人评估体系</h2>
+            <p>5维度标准化评分（5分制），加权计算综合推荐等级。</p>
+          </div>
+        </div>
+        <div class="panel">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>评估维度</th>
+                <th>权重</th>
+                <th>评分项（1-5分）</th>
+                <th>关键问题</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>技术/专业能力</strong></td>
+                <td>30%</td>
+                <td>相关经验、技能匹配度、成就记录、学习能力</td>
+                <td>候选人能否胜任该岗位的核心技术/专业职责？过去有何具体成果？</td>
+              </tr>
+              <tr>
+                <td><strong>领导与管理能力</strong></td>
+                <td>25%</td>
+                <td>团队管理经验、跨职能协作、变革管理、人才培养</td>
+                <td>候选人能否带领团队在创业环境中交付结果？是否有0→1或1→10搭建体系的证据？</td>
+              </tr>
+              <tr>
+                <td><strong>战略与商业思维</strong></td>
+                <td>20%</td>
+                <td>行业洞察、商业判断、创新思维、风险评估</td>
+                <td>候选人能否将个人经验转化为组织能力？能否在资源有限时做战略取舍？</td>
+              </tr>
+              <tr>
+                <td><strong>文化与价值观契合</strong></td>
+                <td>15%</td>
+                <td>使命驱动、团队合作、诚信透明、适应性</td>
+                <td>候选人能否接受创业公司的速度、不确定性和跨职能补位要求？</td>
+              </tr>
+              <tr>
+                <td><strong>动机与可用性</strong></td>
+                <td>10%</td>
+                <td>加入动力、时间承诺、薪资期望、地理灵活性</td>
+                <td>候选人为什么想加入 IASO？对薪酬结构和入职时间有何期望？</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:14px;padding:14px;border-left:5px solid var(--brand);background:var(--soft);border-radius:var(--radius);">
+            <strong>加权公式：</strong>总分 = 技术×0.30 + 领导×0.25 + 战略×0.20 + 文化×0.15 + 动机×0.10
+            <br><strong>推荐等级：</strong>A级 4.5+（强烈推荐）| B级 3.5-4.4（可考虑）| C级 2.5-3.4（保留观察）| D级 &lt;2.5（不适合）
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:16px;">
+          <article class="output-card">
+            <h3>关键优势记录</h3>
+            <ul>
+              <li>列出候选人做过的相似阶段、相似复杂度的项目成果</li>
+              <li>记录候选人的关键决策框架、数据和失败复盘能力</li>
+              <li>评估候选人提出的90天落地计划质量</li>
+            </ul>
+          </article>
+          <article class="output-card warning">
+            <h3>潜在风险/顾虑</h3>
+            <ul>
+              <li><span class="danger-text">阶段错配：</span>只适合成熟大公司，没有0→1搭体系证据</li>
+              <li><span class="danger-text">落地能力弱：</span>战略语言很大，讲不清具体路径、预算和团队配置</li>
+              <li><span class="danger-text">成果归属不清：</span>无法说清自己做了哪些关键决策</li>
+              <li><span class="danger-text">动机问题：</span>主要因为薪酬/title跳槽，而非认同使命和阶段</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="outreach" class="section">
+        <div class="section-head">
+          <div>
+            <h2>候选人外联模板</h2>
+            <p>基于岗位类型分类的LinkedIn InMail模板，个性化后可直接使用。</p>
+          </div>
+        </div>
+        <div class="role-grid" id="outreachGrid"></div>
+        <div class="output-grid" style="margin-top:16px;">
+          <article class="output-card">
+            <h3>跟进与拒绝处理</h3>
+            <div class="two-col">
+              <div>
+                <p><strong>1周后跟进：</strong></p>
+                <blockquote style="margin:0;padding:10px 14px;background:#f5f7f8;border-radius:var(--radius);">Hi [Name], 想跟进一下上次关于IASO机会的消息。我们在[具体方向]取得了新进展。如果你有兴趣了解更多，我很乐意分享我们的愿景。</blockquote>
+              </div>
+              <div>
+                <p><strong>礼貌接受拒绝：</strong></p>
+                <blockquote style="margin:0;padding:10px 14px;background:#f5f7f8;border-radius:var(--radius);">Hi [Name], 感谢回复。我尊重你目前的决定。如果未来情况有变，欢迎随时联系。我们始终珍视像你这样有实力的人才。</blockquote>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <p class="footer">本工具用于战略招聘推荐和管理决策参考，具体劳动合规、薪酬税务、背景调查和录用流程请结合当地法规与公司制度执行。</p>
     </main>
   </div>
@@ -878,84 +1008,108 @@
   <script>
     const roleData = [
       {
+        id: "tech_platform_head",
+        title: "新技术平台研发负责人",
+        focus: ["cell_therapy", "ai_drug"],
+        priority: 1,
+        reason: "主导外泌体递送、基因编辑等下一代技术平台战略，确保IASO在细胞治疗之外的第二个技术引擎，决定公司中长期技术护城河。",
+        profile: "PhD/PhD-MD，10年+生物科技研发经验，主导过细胞治疗或基因治疗平台从概念到IND的完整旅程，有外泌体/基因编辑/递送载体直接研发背景。",
+        source: "CRISPR Therapeutics、Sana Biotechnology、Editas Medicine、Moderna、传奇生物、科济药业。",
+        interview: "请候选人说明：如果给你3年时间和有限预算，你会选择哪个技术方向作为公司的第二平台，并解释技术可行性、IP壁垒和临床转化路径。",
+        linkedinKeywords: ['"Head of Technology Platform" Biotech', '"VP New Technologies" "Cell Therapy"', '"Director Platform Development" "Gene Editing"'],
+        linkedinLocations: ["美国（波士顿、旧金山）", "欧洲（瑞士、德国）", "中国（上海）"],
+        linkedinExperience: "10年+生物科技研发"
+      },
+      {
+        id: "ai_platform_head",
+        title: "AI制药研发端负责人",
+        focus: ["ai_drug"],
+        priority: 1,
+        reason: "搭建AI Native的罕见病药物发现平台，评估整合全球顶尖第三方AI工具（AlphaFold、RoseTTAFold等），让AI从展示变成真实管线产能。",
+        profile: "PhD in Computational Biology/Chemistry/Bioinformatics，8年+AI制药经验，精通机器学习和药物化学，有平台产品化和管线推进实绩。",
+        source: "Insilico Medicine、Recursion Pharmaceuticals、BenevolentAI、晶泰科技/XtalPi、深势科技、英矽智能。",
+        interview: "请候选人讲一个AI模型预测失败后如何通过数据和实验闭环修正的真实案例，包括时间线、成本和最终决策。",
+        linkedinKeywords: ['"Head of AI Drug Discovery"', '"VP Computational Biology" Pharma', '"Director Machine Learning" Therapeutics'],
+        linkedinLocations: ["美国（硅谷、波士顿）", "英国（剑桥）", "以色列（特拉维夫）", "中国（上海/北京）"],
+        linkedinExperience: "PhD + 8年+AI制药经验"
+      },
+      {
         id: "global_clinical_head",
-        title: "全球临床开发负责人",
+        title: "全球临床运营负责人",
         focus: ["global_clinical"],
         priority: 1,
-        reason: "把海外临床策略、MRCT 设计、CRO 管理和注册沟通串成一个体系。",
-        profile: "有 FDA/EMA 或多区域临床开发经验，能管理 CRO 和跨文化临床团队。",
-        source: "诺华、罗氏、强生、吉利德、BMS、百济神州等有全球临床经验的平台。",
-        interview: "请候选人拆解一个 MRCT 项目从方案设计到数据提交的关键风险。"
+        reason: "领导公司发起的国际多中心临床试验(MRCT)，统筹美欧中三区临床项目全流程，对接全球顶级PI和临床试验中心。",
+        profile: "MD/PhD，10年+临床研究经验（至少5年国际多中心项目负责人），精通ICH-GCP/FDA/EMA法规，有肿瘤或罕见病MRCT成功交付经验，具备跨文化临床团队管理能力。",
+        source: "Moderna、AstraZeneca、BeiGene/百济神州、Roche/Genentech、BMS、IQVIA/Parexel/Premier Research等CRO临床运营高管。",
+        interview: "请候选人拆解一个MRCT项目从方案设计、中心选择、CRO管理到数据提交的全流程关键风险点，以及你如何做风险应对。",
+        linkedinKeywords: ['"Global Clinical Operations" Director', '"VP Clinical Development" Biotech', '"Head of Global Trials" Oncology'],
+        linkedinLocations: ["美国", "欧洲", "中国", "全球"],
+        linkedinExperience: "15年+临床运营，国际MRCT项目负责人经验"
+      },
+      {
+        id: "medical_affairs_head",
+        title: "全球医学负责人",
+        focus: ["global_clinical", "commercial"],
+        priority: 2,
+        reason: "建立全球KOL网络、医学证据生成、真实世界研究(RWE)和学术影响力，连接临床开发、注册和商业化的医学战略枢纽。",
+        profile: "MD/PhD（肿瘤学/血液学/免疫学优先），10年+医学事务经验，有全球KOL管理、RWE研究设计和上市后医学策略经验，熟悉FDA/EMA医学审评视角。",
+        source: "Bristol Myers Squibb、Roche/Genentech、Novartis Oncology、Astellas、百济神州、再鼎医药。",
+        interview: "请候选人设计一个支持海外市场准入和医生教育的医学证据计划，包括KOL分层策略、RWE研究设计和医学出版物路线图。",
+        linkedinKeywords: ['"Global Medical Affairs" Director', '"VP Medical Strategy" Biotech', '"Head of Medical Affairs" Oncology'],
+        linkedinLocations: ["美国", "欧洲", "日本", "中国"],
+        linkedinExperience: "MD/PhD + 10年+医学事务"
       },
       {
         id: "regulatory_head",
         title: "全球法规事务负责人",
         focus: ["global_clinical"],
         priority: 2,
-        reason: "提前设计 FDA/EMA 沟通路径，降低海外注册反复和审评延误。",
-        profile: "熟悉 ICH、FDA/EMA 申报、孤儿药/突破性疗法等路径，有审评沟通经验。",
-        source: "跨国药企法规团队、CRO 注册团队、创新药出海公司。",
-        interview: "请候选人说明如何为一个 CAR-T 管线设计美国和欧洲注册路径。"
+        reason: "提前设计FDA/EMA沟通路径与注册策略，降低海外注册反复和审评延误，确保细胞治疗/罕见病产品的全球注册竞争力。",
+        profile: "熟悉ICH、FDA/EMA申报、孤儿药/突破性疗法/优先审评等加速路径，有与FDA Type B/C会议和EMA Scientific Advice直接沟通经验。",
+        source: "跨国药企法规团队（Novartis/Roche/BMS）、CRO注册策略团队（IQVIA/Parexel Regulatory）、创新药出海公司。",
+        interview: "请候选人说明如何为一个自体CAR-T产品设计美国和欧洲双轨注册路径，包括关键CMC差距分析和与FDA的Pre-IND沟通策略。",
+        linkedinKeywords: ['"Global Regulatory Affairs" Director', '"VP Regulatory Strategy" Biotech', '"Head of Regulatory" "Cell Therapy"'],
+        linkedinLocations: ["美国（DC/Maryland）", "欧洲（EMA所在地）", "中国"],
+        linkedinExperience: "10年+全球法规事务，FDA/EMA直接沟通经验"
       },
       {
-        id: "ai_platform_head",
-        title: "AI 制药平台负责人",
-        focus: ["ai_drug"],
-        priority: 1,
-        reason: "让 AI 从概念展示变成真实管线产能，打通算法、数据和实验验证闭环。",
-        profile: "懂机器学习、计算生物、药物化学或生物问题建模，做过平台产品化。",
-        source: "AI 制药公司、头部药企计算平台、顶尖高校转化团队。",
-        interview: "请候选人讲一个模型预测失败后如何通过数据和实验闭环修正的案例。"
-      },
-      {
-        id: "cell_therapy_director",
-        title: "细胞治疗技术总监",
-        focus: ["cell_therapy"],
-        priority: 1,
-        reason: "支撑 CAR-T 技术升级、工艺转化和 IND 资料质量，决定平台可复制性。",
-        profile: "熟悉 CAR-T、免疫学、CMC/工艺开发、临床前转化和质量一致性。",
-        source: "传奇生物、科济、药明巨诺、Gilead/Kite、BMS/Juno 等细胞治疗团队。",
-        interview: "请候选人解释如何把一个实验室 CAR-T 方案推进到可申报工艺。"
-      },
-      {
-        id: "quality_supply_head",
-        title: "全球质量与供应链负责人",
+        id: "global_supply_chain_head",
+        title: "全球供应链负责人",
         focus: ["quality_supply"],
         priority: 1,
-        reason: "建立全球 GMP/GSP、冷链、供应商审计、偏差和 CAPA 闭环。",
-        profile: "有细胞治疗或生物制品质量体系经验，理解全球临床和商业供给要求。",
-        source: "跨国药企质量体系、CDMO、细胞治疗商业化供应链团队。",
-        interview: "请候选人复盘一次重大偏差或冷链异常的调查和 CAPA。"
+        reason: "统筹国际多中心临床试验及海外商业化的物流节点，主导全球顶级温控物流供应商（Marken/Cryoport）筛选与合同谈判，建立细胞治疗冷链与供应连续性体系。",
+        profile: "供应链/MBA + 生物医药背景，10年+全球供应链管理经验，熟悉细胞治疗/生物制品冷链GMP/GSP、偏差/CAPA和供应商审计，有国际多中心临床试验物流管理经验。",
+        source: "Catalent、Thermo Fisher、WuXi AppTec/药明生基、Lonza、World Courier、Cryoport、DHL Life Sciences。",
+        interview: "请候选人复盘一次重大冷链异常的调查和CAPA闭环：如何发现、如何追溯到根因、如何防止再发生，以及涉及哪些供应商和法规沟通。",
+        linkedinKeywords: ['"Global Supply Chain" Director Biotech', '"VP Logistics" "Cell Therapy"', '"Head of Cold Chain" Operations'],
+        linkedinLocations: ["美国", "欧洲", "中国"],
+        linkedinExperience: "供应链MBA + 生物医药背景"
       },
       {
-        id: "commercial_vp",
-        title: "海外商业化 VP",
+        id: "global_commercial_head",
+        title: "全球商业化负责人",
         focus: ["commercial"],
         priority: 1,
-        reason: "把产品获批转化为市场准入、渠道、定价和收入兑现。",
-        profile: "做过肿瘤/血液领域上市准备、市场准入、渠道伙伴和本地团队建设。",
-        source: "诺华、罗氏、阿斯利康、武田、赛诺菲及创新药出海商业团队。",
-        interview: "请候选人给出一个美国或欧洲细胞治疗产品上市前 12 个月计划。"
-      },
-      {
-        id: "medical_affairs_vp",
-        title: "全球医学事务负责人",
-        focus: ["commercial", "global_clinical"],
-        priority: 2,
-        reason: "建立 KOL 网络、医学证据、真实世界研究和学术影响力。",
-        profile: "有肿瘤/血液医学事务经验，能连接临床开发、注册和商业化。",
-        source: "跨国药企医学事务、临床开发医学负责人、国际学术网络型人才。",
-        interview: "请候选人设计一个支持海外准入和医生教育的医学证据计划。"
+        reason: "根据各国监管、准入政策和竞争格局，动态评估\"自建 vs 合资 vs 代理\"市场进入模式，在非直营市场主导代理商背景调查与尽职调查，把产品获批转化为收入兑现。",
+        profile: "商业MBA + 10年+国际药企商业化经验，有肿瘤/罕见病产品上市准备和市场准入成功案例，理解细胞治疗定价报销(HTA)、渠道伙伴管理和本地商业团队建设。",
+        source: "Novartis Oncology、Roche Oncology、Gilead/Kite、AstraZeneca、Takeda Oncology、百济神州、再鼎医药、信达生物。",
+        interview: "请候选人给出一个美国或欧洲细胞治疗产品上市前12个月商业计划，包括市场准入路径、定价策略、KOL合作框架和第一年收入预测逻辑。",
+        linkedinKeywords: ['"Global Commercial" Director Biotech', '"VP Commercial Strategy" Oncology', '"Head of Market Access" International'],
+        linkedinLocations: ["美国", "欧洲", "中国", "日本"],
+        linkedinExperience: "商业MBA + 10年+国际药企商业化"
       },
       {
         id: "cfo",
-        title: "国际化 CFO / 财务规划负责人",
+        title: "首席财务官 CFO",
         focus: ["capital"],
         priority: 1,
-        reason: "支撑全球扩张预算、资本市场沟通、融资节奏和跨境内控。",
-        profile: "懂生物科技资本市场、国际会计准则、预算治理和投资人沟通。",
-        source: "已上市 Biotech、投行医疗组、跨国药企财务战略团队。",
-        interview: "请候选人说明如何为 3 年全球化扩张设计融资和预算节奏。"
+        reason: "支撑全球扩张融资节奏、资本市场沟通、跨境内控和Licensing/M&A财务尽调，为公司\"自建+结盟\"双轨制扩张提供动态ROI评估和定价底线测算。",
+        profile: "CPA/CFA，15年+全球化财务管理经验（至少5年跨国药企或上市Biotech CFO/副CFO），精通IFRS/US GAAP、生物科技资本市场、Licensing/M&A交易架构和跨境财务治理。",
+        source: "已上市Biotech CFO/FP&A团队、跨国药企中国区/亚太区财务负责人、投行医疗组(Morgan Stanley/Goldman Sachs Healthcare)。",
+        interview: "请候选人说明如何为一家临床阶段的细胞治疗公司设计3年全球化扩张的融资节奏和预算框架，包括IPO时机判断、Licensing-out里程碑谈判和跨境资金池管理。",
+        linkedinKeywords: ['"CFO" Biotech', '"VP Finance" "Life Sciences"', '"Chief Financial Officer" Oncology'],
+        linkedinLocations: ["美国（纽约、旧金山）", "中国（上海/香港）"],
+        linkedinExperience: "CPA + 15年+生物医药融资/IPO经验"
       }
     ];
 
@@ -1007,12 +1161,12 @@
       const count = Number(headcount.value);
       const direct = roleData.filter(role => role.focus.includes(focus));
       const supportMap = {
-        global_clinical: ["quality_supply_head", "medical_affairs_vp", "regulatory_head"],
-        ai_drug: ["cell_therapy_director", "global_clinical_head"],
-        cell_therapy: ["quality_supply_head", "global_clinical_head"],
-        quality_supply: ["global_clinical_head", "cell_therapy_director"],
-        commercial: ["medical_affairs_vp", "quality_supply_head", "cfo"],
-        capital: ["commercial_vp", "global_clinical_head"]
+        global_clinical: ["regulatory_head", "medical_affairs_head", "global_supply_chain_head"],
+        ai_drug: ["tech_platform_head", "global_clinical_head"],
+        cell_therapy: ["global_supply_chain_head", "global_clinical_head", "tech_platform_head"],
+        quality_supply: ["global_clinical_head", "tech_platform_head"],
+        commercial: ["medical_affairs_head", "global_supply_chain_head", "cfo"],
+        capital: ["global_commercial_head", "global_clinical_head"]
       };
       const support = (supportMap[focus] || [])
         .map(id => roleData.find(role => role.id === id))
@@ -1028,45 +1182,45 @@
     }
 
     const companyPools = {
+      tech_platform_head: {
+        core: ["CRISPR Therapeutics", "Sana Biotechnology", "Editas Medicine", "Moderna", "Autolus", "Adaptimmune"],
+        china: ["传奇生物", "科济药业", "亘喜生物", "合源生物", "驯鹿生物"],
+        adjacent: ["药明生基", "金斯瑞蓬勃生物", "Lonza Cell & Gene", "Thermo Fisher Cell Therapy"]
+      },
+      ai_platform_head: {
+        core: ["Schrodinger", "Recursion Pharmaceuticals", "Insilico Medicine", "Exscientia", "XtalPi / 晶泰科技", "BenevolentAI", "Atomwise"],
+        china: ["英矽智能", "深势科技", "剂泰医药", "望石智慧", "星药科技"],
+        adjacent: ["Novartis AI", "Roche pRED", "AstraZeneca Data Science", "BMS Informatics"]
+      },
       global_clinical_head: {
-        core: ["Novartis", "Roche / Genentech", "Johnson & Johnson", "Gilead / Kite", "BMS", "AstraZeneca", "MSD / Merck"],
-        china: ["百济神州", "信达生物", "康方生物", "传奇生物", "科济药业", "药明巨诺", "君实生物", "再鼎医药", "和黄医药", "荣昌生物", "亚盛医药", "复宏汉霖", "基石药业", "诺诚健华", "云顶新耀"],
-        adjacent: ["IQVIA", "Parexel", "PPD / Thermo Fisher", "ICON", "Syneos Health", "泰格医药", "昆翎医药", "方达医药", "缔脉生物", "康德弘翼"]
+        core: ["Moderna", "AstraZeneca", "Roche / Genentech", "BMS", "Gilead / Kite", "Novartis", "MSD / Merck"],
+        china: ["百济神州", "信达生物", "康方生物", "传奇生物", "君实生物"],
+        adjacent: ["IQVIA", "Parexel", "PPD / Thermo Fisher", "ICON", "Syneos Health", "Premier Research"]
+      },
+      medical_affairs_head: {
+        core: ["Novartis Oncology", "Roche / Genentech", "BMS", "Gilead / Kite", "AstraZeneca", "Takeda", "Astellas"],
+        china: ["百济神州", "再鼎医药", "传奇生物", "信达生物", "康方生物"],
+        adjacent: ["国际医学传播机构", "RWE 平台", "肿瘤/血液病 KOL 网络"]
       },
       regulatory_head: {
         core: ["Novartis", "Roche", "BMS", "Gilead / Kite", "AstraZeneca", "Pfizer", "Takeda"],
-        china: ["百济神州", "信达生物", "和黄医药", "君实生物", "再鼎医药", "康方生物", "荣昌生物", "亚盛医药", "复宏汉霖", "基石药业", "诺诚健华", "迪哲医药", "云顶新耀"],
-        adjacent: ["IQVIA Regulatory", "Parexel Regulatory", "药明康德注册团队", "昆翎医药", "泰格医药注册团队", "方达医药注册团队", "博济医药", "康德弘翼"]
+        china: ["百济神州", "信达生物", "和黄医药", "君实生物", "再鼎医药"],
+        adjacent: ["IQVIA Regulatory", "Parexel Regulatory", "药明康德注册团队", "昆翎医药"]
       },
-      ai_platform_head: {
-        core: ["Schrodinger", "Recursion", "Insilico Medicine", "Exscientia", "XtalPi / 晶泰科技", "Atomwise"],
-        china: ["英矽智能", "晶泰科技", "望石智慧", "深势科技", "剂泰医药", "星药科技", "未知君", "燧坤智能", "费米子科技", "水木未来", "宇道生物", "分子之心", "百图生科"],
-        adjacent: ["Novartis AI", "Roche pRED", "AstraZeneca Data Science", "BMS Informatics", "药明康德 HIT / DMPK 团队", "美迪西药物发现团队", "成都先导", "药石科技", "维亚生物"]
+      global_supply_chain_head: {
+        core: ["Catalent", "Thermo Fisher", "Lonza", "Gilead / Kite", "Novartis", "Roche", "BMS"],
+        china: ["药明生基", "金斯瑞蓬勃生物", "传奇生物", "药明巨诺", "复星凯特"],
+        adjacent: ["World Courier", "Cryoport", "Marken", "DHL Life Sciences", "UPS Healthcare"]
       },
-      cell_therapy_director: {
-        core: ["Gilead / Kite", "BMS / Juno", "Novartis Cell & Gene", "Legend Biotech", "Autolus", "Adaptimmune"],
-        china: ["传奇生物", "科济药业", "药明巨诺", "驯鹿生物", "亘喜生物", "合源生物", "复星凯特", "永泰生物", "艺妙神州", "沙砾生物", "北恒生物", "优卡迪", "斯丹赛生物", "原启生物", "星奕昂"],
-        adjacent: ["药明生基", "金斯瑞蓬勃生物", "Lonza Cell & Gene", "Thermo Fisher Cell Therapy", "博腾生物", "和元生物", "宜明细胞", "生物岛实验室转化平台"]
-      },
-      quality_supply_head: {
-        core: ["Novartis", "Roche", "Gilead / Kite", "BMS", "Lonza", "Catalent"],
-        china: ["药明生基", "金斯瑞蓬勃生物", "传奇生物", "药明巨诺", "复星凯特", "科济药业", "亘喜生物", "合源生物", "驯鹿生物", "和元生物", "博腾生物", "东富龙生命科技", "楚天科技"],
-        adjacent: ["World Courier", "Cryoport", "Thermo Fisher", "DHL Life Sciences", "UPS Healthcare", "顺丰医药", "京东健康冷链", "国药物流", "嘉和美康质量数字化", "药明康德质量体系团队"]
-      },
-      commercial_vp: {
+      global_commercial_head: {
         core: ["Novartis Oncology", "Roche Oncology", "AstraZeneca Oncology", "Takeda Oncology", "Gilead / Kite", "BMS"],
-        china: ["百济神州", "再鼎医药", "信达生物", "君实生物", "传奇生物", "康方生物", "荣昌生物", "复宏汉霖", "和黄医药", "云顶新耀", "基石药业", "诺诚健华", "三生制药", "绿叶制药"],
-        adjacent: ["细胞治疗渠道伙伴", "特药平台", "市场准入咨询公司", "真实世界研究服务商", "镁信健康", "思派健康", "圆心科技", "医渡科技", "太美医疗科技", "艾昆纬中国商业化团队"]
-      },
-      medical_affairs_vp: {
-        core: ["Novartis Oncology", "Roche / Genentech", "BMS", "Gilead / Kite", "AstraZeneca", "Takeda"],
-        china: ["百济神州", "再鼎医药", "传奇生物", "信达生物", "康方生物", "君实生物", "荣昌生物", "复宏汉霖", "和黄医药", "诺诚健华", "基石药业", "云顶新耀", "亚盛医药"],
-        adjacent: ["国际医学传播机构", "RWE 平台", "肿瘤/血液病 KOL 网络", "医渡科技", "太美医疗科技", "零氪科技", "梅斯医学", "丁香园商业化医学团队"]
+        china: ["百济神州", "再鼎医药", "信达生物", "君实生物", "传奇生物"],
+        adjacent: ["细胞治疗渠道伙伴", "特药平台", "市场准入咨询公司", "真实世界研究服务商"]
       },
       cfo: {
-        core: ["已上市 Biotech CFO/FP&A 团队", "跨国药企中国区财务", "Biotech 投资者关系团队"],
-        china: ["百济神州", "再鼎医药", "和黄医药", "信达生物", "君实生物", "康方生物", "传奇生物", "荣昌生物", "复宏汉霖", "亚盛医药", "诺诚健华", "云顶新耀", "基石药业", "迪哲医药", "科济药业"],
-        adjacent: ["Morgan Stanley Healthcare", "Goldman Sachs Healthcare", "CICC 医疗组", "华兴医疗组", "PwC / Deloitte 生命科学团队", "摩根大通医疗组", "高盛高华医疗组", "中信证券医药组", "中金公司医药组", "招银国际医疗组"]
+        core: ["已上市 Biotech CFO/FP&A 团队", "跨国药企中国区/亚太区财务", "Biotech 投资者关系团队"],
+        china: ["百济神州", "再鼎医药", "和黄医药", "信达生物", "君实生物", "康方生物"],
+        adjacent: ["Morgan Stanley Healthcare", "Goldman Sachs Healthcare", "CICC 医疗组", "华兴医疗组", "PwC / Deloitte 生命科学团队"]
       }
     };
 
@@ -1101,7 +1255,7 @@
         name: "Stephen Griffin",
         move: "Anika Therapeutics CFO/COO -> President & CEO，并加入董事会",
         governanceSignal: "财务+运营型高管接任 CEO，适合战略转型、资产剥离和运营重塑阶段参考。",
-        matchRoles: ["cfo", "commercial_vp", "quality_supply_head"],
+        matchRoles: ["cfo", "global_commercial_head", "global_supply_chain_head"],
         matchLevel: "相邻强匹配",
         source: "https://ir.anika.com/2026-01-08-Anika-Therapeutics-Announces-Leadership-Transition"
       },
@@ -1109,7 +1263,7 @@
         name: "Cheryl Blanchard",
         move: "Anika Therapeutics CEO -> Executive Chair of the Board",
         governanceSignal: "创始/现任 CEO 退到执行主席，保留战略连续性，同时交棒日常经营。",
-        matchRoles: ["cfo", "commercial_vp"],
+        matchRoles: ["cfo", "global_commercial_head"],
         matchLevel: "治理启发",
         source: "https://ir.anika.com/2026-01-08-Anika-Therapeutics-Announces-Leadership-Transition"
       },
@@ -1117,7 +1271,7 @@
         name: "周云曙",
         move: "恒瑞医药前高管 -> 先声药业 CEO",
         governanceSignal: "成熟药企转型经验进入创新药平台，适合观察中国药企国际化与商业化治理升级。",
-        matchRoles: ["commercial_vp", "cfo", "medical_affairs_vp"],
+        matchRoles: ["global_commercial_head", "cfo", "medical_affairs_head"],
         matchLevel: "相邻强匹配",
         source: "https://finance.sina.com.cn/wm/2026-03-26/doc-inhsikav8973952.shtml"
       },
@@ -1125,7 +1279,7 @@
         name: "冯佶",
         move: "获任恒瑞医药总裁兼 COO",
         governanceSignal: "总裁/COO 用于强化经营管理和国际化运营落地，是 CEO 下方的关键治理抓手。",
-        matchRoles: ["commercial_vp", "quality_supply_head", "cfo"],
+        matchRoles: ["global_commercial_head", "global_supply_chain_head", "cfo"],
         matchLevel: "相邻强匹配",
         source: "https://finance.sina.com.cn/roll/2026-04-17/doc-inhuuptn1057170.shtml"
       },
@@ -1141,7 +1295,7 @@
         name: "Kevin Tang",
         move: "Aurinia 董事会主席 -> CEO；同时任命 COO 和 CFO",
         governanceSignal: "董事会主导的管理层重组，常见于战略压力、业绩修复或资本市场治理场景。",
-        matchRoles: ["cfo", "commercial_vp"],
+        matchRoles: ["cfo", "global_commercial_head"],
         matchLevel: "治理启发",
         source: "https://www.stocktitan.net/sec-filings/AUPH/8-k-aurinia-pharmaceuticals-inc-reports-material-event-c97d95f2372e.html"
       },
@@ -1157,7 +1311,7 @@
         name: "Donald Munoz",
         move: "加入 Aurion Biotech 任 CFO",
         governanceSignal: "再生医学/细胞治疗公司补强战略财务和投行背景，服务临床推进与融资。",
-        matchRoles: ["cfo", "cell_therapy_director"],
+        matchRoles: ["cfo", "tech_platform_head"],
         matchLevel: "直接匹配",
         source: "https://www.nasdaq.com/press-release/aurion-biotech-appoints-donald-munoz-chief-financial-officer-2025-02-10"
       },
@@ -1165,7 +1319,7 @@
         name: "Uwe Buecheler",
         move: "Rentschler Biopharma 监事会副主席 -> Interim CEO",
         governanceSignal: "CDMO 战略换挡时由监督层临时接管经营，体现董事会/监事会在治理中的干预能力。",
-        matchRoles: ["quality_supply_head", "cfo"],
+        matchRoles: ["global_supply_chain_head", "cfo"],
         matchLevel: "相邻强匹配",
         source: "https://www.globenewswire.com/news-release/2026/01/20/3221961/0/en/Rentschler-Biopharma-Announces-Executive-Board-Changes-and-Next-Phase-of-Corporate-Strategy.html"
       },
@@ -1173,7 +1327,7 @@
         name: "宗忱 Adam Zong",
         move: "前恒瑞医药高管 -> 和铂医药总裁",
         governanceSignal: "首次设立总裁职位，通常意味着公司从科学驱动进入规模化经营和组织治理升级。",
-        matchRoles: ["commercial_vp", "medical_affairs_vp", "cfo"],
+        matchRoles: ["global_commercial_head", "medical_affairs_head", "cfo"],
         matchLevel: "相邻强匹配",
         source: "https://cn.investing.com/news/stock-market-news/article-3315816"
       }
@@ -1184,7 +1338,8 @@
         name: "Shreeram Aradhye, M.D.",
         company: "Novartis",
         title: "President, Development and Chief Medical Officer",
-        matchRoles: ["global_clinical_head", "regulatory_head", "medical_affairs_vp"],
+        matchRoles: ["global_clinical_head", "regulatory_head", "medical_affairs_head"],
+        scopeNote: "President级CMO，scope覆盖全球开发+医学+注册全链条，远大于单一Head岗位；但在Novartis矩阵中个人scope受制于矩阵体系",
         why: "全球开发与 CMO 复合背景，可作为全球临床、医学和注册协同的一号位对标。",
         contact: "优先通过共同医学专家/KOL、临床开发圈层或会议引荐；LinkedIn 只适合轻触达和信息访谈。",
         source: "https://www.novartis.com/about/executive-committee"
@@ -1202,7 +1357,7 @@
         name: "Steffen Lang, Ph.D.",
         company: "Novartis",
         title: "President, Operations",
-        matchRoles: ["quality_supply_head"],
+        matchRoles: ["global_supply_chain_head"],
         why: "全球运营和供应体系对标，可用于理解质量、生产、供应链一体化管理要求。",
         contact: "优先通过制造/质量行业会议、供应链服务商、CDMO 网络建立信息访谈。",
         source: "https://www.novartis.com/about/executive-committee"
@@ -1220,7 +1375,7 @@
         name: "Reshema Kemps-Polanco",
         company: "Novartis US",
         title: "Chief Commercial Officer, US",
-        matchRoles: ["commercial_vp"],
+        matchRoles: ["global_commercial_head"],
         why: "美国商业化一号位对标，适合拆解 oncology 产品增长、市场准入和团队建设能力。",
         contact: "优先通过商业化会议、市场准入顾问、J&J/Novartis 共同人脉做信息访谈。",
         source: "https://www.novartis.com/us-en/about/leadership-team/reshema-kemps-polanco"
@@ -1229,7 +1384,7 @@
         name: "Teresa Graham",
         company: "Roche",
         title: "CEO Roche Pharmaceuticals",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
+        matchRoles: ["global_commercial_head", "medical_affairs_head"],
         why: "全球制药业务负责人样本，可对标商业化、医学、产品组合和全球市场管理。",
         contact: "通过行业会议、前 Roche/Genentech 高管、医学商业顾问网络间接连接。",
         source: "https://www.roche.com/about/leadership/"
@@ -1238,7 +1393,8 @@
         name: "Dr Levi Garraway",
         company: "Roche",
         title: "Head of Global Product Development and Chief Medical Officer",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
+        matchRoles: ["global_clinical_head", "medical_affairs_head", "regulatory_head"],
+        scopeNote: "Roche CMO+全球产品开发Head，scope跨度大（产品+医学+注册）；MNC矩阵中个人scope已被组织分割，直接转职小公司可能面临scope缩水和资源落差",
         why: "全球产品开发与 CMO 对标，适合验证临床开发、医学战略和注册路径能力。",
         contact: "优先通过学术医学网络、肿瘤 KOL、临床开发会议进行弱连接转介绍。",
         source: "https://www.roche.com/about/leadership/"
@@ -1247,7 +1403,7 @@
         name: "Dr Aviv Regev",
         company: "Roche / Genentech",
         title: "Head of Genentech Research and Early Development",
-        matchRoles: ["ai_platform_head", "cell_therapy_director"],
+        matchRoles: ["ai_platform_head", "tech_platform_head"],
         why: "前沿研发和数据科学领导者样本，可对标 AI/生物学结合、早研平台和转化能力。",
         contact: "通过学术会议、AI drug discovery 社群、科研合作网络做信息访谈，不建议直接招聘式触达。",
         source: "https://www.roche.com/about/leadership/"
@@ -1265,9 +1421,11 @@
         name: "Ying Huang, Ph.D.",
         company: "Legend Biotech",
         title: "Chief Executive Officer",
-        matchRoles: ["cfo", "commercial_vp", "global_clinical_head"],
-        why: "细胞治疗公司从临床、上市到商业化阶段的治理样本，兼具资本和全球化经验启发。",
-        contact: "通过董事会/投资人/行业峰会转介绍；更适合作为对标学习对象，而非直接候选。",
+        matchRoles: ["cfo"],
+        scopeNote: "CEO级别，Legend Biotech已是商业化上市公司（$8B+），scope覆盖全公司。对方不会考虑CFO以外的任何VP/Head级岗位，且CFO也仅在有重大战略升级时才可能考虑",
+        forceStrength: "不相关",
+        why: "细胞治疗公司从临床、上市到商业化阶段的治理样本，CEO对CFO岗位仅在有战略转型+重大股权激励时才有可能（概率极低）。更适合作为治理对标而非候选人。",
+        contact: "通过董事会/投资人/行业峰会转介绍；仅作治理对标学习对象，不建议直接招聘触达。",
         source: "https://legendbiotech.com/leadership/"
       },
       {
@@ -1283,7 +1441,7 @@
         name: "Birk Vanderweeën",
         company: "Legend Biotech",
         title: "SVP, Global Manufacturing & Supply",
-        matchRoles: ["quality_supply_head", "cell_therapy_director"],
+        matchRoles: ["global_supply_chain_head", "tech_platform_head"],
         why: "细胞治疗全球制造与供应负责人，对标质量、供应链、产能和商业供给体系。",
         contact: "通过 CDMO、冷链物流、质量会议、供应链服务商转介绍；LinkedIn 可辅助确认路径。",
         source: "https://legendbiotech.com/leadership/"
@@ -1292,7 +1450,7 @@
         name: "Ananda Martin",
         company: "Legend Biotech",
         title: "Global Compliance Officer",
-        matchRoles: ["regulatory_head", "quality_supply_head", "cfo"],
+        matchRoles: ["regulatory_head", "global_supply_chain_head", "cfo"],
         why: "细胞治疗公司合规负责人样本，适合治理、合规、质量和商业化风险控制对标。",
         contact: "通过法务合规圈层、审计咨询伙伴或行业合规会议建立连接。",
         source: "https://legendbiotech.com/leadership/"
@@ -1301,7 +1459,7 @@
         name: "Alan Bash",
         company: "Legend Biotech",
         title: "President of CARVYKTI",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
+        matchRoles: ["global_commercial_head", "medical_affairs_head"],
         why: "细胞治疗产品级商业化负责人，对标上市后产品经营、医学商业协同和全球推广。",
         contact: "通过细胞治疗商业化会议、市场准入顾问、共同前同事转介绍。",
         source: "https://legendbiotech.com/leadership/"
@@ -1310,358 +1468,16 @@
         name: "Guowei Fang, Ph.D.",
         company: "Legend Biotech",
         title: "President of Research and Development",
-        matchRoles: ["cell_therapy_director", "global_clinical_head", "ai_platform_head"],
+        matchRoles: ["tech_platform_head", "global_clinical_head", "ai_platform_head"],
         why: "细胞治疗研发负责人样本，可对标平台研发、管线推进和跨区域研发组织。",
         contact: "通过科研合作网络、细胞治疗会议、学术顾问转介绍。",
         source: "https://legendbiotech.com/leadership/"
       },
       {
-        name: "John V. Oyler / 欧雷强",
-        company: "百济神州 / BeOne Medicines",
-        title: "Co-Founder, Chairman & Chief Executive Officer",
-        matchRoles: ["cfo", "commercial_vp", "global_clinical_head"],
-        why: "中国创新药全球化经营样本，适合对标从本土研发平台走向全球商业化、资本市场和组织治理的一号位能力。",
-        contact: "通过投资人、董事会顾问、全球肿瘤药企高管圈层或行业峰会建立信息访谈。",
-        source: "https://www.beonemedicines.com.cn/about/about-us/"
-      },
-      {
-        name: "Aaron Rosenberg",
-        company: "百济神州 / BeOne Medicines",
-        title: "Chief Financial Officer",
-        matchRoles: ["cfo"],
-        why: "全球肿瘤公司 CFO 样本，具备大型药企财务、司库、企业战略和全球 FP&A 背景，适合对标国际化财务治理。",
-        contact: "优先通过投行、审计咨询伙伴、IR 圈层和跨国药企财务前同事网络转介绍。",
-        source: "https://www.beigene.com.cn/leadership/aaron-rosenberg/"
-      },
-      {
-        name: "黄智 Eric Huang",
-        company: "百济神州 / BeOne Medicines",
-        title: "大中华区首席财务官兼全球技术运营财务负责人",
-        matchRoles: ["cfo", "quality_supply_head"],
-        why: "兼具中国区 CFO 和全球技术运营财务职责，适合对标商业放量、生产运营和跨区域预算治理。",
-        contact: "通过中国区财务、技术运营、供应链财务和审计咨询网络做信息访谈。",
-        source: "https://www.beigene.com.cn/leadership/%E9%BB%84%E6%99%BA/"
-      },
-      {
-        name: "陆利强",
-        company: "百济神州 / BeOne Medicines",
-        title: "副总裁、苏州总经理",
-        matchRoles: ["quality_supply_head"],
-        why: "生产管理、质量管理、GMP 审计和跨国技术转移经验突出，适合对标质量供应链和工厂运营一号位。",
-        contact: "通过 GMP 专家网络、生产基地管理圈层、质量协会和设备供应商转介绍。",
-        source: "https://www.beigene.com.cn/leadership/%E9%99%86%E5%88%A9%E5%BC%BA/"
-      },
-      {
-        name: "马菡",
-        company: "百济神州 / BeOne Medicines",
-        title: "高级副总裁、首席药物安全官，全球患者安全部门",
-        matchRoles: ["medical_affairs_vp", "global_clinical_head", "regulatory_head"],
-        why: "覆盖药物上市前后安全科学、风险管理和肿瘤全球患者安全，适合对标医学、药物警戒和全球临床风险治理。",
-        contact: "通过药物安全、医学事务、临床开发和监管合规圈层建立信息访谈。",
-        source: "https://www.beigene.com.cn/leadership/%E9%A9%AC%E8%8F%A1/"
-      },
-      {
-        name: "俞德超 Michael Yu",
-        company: "信达生物 / Innovent Biologics",
-        title: "创始人、董事会主席兼首席执行官",
-        matchRoles: ["global_clinical_head", "commercial_vp", "cfo"],
-        why: "信达生物创始 CEO 样本，适合对标中国创新药企业从研发、生产到商业化和全球化升级的一号位能力。",
-        contact: "通过苏州生物医药产业圈、投资人、BD 合作伙伴、创新药 CEO 网络和行业峰会建立信息访谈。",
-        source: "https://www.prnewswire.com/news-releases/innovent-announces-2025-annual-results-and-business-updates-302725990.html"
-      },
-      {
-        name: "由飞 Fei You",
-        company: "信达生物 / Innovent Biologics",
-        title: "首席财务官",
-        matchRoles: ["cfo"],
-        why: "信达新任 CFO 样本，负责财务管理和资本市场工作，适合对标商业化创新药公司财务治理和资本市场沟通。",
-        contact: "通过医疗投行、港股 IR、审计咨询、biotech CFO 圈层和资本市场顾问转介绍。",
-        source: "https://www.prnasia.com/story/436049-1.shtml"
-      },
-      {
-        name: "奚浩 Ede Hao Xi",
-        company: "信达生物 / Innovent Biologics",
-        title: "执行董事、基金管理合伙人；前首席财务官",
-        matchRoles: ["cfo", "commercial_vp"],
-        why: "曾主导信达港股上市及后续融资，后转向基金管理和董事会战略决策，适合对标资本形成、上市公司治理和产业投资能力。",
-        contact: "通过港股医疗投行、基金 LP/GP、IR 和董事会顾问网络建立信息访谈。",
-        source: "https://www.prnasia.com/story/436049-1.shtml"
-      },
-      {
-        name: "周开松 Kaisong Zhou",
-        company: "信达生物 / Innovent Biologics",
-        title: "首席运营官",
-        matchRoles: ["quality_supply_head", "commercial_vp", "cfo"],
-        why: "COO 样本，适合对标从大规模生产、商业化运营到跨职能组织执行的运营管理能力。",
-        contact: "通过生产运营、商业运营、质量供应链和苏州生物医药产业网络转介绍。",
-        source: "https://simplywall.st/stocks/hk/pharmaceuticals-biotech/hkg-1801/innovent-biologics-shares/management"
-      },
-      {
-        name: "刘敏 Min Liu",
-        company: "信达生物 / Innovent Biologics",
-        title: "首席商业官",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
-        why: "商业化负责人样本，适合对标多产品上市、肿瘤/慢病产品组合商业化、销售组织和市场准入体系。",
-        contact: "通过商业化负责人、市场准入顾问、肿瘤销售管理和本土药企商业团队网络转介绍。",
-        source: "https://simplywall.st/stocks/hk/pharmaceuticals-biotech/hkg-1801/innovent-biologics-shares/management"
-      },
-      {
-        name: "杜莹 Samantha Du, Ph.D.",
-        company: "再鼎医药 / Zai Lab",
-        title: "Founder, Chairperson and Chief Executive Officer",
-        matchRoles: ["commercial_vp", "cfo", "global_clinical_head"],
-        why: "中美双总部、商业化阶段创新药公司的创始 CEO 样本，适合对标战略合作、资本市场和全球组织搭建。",
-        contact: "通过董事会、投资人、BD 合作伙伴和女性生命科学高管网络转介绍。",
-        source: "https://cn.zailaboratory.com/leadership/"
-      },
-      {
-        name: "Rafael G. Amado, M.D.",
-        company: "再鼎医药 / Zai Lab",
-        title: "President, Head of Global Research and Development",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
-        why: "全球研发负责人样本，适合对标从管线战略、临床开发到全球注册的一体化研发管理。",
-        contact: "通过全球临床开发、肿瘤 KOL、医学顾问和 Zai Lab 合作伙伴网络转介绍。",
-        source: "https://www.zailaboratory.com/leadership"
-      },
-      {
-        name: "陈娅静 Yajing Chen, Ph.D.",
-        company: "再鼎医药 / Zai Lab",
-        title: "Chief Financial Officer",
-        matchRoles: ["cfo"],
-        why: "商业化阶段创新药 CFO 样本，适合对标中美资本市场、预算治理、投资者沟通和上市公司财务体系。",
-        contact: "通过投行、审计咨询、IR 社群和医疗基金网络做信息访谈。",
-        source: "https://cn.zailaboratory.com/leadership/"
-      },
-      {
-        name: "Josh Smiley",
-        company: "再鼎医药 / Zai Lab",
-        title: "President and Chief Operating Officer",
-        matchRoles: ["commercial_vp", "quality_supply_head", "cfo"],
-        why: "总裁兼 COO 样本，适合对标商业化阶段的运营管理、组织效率、财务纪律和跨职能落地。",
-        contact: "通过运营管理、商业化、财务转型和董事会顾问网络间接连接。",
-        source: "https://www.zailaboratory.com/leadership"
-      },
-      {
-        name: "朱彤 Andrew Zhu",
-        company: "再鼎医药 / Zai Lab",
-        title: "Chief Commercial Officer, Greater China",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
-        why: "大中华区商业化负责人样本，适合对标创新药上市、市场准入、渠道和本土商业团队搭建。",
-        contact: "通过商业化会议、市场准入顾问、医药商业团队和共同前同事转介绍。",
-        source: "https://cn.zailaboratory.com/leadership/"
-      },
-      {
-        name: "夏瑜",
-        company: "康方生物 / Akeso",
-        title: "创始人、董事长、总裁兼首席执行官",
-        matchRoles: ["global_clinical_head", "commercial_vp", "cfo"],
-        why: "双抗、多抗、ADC、商业化和国际化平台建设样本，适合对标科学创始人如何带领公司进入全球竞争。",
-        contact: "通过产业投资人、创新药 CEO 圈层、BD 合作方和学术会议建立信息访谈。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "夏羽",
-        company: "康方生物 / Akeso",
-        title: "高级副总裁",
-        matchRoles: ["regulatory_head", "quality_supply_head"],
-        why: "负责药政事务、生产和质量，具备国内外制药管理、cGMP、质量体系和药政申报经验。",
-        contact: "通过质量法规专家、生产质量协会、CDMO 和注册事务圈层转介绍。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "王秉中",
-        company: "康方生物 / Akeso",
-        title: "首席财务官",
-        matchRoles: ["cfo"],
-        why: "兼具生物制药、基因编辑/CAR-T、投行和融资交易背景，适合对标国际化资本运作型 CFO。",
-        contact: "通过医疗投行、跨境融资、投资人和 biotech CFO 圈层转介绍。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "郭永",
-        company: "康方生物 / Akeso",
-        title: "首席商业官、高级副总裁",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
-        why: "覆盖市场营销、医学事务、市场准入和商业运营，适合对标创新药上市与商业化体系建设。",
-        contact: "通过商业化负责人、市场准入顾问、MNC 前同事和肿瘤产品上市团队转介绍。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "胡明秀",
-        company: "康方生物 / Akeso",
-        title: "高级副总裁",
-        matchRoles: ["global_clinical_head", "regulatory_head", "medical_affairs_vp"],
-        why: "负责数据科学、临床药政事务和临床开发策略，适合对标统计、临床设计、注册和研发决策一体化能力。",
-        contact: "通过生物统计、临床开发、注册事务和药企研发高管网络做信息访谈。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "张新峰",
-        company: "康方生物 / Akeso",
-        title: "高级副总裁",
-        matchRoles: ["quality_supply_head", "cell_therapy_director", "regulatory_head"],
-        why: "负责工艺开发、生产科学与技术，具备抗体/融合蛋白 CMC、生产和注册经验，可对标技术运营与 CMC 转化。",
-        contact: "通过 CMC、生产科学、质量体系和 CDMO 网络转介绍。",
-        source: "https://www.akesobio.com/cn/about-us/management-team/"
-      },
-      {
-        name: "李宁 Ning Li, M.D., Ph.D.",
-        company: "君实生物 / Junshi Biosciences",
-        title: "执行董事、副董事长",
-        matchRoles: ["regulatory_head", "global_clinical_head", "medical_affairs_vp"],
-        why: "FDA 审评和赛诺菲药政医学政策背景，负责海外业务，是中国创新药出海注册和医学政策对标样本。",
-        contact: "通过监管事务、FDA 前审评员、医学政策和海外临床开发网络建立连接。",
-        source: "https://www.junshipharma.com/about/"
-      },
-      {
-        name: "邹建军 Jianjun Zou, M.D., Ph.D.",
-        company: "君实生物 / Junshi Biosciences",
-        title: "执行董事、总经理 / 首席执行官",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "commercial_vp"],
-        why: "兼具肿瘤临床、全球医学事务、临床开发和创新药公司 CEO 经验，适合对标医学驱动型管理者。",
-        contact: "通过肿瘤临床 KOL、医学事务、恒瑞/拜耳/赛诺菲相关人脉转介绍。",
-        source: "https://www.junshipharma.com/about/"
-      },
-      {
-        name: "王刚 Gang Wang, Ph.D.",
-        company: "君实生物 / Junshi Biosciences",
-        title: "高级副总裁、产业事务、首席质量官",
-        matchRoles: ["quality_supply_head", "regulatory_head"],
-        why: "生物制品 cGMP、审评、生产、预批准检查、CGT 合规检查经验突出，适合对标全球质量体系负责人。",
-        contact: "通过质量审计、CDE/FDA 前监管专家、GMP 合规和生物制品生产网络转介绍。",
-        source: "https://www.junshipharma.com/en/about-us/"
-      },
-      {
-        name: "Patricia Keegan, M.D., Ph.D.",
-        company: "君实生物 / Junshi Biosciences / TopAlliance",
-        title: "Chief Medical Officer",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
-        why: "FDA 肿瘤产品审评和医学政策背景深厚，适合对标美国临床开发、医学策略和监管沟通能力。",
-        contact: "通过 FDA 前审评员、肿瘤临床开发、TopAlliance 和美国医学顾问网络转介绍。",
-        source: "https://www.junshipharma.com/en/about-us/"
-      },
-      {
-        name: "王星原 Xingyuan Wang",
-        company: "君实生物 / Junshi Biosciences",
-        title: "Chief Commercial Officer",
-        matchRoles: ["commercial_vp"],
-        why: "肿瘤销售与商业管理经验丰富，曾在恒瑞、齐鲁等公司任职，适合对标本土商业化团队建设。",
-        contact: "通过肿瘤商业化、市场准入、销售管理和恒瑞/齐鲁前同事网络转介绍。",
-        source: "https://www.junshipharma.com/en/about-us/"
-      },
-      {
-        name: "石明",
-        company: "和黄医药 / HUTCHMED",
-        title: "执行副总裁、研发负责人兼首席医学官",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
-        why: "负责药物发现和临床开发战略，具备诺华全球项目临床负责人和 CMO 经验，适合对标全球研发医学一号位。",
-        contact: "通过肿瘤/血液病临床开发、诺华前同事、USCACA 和医学会议网络转介绍。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "崔昳昤",
-        company: "和黄医药 / HUTCHMED",
-        title: "执行副总裁（运营管理）",
-        matchRoles: ["quality_supply_head", "commercial_vp", "cfo"],
-        why: "领导运营、风险管理、全球质量、采购和政府事务，适合对标运营型 COO 和质量供应链治理。",
-        contact: "通过运营管理、政府事务、质量采购和大型药企中国区管理网络转介绍。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "袁泽之",
-        company: "和黄医药 / HUTCHMED",
-        title: "执行副总裁、商业化负责人（中国）",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
-        why: "负责中国商业战略与实施，曾在默克、BMS、赛诺菲等公司任职，适合对标创新药商业化一号位。",
-        contact: "通过商业化负责人、肿瘤事业部、市场准入和 MNC 前同事网络转介绍。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "王清梅",
-        company: "和黄医药 / HUTCHMED",
-        title: "执行副总裁（商务开发与战略合作）",
-        matchRoles: ["commercial_vp", "medical_affairs_vp", "cfo"],
-        why: "BD 与战略合作负责人，具备礼来研究合作管理经验，适合对标 licensing、合作开发和战略联盟能力。",
-        contact: "通过 BD、MNC 外部创新、合作研发和投资人网络建立信息访谈。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "赵振杰",
-        company: "和黄医药 / HUTCHMED",
-        title: "副首席财务官",
-        matchRoles: ["cfo"],
-        why: "负责集团财务、预算控制、投资者沟通和资本市场活动支持，适合对标跨市场上市公司财务职能。",
-        contact: "通过港股/美股医疗 IR、审计、投行和财务规划网络转介绍。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "傅志藩",
-        company: "和黄医药 / HUTCHMED",
-        title: "高级副总裁（国际质量）",
-        matchRoles: ["quality_supply_head", "regulatory_head"],
-        why: "负责全球临床、实验室、生产、储存及物流运营质量管理和合规，适合对标国际质量负责人。",
-        contact: "通过质量合规、临床质量、生产物流质量和 MNC QA 前同事网络转介绍。",
-        source: "https://www.hutch-med.com/sc/about-us/leadership/"
-      },
-      {
-        name: "崔霁松",
-        company: "诺诚健华 / InnoCare",
-        title: "联合创始人、董事长兼首席执行官",
-        matchRoles: ["global_clinical_head", "commercial_vp", "cfo"],
-        why: "A+H 上市创新药公司创始 CEO 样本，适合对标科学驱动、商业化和全球开发的组织搭建。",
-        contact: "通过董事会、投资人、科学顾问和创新药 CEO 网络建立信息访谈。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
-        name: "陈向阳",
-        company: "诺诚健华 / InnoCare",
-        title: "首席技术官",
-        matchRoles: ["cell_therapy_director", "quality_supply_head", "ai_platform_head"],
-        why: "首席技术官样本，适合对标源头创新、技术平台、研发转化和生产技术协同。",
-        contact: "通过技术平台、CMC、研发运营和产业转化网络转介绍。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
-        name: "傅欣",
-        company: "诺诚健华 / InnoCare",
-        title: "首席财务官",
-        matchRoles: ["cfo"],
-        why: "商业化阶段 A+H 创新药公司 CFO 样本，适合对标上市公司财务、预算和资本市场沟通。",
-        contact: "通过港股/A 股医疗投行、审计咨询和 biotech CFO 圈层转介绍。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
-        name: "陈少峰",
-        company: "诺诚健华 / InnoCare",
-        title: "首席商务官",
-        matchRoles: ["commercial_vp", "medical_affairs_vp"],
-        why: "首席商务官样本，适合对标血液瘤、自免等创新药商业化和市场准入团队搭建。",
-        contact: "通过商业化、市场准入、渠道和 MNC/本土药企商业团队网络转介绍。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
-        name: "周强",
-        company: "诺诚健华 / InnoCare",
-        title: "首席医学官",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
-        why: "CMO 样本，适合对标临床开发、医学研究、注册策略和产品医学价值建设。",
-        contact: "通过医学事务、临床开发、血液瘤 KOL 和注册团队网络转介绍。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
-        name: "高楠",
-        company: "诺诚健华 / InnoCare",
-        title: "首席运营官",
-        matchRoles: ["quality_supply_head", "commercial_vp", "cfo"],
-        why: "COO 样本，适合对标从研发、临床到商业化阶段的跨职能运营和组织执行能力。",
-        contact: "通过运营管理、商业化、研发运营和上市公司治理网络转介绍。",
-        source: "https://www.innocarepharma.com/about/team"
-      },
-      {
         name: "Mythili Koneru, M.D., Ph.D.",
         company: "Legend Biotech",
         title: "Former Chief Medical Officer appointment sample",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp"],
+        matchRoles: ["global_clinical_head", "medical_affairs_head"],
         why: "公开任命新闻显示其从 Marker Therapeutics 加入，并有 Eli Lilly 免疫肿瘤开发经历，是 CMO/临床医学画像样本。",
         contact: "通过医学专家、免疫肿瘤临床圈层、Lilly/Marker 前同事网络转介绍。",
         source: "https://investors.legendbiotech.com/news-releases/news-release-details/legend-biotech-announces-appointment-chief-medical-officer/"
@@ -1670,7 +1486,7 @@
         name: "Ken Takeshita, M.D.",
         company: "Kite Pharma",
         title: "Global Head of Clinical Development appointment sample",
-        matchRoles: ["global_clinical_head", "medical_affairs_vp"],
+        matchRoles: ["global_clinical_head", "medical_affairs_head"],
         why: "Kite 任命其领导全球临床开发，是细胞治疗全球临床一号位对标样本。",
         contact: "通过 Gilead/Kite 前员工、临床开发会议、肿瘤医学顾问转介绍。",
         source: "https://www.kitepharma.com/news/press-releases/2019/11/industry-veterans-appointed-to-head-the-global-technical-operations-and-clinical-development-organizations-at-kite"
@@ -1679,7 +1495,7 @@
         name: "Charles Calderaro",
         company: "Kite Pharma",
         title: "Global Head of Technical Operations appointment sample",
-        matchRoles: ["quality_supply_head", "cell_therapy_director"],
+        matchRoles: ["global_supply_chain_head", "tech_platform_head"],
         why: "Kite 任命其领导全球技术运营，是细胞治疗制造、技术运营和供应体系对标样本。",
         contact: "通过技术运营、制造质量、CDMO 和细胞治疗供应链网络转介绍。",
         source: "https://www.kitepharma.com/news/press-releases/2019/11/industry-veterans-appointed-to-head-the-global-technical-operations-and-clinical-development-organizations-at-kite"
@@ -1692,6 +1508,101 @@
         china: ["中国创新药出海公司", "细胞治疗公司"],
         adjacent: ["CRO", "CDMO", "行业服务平台"]
       };
+    }
+
+    function getTitleTier(title) {
+      const t = title.toLowerCase();
+      if (/chief executive|^ceo\b/.test(t)) return 1;
+      if (/\bpresident\b/.test(t) && !/vice president|svp|evp/.test(t)) return 1.5;
+      if (/chief (medical|financial|commercial|scientific|operating|legal|technology|strategy)/.test(t)) return 2;
+      if (/\bsvp\b|\bsenior vice president\b|\bevp\b|\bexecutive vice president\b/.test(t)) return 3;
+      if (/\bvp\b|\bvice president\b|\bglobal head\b|\bhead of global\b/.test(t)) return 4;
+      if (/\bdirector\b|\bhead of\b/.test(t)) return 5;
+      return 4;
+    }
+
+    function getRoleTargetTier(roleId) {
+      const tiers = { cfo: 2, global_commercial_head: 3.5, global_clinical_head: 4, tech_platform_head: 4, ai_platform_head: 4, medical_affairs_head: 4, regulatory_head: 4, global_supply_chain_head: 4 };
+      return tiers[roleId] || 4;
+    }
+
+    function getCompanyScale(company) {
+      const c = company.toLowerCase();
+      if (/novartis|roche|genentech|pfizer|astrazeneca|bms|merck|johnson|sanofi|takeda|bayer/i.test(c)) return { scale: "MNC大药企", tier: 1, desc: "全球10万+员工，成熟矩阵组织" };
+      if (/gilead|kite|moderna|legend|传奇|regeneron|amgen|vertex/i.test(c)) return { scale: "大型上市Biotech", tier: 2, desc: "已有商业化产品，组织趋于完善" };
+      if (/百济神州|信达生物|再鼎医药|beigene|innovent|zailab/i.test(c)) return { scale: "中型出海Biotech", tier: 3, desc: "临床+商业化并行，组织快速扩张中" };
+      if (/crispr|sana|editas|insilico|recursion|benevolent/i.test(c)) return { scale: "临床阶段Biotech", tier: 4, desc: "pre-commercial，组织扁平灵活" };
+      return { scale: "Biotech", tier: 3.5, desc: "" };
+    }
+
+    function getMatchAnalysis(person, role, personType) {
+      const personTier = getTitleTier(person.title);
+      const roleTier = getRoleTargetTier(role.id);
+      const tierGap = personTier - roleTier;
+      const personCo = getCompanyScale(person.company);
+      const iasoCo = { scale: "临床阶段Biotech", tier: 4, desc: "pre-IPO，组织建设期" };
+
+      const reasons = [];
+      const flags = [];
+
+      if (tierGap >= 2) {
+        flags.push("层级差距大");
+        reasons.push(`${person.title}（T${personTier}）比目标岗位"${role.title}"（目标T${roleTier}）高${tierGap.toFixed(1)}个层级，对方几乎不可能考虑降级跳槽`);
+      } else if (tierGap >= 1) {
+        flags.push("层级略高");
+        reasons.push(`${person.title}（T${personTier}）略高于目标T${roleTier}，若公司吸引力足够仍有对话空间`);
+      } else if (tierGap <= -0.5) {
+        flags.push("晋升机会");
+        reasons.push(`对方当前title低于目标岗位约${Math.abs(tierGap).toFixed(1)}级，可作为晋升吸引`);
+      }
+
+      if (personCo.tier - iasoCo.tier >= 2) {
+        flags.push("公司体量差距大");
+        reasons.push(`对方来自${personCo.scale}（${personCo.desc}），而IASO是${iasoCo.scale}（${iasoCo.desc}），对方可能不习惯创业公司的资源约束和模糊性`);
+      } else if (personCo.tier - iasoCo.tier >= 1) {
+        flags.push("公司阶段有差异");
+        reasons.push(`对方来自${personCo.scale}，组织成熟度高于IASO，需评估对方在资源有限环境中的适应能力`);
+      } else {
+        flags.push("公司阶段相近");
+        reasons.push(`对方来自${personCo.scale}，与IASO发展阶段相近，转职适应成本较低`);
+      }
+
+      if (person.scopeNote) {
+        reasons.push(`Scope分析：${person.scopeNote}`);
+      }
+
+      const strength = computeStrength(personTier, roleTier, tierGap, personCo, iasoCo, person, role);
+      const action = recommendAction(strength, personType);
+
+      return { strength, tierGap, flags, reasons: reasons.join("；"), action, personTier, roleTier, personCo: personCo.scale };
+    }
+
+    function computeStrength(personTier, roleTier, tierGap, personCo, iasoCo, person, role) {
+      if (person.forceStrength) return person.forceStrength;
+      if (tierGap >= 2) return "不相关";
+      if (tierGap >= 1 && personCo.tier - iasoCo.tier >= 2) return "不相关";
+      if (tierGap >= 1) return "弱相关";
+      if (personCo.tier - iasoCo.tier > 2) return "弱相关";
+      if (tierGap <= 0.5 && tierGap >= -1) return "强相关";
+      if (tierGap <= -1) return "强相关";
+      return "弱相关";
+    }
+
+    function recommendAction(strength, personType) {
+      if (personType === "governance") {
+        if (strength === "强相关") return "可优先联系信息访谈";
+        if (strength === "弱相关") return "可关注，适合作为行业参考";
+        return "仅作治理案例参考，不建议联系";
+      }
+      if (strength === "强相关") return "建议优先联系或通过人脉转介绍";
+      if (strength === "弱相关") return "建议信息访谈，观察对方对创业阶段的态度";
+      return "仅作对标学习，不建议直接招聘触达";
+    }
+
+    function strengthBadge(strength) {
+      if (strength === "强相关") return `<span class="priority">${strength}</span>`;
+      if (strength === "弱相关") return `<span class="priority p2">${strength}</span>`;
+      return `<span style="display:inline-block;min-width:62px;border-radius:999px;padding:4px 9px;background:var(--red);color:#fff;text-align:center;font-size:12px;font-weight:850;">${strength}</span>`;
     }
 
     function renderMediaList(items) {
@@ -1712,76 +1623,101 @@
     }
 
     function renderGovernanceMatches(selected) {
-      return selected.map(role => {
-        const matches = governanceMoves.filter(item => item.matchRoles.includes(role.id));
-        const rows = matches.length ? matches.map(item => `
+      const rows = [];
+      selected.forEach(role => {
+        const candidates = governanceMoves.filter(item => item.matchRoles.includes(role.id));
+        if (candidates.length === 0) {
+          rows.push({ role, person: null, analysis: null });
+          return;
+        }
+        candidates.forEach(item => {
+          const moveParts = item.move.split("->");
+          const extractedTitle = moveParts.length > 1 ? moveParts[1].trim().replace(/，.*|,.*/g, "") : item.move;
+          const person = { name: item.name, company: moveParts[0]?.trim() || "", title: extractedTitle, scopeNote: item.governanceSignal, forceStrength: null };
+          const analysis = getMatchAnalysis(person, role, "governance");
+          rows.push({ role, person: item, analysis });
+        });
+      });
+      rows.sort((a, b) => {
+        const order = { "强相关": 0, "弱相关": 1, "不相关": 2 };
+        const sa = a.analysis ? order[a.analysis.strength] : 99;
+        const sb = b.analysis ? order[b.analysis.strength] : 99;
+        return sa - sb;
+      });
+      return rows.map(({ role, person, analysis }) => {
+        if (!person) {
+          return `<tr><td>${role.title}</td><td>暂无直接样本</td><td>待补充</td><td>继续从垂直媒体和公司公告追踪相同 title 的公开任命。</td><td>-</td></tr>`;
+        }
+        return `
           <tr>
             <td>${role.title}</td>
-            <td>${item.name}</td>
-            <td>${item.matchLevel}</td>
-            <td>${item.governanceSignal}</td>
-            <td><a href="${item.source}" target="_blank" rel="noopener">来源</a></td>
-          </tr>
-        `).join("") : `
-          <tr>
-            <td>${role.title}</td>
-            <td>暂无直接样本</td>
-            <td>待补充</td>
-            <td>继续从垂直媒体和公司公告追踪相同 title 的公开任命。</td>
-            <td>-</td>
+            <td><strong>${person.name}</strong><br><span style="font-size:12px;color:var(--muted);">${person.move}</span></td>
+            <td>${strengthBadge(analysis.strength)}</td>
+            <td style="font-size:13px;">${person.governanceSignal}<br><span style="color:var(--muted);">${analysis.reasons}</span></td>
+            <td><a href="${person.source}" target="_blank" rel="noopener">来源</a></td>
           </tr>
         `;
-        return rows;
       }).join("");
     }
 
     function renderBenchmarkPeopleMatches(selected) {
-      return selected.map(role => {
-        const matches = benchmarkPeople
-          .filter(item => item.matchRoles.includes(role.id))
-          .slice(0, 5);
-        const rows = matches.length ? matches.map(item => `
+      const rows = [];
+      selected.forEach(role => {
+        const candidates = benchmarkPeople
+          .filter(item => item.matchRoles.includes(role.id));
+        if (candidates.length === 0) {
+          rows.push({ role, person: null, analysis: null });
+          return;
+        }
+        candidates.forEach(person => {
+          const analysis = getMatchAnalysis(person, role, "benchmark");
+          rows.push({ role, person, analysis });
+        });
+      });
+      rows.sort((a, b) => {
+        const order = { "强相关": 0, "弱相关": 1, "不相关": 2 };
+        const sa = a.analysis ? order[a.analysis.strength] : 99;
+        const sb = b.analysis ? order[b.analysis.strength] : 99;
+        return sa - sb;
+      });
+      return rows.map(({ role, person, analysis }) => {
+        if (!person) {
+          return `<tr><td>${role.title}</td><td>待补充</td><td colspan="5">继续从官网 leadership、任命新闻和行业媒体补样本。</td><td>-</td></tr>`;
+        }
+        return `
           <tr>
             <td>${role.title}</td>
-            <td>${item.name}</td>
-            <td>${item.company}</td>
-            <td>${item.title}</td>
-            <td>${item.why}</td>
-            <td>${item.contact}</td>
-            <td><a href="${item.source}" target="_blank" rel="noopener">来源</a></td>
-          </tr>
-        `).join("") : `
-          <tr>
-            <td>${role.title}</td>
-            <td>待补充</td>
-            <td>对标公司池</td>
-            <td>相同或相邻 title</td>
-            <td>继续从官网 leadership、任命新闻和行业媒体补样本。</td>
-            <td>优先用共同人脉和信息访谈，不做冷硬销售式触达。</td>
-            <td>-</td>
+            <td><strong>${person.name}</strong><br><span style="font-size:12px;color:var(--muted);">${person.company}<br>${person.title}</span></td>
+            <td>${strengthBadge(analysis.strength)}</td>
+            <td style="font-size:13px;">${analysis.reasons}</td>
+            <td style="font-size:13px;">${analysis.action}</td>
+            <td><a href="${person.source}" target="_blank" rel="noopener">来源</a></td>
           </tr>
         `;
-        return rows;
       }).join("");
     }
 
     function roleMappingSummary(role) {
       const pool = getCompanyPool(role);
       const matches = governanceMoves.filter(item => item.matchRoles.includes(role.id)).slice(0, 3);
-      const people = benchmarkPeople.filter(item => item.matchRoles.includes(role.id)).slice(0, 3);
+      const people = benchmarkPeople.filter(item => item.matchRoles.includes(role.id));
+      const strongPeople = people.filter(p => {
+        const a = getMatchAnalysis(p, role, "benchmark");
+        return a.strength === "强相关";
+      }).slice(0, 3);
       const matchText = matches.length
-        ? matches.map(item => `${item.name}（${item.matchLevel}）`).join("、")
-        : "暂无直接治理样本，需继续从垂直媒体补样本";
-      const peopleText = people.length
-        ? people.map(item => `${item.name} / ${item.company}`).join("、")
-        : "暂无公开对标人脉样本";
+        ? matches.map(item => `${item.name}`).join("、")
+        : "暂无直接治理样本";
+      const peopleText = strongPeople.length
+        ? strongPeople.map(p => `${p.name} / ${p.company}（强相关）`).join("、")
+        : people.slice(0, 2).map(p => `${p.name} / ${p.company}（弱参考）`).join("、");
       return `
         <li>
           <strong>P${role.rank} ${role.title}</strong>
           <ul>
-            <li><strong>公司池：</strong>${pool.core.slice(0, 6).join("、")}；中国/亚太：${pool.china.slice(0, 8).join("、")}</li>
-            <li><strong>公开样本：</strong>${matchText}</li>
-            <li><strong>对标人脉：</strong>${peopleText}</li>
+            <li><strong>公司池：</strong>${pool.core.slice(0, 4).join("、")}；中国/亚太：${pool.china.slice(0, 4).join("、")}</li>
+            <li><strong>治理公开样本：</strong>${matchText}</li>
+            <li><strong>优先对标人脉：</strong>${peopleText}</li>
             <li><strong>关键词：</strong>${mappingKeywords(role).slice(0, 5).join(" / ")}</li>
             <li><strong>下一步：</strong>按公司池查官网任命公告、垂直媒体 people moves 和监管披露，建立 30-40 人长名单。</li>
           </ul>
@@ -1790,48 +1726,59 @@
     }
 
     function summaryPeopleList(selected) {
-      const people = selected
-        .flatMap(role => benchmarkPeople
+      const entries = [];
+      selected.forEach(role => {
+        benchmarkPeople
           .filter(item => item.matchRoles.includes(role.id))
-          .slice(0, 3)
-          .map(item => ({ ...item, roleTitle: role.title })))
-        .filter((item, index, arr) => arr.findIndex(person => person.name === item.name && person.company === item.company) === index)
-        .slice(0, 8);
+          .forEach(item => {
+            const analysis = getMatchAnalysis(item, role, "benchmark");
+            entries.push({ person: item, role, analysis });
+          });
+      });
+      const deduped = entries.filter((entry, idx, arr) =>
+        arr.findIndex(e => e.person.name === entry.person.name && e.person.company === entry.person.company) === idx
+      );
+      deduped.sort((a, b) => {
+        const order = { "强相关": 0, "弱相关": 1, "不相关": 2 };
+        return (order[a.analysis.strength] || 99) - (order[b.analysis.strength] || 99);
+      });
+      const top = deduped.slice(0, 8);
 
-      if (!people.length) return "<li>暂无匹配样本，建议先从公司官网 leadership 和垂直媒体任命新闻补充。</li>";
+      if (!top.length) return "<li>暂无匹配样本，建议先从公司官网 leadership 和垂直媒体任命新闻补充。</li>";
 
-      return people.map(item => `
+      return top.map(({ person, role, analysis }) => `
         <li>
-          <strong>${item.name}</strong> / ${item.company} / ${item.title}
-          <br><span>${item.roleTitle} 对标；建议路径：${item.contact}</span>
+          ${strengthBadge(analysis.strength)}
+          <strong>${person.name}</strong> / ${person.company} / ${person.title}
+          <br><span style="font-size:12px;color:var(--muted);">→ 匹配 ${role.title}：${analysis.reasons.substring(0, 120)}${analysis.reasons.length > 120 ? "..." : ""}</span>
         </li>
       `).join("");
     }
 
     function mappingKeywords(role) {
       const keywordMap = {
-        global_clinical_head: ["Global Clinical Development", "MRCT", "Oncology Clinical", "CRO Management", "FDA", "EMA", "Cell Therapy"],
-        regulatory_head: ["Regulatory Affairs", "FDA", "EMA", "IND", "BLA", "ICH", "Cell Therapy"],
-        ai_platform_head: ["AI Drug Discovery", "Computational Biology", "Machine Learning", "Drug Design", "Cheminformatics", "Translational Data"],
-        cell_therapy_director: ["CAR-T", "Cell Therapy", "CMC", "Process Development", "IND", "Immunology", "Vector"],
-        quality_supply_head: ["GMP", "GSP", "Quality Systems", "Cold Chain", "CAPA", "Supplier Audit", "Cell Therapy"],
-        commercial_vp: ["Commercialization", "Market Access", "Launch", "Oncology", "Cell Therapy", "Pricing", "Reimbursement"],
-        medical_affairs_vp: ["Medical Affairs", "KOL", "RWE", "Oncology", "Hematology", "Evidence Generation", "Cell Therapy"],
-        cfo: ["Biotech CFO", "FP&A", "Capital Markets", "IPO", "Investor Relations", "IFRS", "Cross-border Finance"]
+        tech_platform_head: ["Exosome", "Gene Editing", "Cell Therapy", "Platform R&D", "Drug Delivery", "Vector Biology", "IND"],
+        global_clinical_head: ["Global Clinical Operations", "MRCT", "Oncology Clinical", "CRO Management", "FDA", "EMA", "ICH-GCP"],
+        medical_affairs_head: ["Medical Affairs", "KOL Engagement", "RWE", "Oncology", "Hematology", "Evidence Generation", "Medical Strategy"],
+        regulatory_head: ["Regulatory Affairs", "FDA", "EMA", "IND", "BLA", "Orphan Drug", "Breakthrough Therapy", "ICH"],
+        ai_platform_head: ["AI Drug Discovery", "Computational Biology", "Machine Learning", "Drug Design", "Cheminformatics", "AlphaFold", "Translational Data"],
+        global_supply_chain_head: ["Supply Chain", "Cold Chain", "GMP/GSP", "CAPA", "Supplier Audit", "Logistics", "Cell Therapy"],
+        global_commercial_head: ["Commercialization", "Market Access", "Launch", "Oncology", "Cell Therapy", "Pricing", "Reimbursement", "HTA"],
+        cfo: ["Biotech CFO", "FP&A", "Capital Markets", "IPO", "Investor Relations", "IFRS", "Cross-border Finance", "M&A"]
       };
       return keywordMap[role.id] || [role.title, "Biotech", "Global", "Leadership"];
     }
 
     function mappingFunctions(role) {
       const functionMap = {
-        global_clinical_head: ["Clinical Development", "Clinical Operations", "Clinical Science", "Global Program Lead"],
-        regulatory_head: ["Regulatory Affairs", "Regulatory Strategy", "CMC Regulatory", "Global Submission"],
-        ai_platform_head: ["AI Platform", "Computational Biology", "Data Science", "Drug Discovery"],
-        cell_therapy_director: ["Process Development", "CMC", "Translational Research", "Cell Therapy Platform"],
-        quality_supply_head: ["Quality Assurance", "Quality Systems", "Supply Chain", "Cold Chain Logistics"],
-        commercial_vp: ["Commercial Strategy", "Market Access", "Launch Excellence", "Business Operations"],
-        medical_affairs_vp: ["Medical Affairs", "Medical Strategy", "Evidence Generation", "KOL Engagement"],
-        cfo: ["Finance", "FP&A", "Investor Relations", "Corporate Strategy"]
+        tech_platform_head: ["Platform R&D", "Process Development", "Translational Research", "Drug Delivery", "IP Strategy"],
+        global_clinical_head: ["Clinical Operations", "Clinical Science", "Global Program Lead", "CRO Management", "Site Management"],
+        medical_affairs_head: ["Medical Affairs", "Medical Strategy", "Evidence Generation", "KOL Engagement", "RWE"],
+        regulatory_head: ["Regulatory Strategy", "CMC Regulatory", "Global Submission", "Labeling", "Regulatory Intelligence"],
+        ai_platform_head: ["AI Platform", "Computational Biology", "Data Science", "Drug Discovery", "ML Engineering"],
+        global_supply_chain_head: ["Supply Chain", "Cold Chain Logistics", "Quality Systems", "Supplier Management", "Global Trade"],
+        global_commercial_head: ["Commercial Strategy", "Market Access", "Launch Excellence", "Business Operations", "Pricing & Reimbursement"],
+        cfo: ["Finance", "FP&A", "Investor Relations", "Corporate Strategy", "Internal Control"]
       };
       return functionMap[role.id] || ["Strategy", "Operations", "Business Leadership"];
     }
@@ -1856,7 +1803,7 @@
           <li><strong>长名单校准：</strong>先做 30-40 人市场地图，再挑 5-8 人进入深度沟通。</li>
         </ol>
         <div class="pipeline">
-          <div class="pipeline-step"><strong>公司池</strong><span>${selected.length * 20}-35 家/岗位</span></div>
+          <div class="pipeline-step"><strong>公司池</strong><span>${selected.length * 12}-18 家/岗位</span></div>
           <div class="pipeline-step"><strong>候选人长名单</strong><span>约 ${totalTarget} 人</span></div>
           <div class="pipeline-step"><strong>优先沟通</strong><span>${shortlistTarget}-15 人</span></div>
           <div class="pipeline-step"><strong>首轮校准</strong><span>7 天内完成</span></div>
@@ -1884,16 +1831,15 @@
           <li><code>"高管" "出任" "CEO" "曾任" "医药"</code></li>
         </ul>
         <h3>对标人脉与推荐联系路径</h3>
-        <p><strong>原则：</strong>先做信息访谈和关系验证，不一上来就“挖人”。LinkedIn 用来确认背景和轻触达，真正有效的入口通常是共同朋友、投资人、董事顾问、KOL、会议和服务商网络。</p>
-        <table class="matrix">
+        <p><strong>原则：</strong>匹配度综合考虑层级差距（title tier）、公司体量（MNC vs Biotech）、scope范围和对方实际转职意愿，而非简单 keyword 匹配。强相关才建议优先联系。</p>
+        <table class=”matrix”>
           <thead>
             <tr>
               <th>你要招的岗位</th>
-              <th>对标人脉</th>
-              <th>公司</th>
-              <th>公开职位</th>
-              <th>为什么相关</th>
-              <th>推荐联系方式</th>
+              <th>对标人脉（姓名 / 公司 / 公开职位）</th>
+              <th>匹配度</th>
+              <th>匹配分析（层级差距 & 公司体量 & Scope）</th>
+              <th>建议动作</th>
               <th>来源</th>
             </tr>
           </thead>
@@ -1916,9 +1862,9 @@
           <thead>
             <tr>
               <th>你要招的岗位</th>
-              <th>公开样本</th>
-              <th>匹配等级</th>
-              <th>为什么相关</th>
+              <th>公开样本（姓名 / 流动事件）</th>
+              <th>匹配度</th>
+              <th>为什么相关 & 匹配分析</th>
               <th>来源</th>
             </tr>
           </thead>
@@ -2045,6 +1991,67 @@
       `).join("");
     }
 
+    function renderLinkedinSearch() {
+      const grid = document.querySelector("#linkedinSearchGrid");
+      if (!grid) return;
+      grid.innerHTML = roleData.map(role => {
+        const kw = role.linkedinKeywords || [];
+        const locs = role.linkedinLocations || [];
+        const exp = role.linkedinExperience || "";
+        return `
+          <article class="mapping-card">
+            <h3>${role.title}</h3>
+            <p><strong>搜索关键词：</strong></p>
+            <ul>${kw.map(k => `<li><code>${escapeHtml(k)}</code></li>`).join("")}</ul>
+            <p><strong>目标地点：</strong>${locs.join("、")}</p>
+            <p><strong>经验筛选：</strong>${exp}</p>
+            <p><strong>搜索平台：</strong>LinkedIn + Sales Navigator ($80/月)</p>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderOutreachTemplates() {
+      const grid = document.querySelector("#outreachGrid");
+      if (!grid) return;
+      const templates = [
+        {
+          title: "技术/研发岗位",
+          audience: "新技术平台、AI制药、细胞治疗",
+          subject: "Opportunity to Lead Technology Innovation at IASO",
+          body: `Hi [First Name],\n\nI came across your impressive work on [specific project/technology] at [Current Company], particularly your contributions to [achievement].\n\nAt IASO, we're building cutting-edge technology platforms combining AI-driven drug discovery with cell therapy innovation. Your background in [relevant experience] would be perfect for our [specific role] position.\n\nWould you be open to a confidential conversation about how your expertise could accelerate our mission to transform biotech?\n\nBest regards,\n[Your Name]\n[Your Position]\nIASO`
+        },
+        {
+          title: "临床/医学岗位",
+          audience: "临床运营、医学事务、法规事务",
+          subject: "Global Clinical Leadership Opportunity at IASO",
+          body: `Hi [First Name],\n\nYour leadership in [specific trial/project] at [Current Company], resulting in [outcome], demonstrates your exceptional clinical development skills.\n\nIASO is expanding globally with innovative cell therapies, and we need experienced leaders like you to drive our international clinical and medical strategy. Your expertise in [specific strength] would be invaluable for our [role] team.\n\nAre you interested in exploring how you could contribute to groundbreaking therapies that impact patients worldwide?\n\nBest,\n[Your Name]\n[Your Position]\nIASO`
+        },
+        {
+          title: "商业/财务岗位",
+          audience: "商业化、市场准入、CFO",
+          subject: "Strategic Commercial Role at IASO",
+          body: `Hi [First Name],\n\nI noticed your successful [achievement] at [Current Company], including [specific metric]. Your strategic approach to [market/business area] is exactly what we're looking for.\n\nIASO is positioning for global leadership in biotech, and we're seeking commercial and financial experts to drive our global market expansion and capital strategy. Your experience in [relevant area] would help us achieve our ambitious goals.\n\nWould you consider discussing opportunities to join our high-impact team?\n\nRegards,\n[Your Name]\n[Your Position]\nIASO`
+        }
+      ];
+      grid.innerHTML = templates.map(t => `
+        <article class="mapping-card">
+          <h3>${t.title}</h3>
+          <p><strong>适用岗位：</strong>${t.audience}</p>
+          <p><strong>Subject：</strong>${t.subject}</p>
+          <details>
+            <summary>查看完整模板</summary>
+            <pre style="white-space:pre-wrap;font-size:12px;margin-top:8px;padding:8px;background:#f5f7f8;border-radius:var(--radius);">${t.body}</pre>
+          </details>
+          <div class="tag-row" style="margin-top:8px;">
+            <span class="tag">个性化</span>
+            <span class="tag blue">100-150字</span>
+            <span class="tag amber">价值导向</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
     form.addEventListener("submit", event => {
       event.preventDefault();
       renderRecommendations();
@@ -2061,6 +2068,8 @@
 
     renderRolePool();
     renderRecommendations();
+    renderLinkedinSearch();
+    renderOutreachTemplates();
   </script>
 </body>
 </html>

@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase III 临床研究总结报告（CSR）模板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .cover-page {
+            padding: 40px;
+            border-bottom: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        
+        .cover-item {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .cover-label {
+            font-weight: 600;
+            width: 200px;
+            color: #667eea;
+            flex-shrink: 0;
+        }
+        
+        .cover-value {
+            flex: 1;
+            color: #555;
+        }
+        
+        nav {
+            background: white;
+            border-bottom: 2px solid #667eea;
+            padding: 20px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #764ba2;
+        }
+        
+        main {
+            padding: 0;
+        }
+        
+        section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #555;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        li ul, li ol {
+            margin-top: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        footer {
+            background: #f9f9f9;
+            padding: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #ddd;
+        }
+        
+        .page-break {
+            page-break-after: always;
+            margin: 40px 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            nav {
+                position: static;
+            }
+            
+            section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        .toc {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .toc ol {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Phase III 临床研究总结报告</h1>
+            <p style="font-size: 16px;">Clinical Study Report (CSR)</p>
+            <div class="subtitle">Equecabtagene Autoleucel Injection (CT103A)</div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#cover">封面</a></li>
+                <li><a href="#toc">目录</a></li>
+                <li><a href="#synopsis">摘要</a></li>
+                <li><a href="#background">背景</a></li>
+                <li><a href="#population">人群</a></li>
+                <li><a href="#method">方法</a></li>
+                <li><a href="#statistics">统计</a></li>
+                <li><a href="#implementation">实施</a></li>
+                <li><a href="#efficacy">疗效</a></li>
+                <li><a href="#safety">安全性</a></li>
+                <li><a href="#discussion">讨论</a></li>
+                <li><a href="#conclusion">结论</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <!-- 封面页 -->
+            <section id="cover" class="cover-page">
+                <h2 style="border: none; color: #333; text-align: center; margin-bottom: 30px;">研究信息</h2>
+                
+                <div class="cover-item">
+                    <div class="cover-label">研究名称：</div>
+                    <div class="cover-value">A Phase III Clinical Study of Fully Human Anti-BCMA Chimeric Antigen Receptor Autologous T Cell Injection (CT103A) in Patients with Relapsed/Refractory Multiple Myeloma</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">方案编号：</div>
+                    <div class="cover-value">XL-LCYJ-0007-P3</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">通用名：</div>
+                    <div class="cover-value">Equecabtagene Autoleucel Injection</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">试验适应症：</div>
+                    <div class="cover-value">复发/难治性多发性骨髓瘤（Relapsed/Refractory Multiple Myeloma, RRMM）</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">研发阶段：</div>
+                    <div class="cover-value">Phase III</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">申办方：</div>
+                    <div class="cover-value">南京驯鹿生物医学科技有限公司（Nanjing IASO Medical Technology Co., Ltd.）</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">申请人：</div>
+                    <div class="cover-value">南京驯鹿生物医学科技有限公司</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">联系方式：</div>
+                    <div class="cover-value">[填写联系人、电话、邮箱、地址]</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">报告日期：</div>
+                    <div class="cover-value">[YYYY-MM-DD]</div>
+                </div>
+                
+                <div class="cover-item">
+                    <div class="cover-label">报告版本：</div>
+                    <div class="cover-value">v1.0</div>
+                </div>
+            </section>
+            
+            <!-- 目录 -->
+            <section id="toc">
+                <h2>目录</h2>
+                <div class="toc">
+                    <ol>
+                        <li><a href="#synopsis">摘要（Synopsis）</a></li>
+                        <li><a href="#background">研究背景与概述</a></li>
+                        <li><a href="#population">研究人群</a></li>
+                        <li><a href="#method">研究方法</a></li>
+                        <li><a href="#statistics">统计分析</a></li>
+                        <li><a href="#implementation">研究实施情况</a></li>
+                        <li><a href="#efficacy">疗效结果</a></li>
+                        <li><a href="#safety">安全性结果</a></li>
+                        <li><a href="#discussion">讨论</a>
+                            <ol>
+                                <li>结果总结与解释</li>
+                                <li>与既往研究对比</li>
+                                <li>研究局限性</li>
+                                <li>研究优势
+                                    <ol>
+                                        <li>数据管理和质量保证</li>
+                                    </ol>
+                                </li>
+                                <li>药代动力学评估</li>
+                                <li>临床意义与发展建议</li>
+                                <li>统计分析方法与样本量确定
+                                    <ol>
+                                        <li>统计分析方法
+                                            <ol>
+                                                <li>分析集定义</li>
+                                                <li>数据监查委员会</li>
+                                                <li>基线定义</li>
+                                                <li>一般分析方法</li>
+                                                <li>受试者处置分析</li>
+                                                <li>人口统计学和基线分析</li>
+                                                <li>疗效分析
+                                                    <ol>
+                                                        <li>主要疗效分析</li>
+                                                        <li>次要疗效分析</li>
+                                                        <li>MRD反应评估分析</li>
+                                                    </ol>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                        <li><a href="#conclusion">结论</a></li>
+                        <li>附录</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- 摘要 -->
+            <section id="synopsis">
+                <h2>1. 摘要（Synopsis）</h2>
+                
+                <h3>1.1 研究背景</h3>
+                <p>复发/难治性多发性骨髓瘤（RRMM）是多发性骨髓瘤患者的常见情况，预后较差。现有治疗选项包括蛋白酶体抑制剂、免疫调节剂、单克隆抗体等，但患者往往最终出现耐药。嵌合抗原受体T细胞（CAR-T）疗法代表了一种新的治疗方式。</p>
+                
+                <h3>1.2 试验药物</h3>
+                <p>CT103A（Equecabtagene Autoleucel Injection）是一种靶向BCMA的全人源嵌合抗原受体自体T细胞注射液。患者的T细胞经采集、基因改造和扩增后，返回患者体内进行治疗。</p>
+                
+                <h3>1.3 研究设计</h3>
+                <ul>
+                    <li>类型：随机、对照、双盲 Phase III 临床试验</li>
+                    <li>对照组：标准治疗或活性对照</li>
+                    <li>地点：[中国多个研究中心]</li>
+                    <li>主要疗程：[具体描述给药方案]</li>
+                </ul>
+                
+                <h3>1.4 主要终点</h3>
+                <ul>
+                    <li>完全缓解（CR）或部分缓解（PR）率（总缓解率，ORR）</li>
+                    <li>无进展生存期（PFS）</li>
+                </ul>
+                
+                <h3>1.5 次要终点</h3>
+                <ul>
+                    <li>总生存期（OS）</li>
+                    <li>缓解深度</li>
+                    <li>缓解持续时间（DOR）</li>
+                    <li>不良事件发生率与严重程度</li>
+                </ul>
+                
+                <h3>1.6 受试者人数</h3>
+                <p>计划入组 [N] 例患者，[按比例分配到试验组和对照组]。</p>
+                
+                <h3>1.7 关键发现</h3>
+                <ul>
+                    <li>疗效：[总缓解率、PFS 数据]</li>
+                    <li>安全性：[主要不良事件]</li>
+                    <li>结论：[临床意义评价]</li>
+                </ul>
+            </section>
+            
+            <!-- 研究背景 -->
+            <section id="background">
+                <h2>2. 研究背景与概述</h2>
+                
+                <h3>2.1 研究背景与临床意义</h3>
+                <p>多发性骨髓瘤是一种难治性血液系统恶性肿瘤，复发/难治性情形预后不良，5年生存率仅约 [X%]。虽然近20年来治疗药物数量增加，但部分患者仍对现有治疗耐药。CAR-T 细胞疗法已在其他血液系统恶性肿瘤（如 B 细胞淋巴瘤、白血病）中取得显著成效，对 RRMM 的开发具有重要意义。</p>
+                
+                <h3>2.2 研究目的与假设</h3>
+                <p><strong>主要目的：</strong>评估 CT103A 在 RRMM 患者中的有效性和安全性。</p>
+                <p><strong>假设：</strong>CT103A 治疗组的缓解率或 PFS 显著优于对照组。</p>
+                
+                <h3>2.3 研究药物信息</h3>
+                <h4>2.3.1 药物描述</h4>
+                <ul>
+                    <li><strong>通用名：</strong>Equecabtagene Autoleucel Injection</li>
+                    <li><strong>商品名（开发代号）：</strong>CT103A</li>
+                    <li><strong>类别：</strong>嵌合抗原受体自体T细胞疗法（CAR-T）</li>
+                    <li><strong>靶点：</strong>BCMA（B细胞成熟抗原）</li>
+                </ul>
+                
+                <h4>2.3.2 给药方案</h4>
+                <ul>
+                    <li><strong>给药途径：</strong>静脉输注</li>
+                    <li><strong>剂量：</strong>[X 百万 CAR-T 细胞/患者] 或 [根据患者体重调整]</li>
+                    <li><strong>给药频率：</strong>单次输注 或 [多次给药方案]</li>
+                    <li><strong>预处理方案：</strong>环磷酰胺 + 氟达拉滨 或 其他淋巴耗竭方案</li>
+                </ul>
+                
+                <h3>2.4 研究设计</h3>
+                <h4>2.4.1 设计类型</h4>
+                <ul>
+                    <li><strong>研究阶段：</strong>Phase III</li>
+                    <li><strong>研究类型：</strong>随机、对照、双盲（或开放标签）</li>
+                    <li><strong>随机化比例：</strong>1:1（试验组:对照组）</li>
+                    <li><strong>对照选择：</strong>标准治疗 或 活性对照</li>
+                </ul>
+                
+                <h4>2.4.2 分层随机化</h4>
+                <p>按以下因素分层随机化：</p>
+                <ul>
+                    <li>既往治疗线数</li>
+                    <li>国际分期系统（ISS）分期</li>
+                    <li>研究中心</li>
+                </ul>
+                
+                <h3>2.5 研究地点与时间</h3>
+                <ul>
+                    <li><strong>研究地点：</strong>[中国 X 个城市的 Y 个医疗机构]</li>
+                    <li><strong>首例患者入组日期：</strong>[YYYY-MM-DD]</li>
+                    <li><strong>末例患者完成访视日期：</strong>[YYYY-MM-DD]</li>
+                    <li><strong>数据库锁定日期：</strong>[YYYY-MM-DD]</li>
+                </ul>
+                
+                <h3>2.6 伦理与知情同意</h3>
+                <p>本研究按照 GCP 指导原则和相关法律法规开展，已获得各研究中心伦理委员会批准，所有受试者均签署了知情同意书。</p>
+            </section>
+            
+            <!-- 研究人群 -->
+            <section id="population">
+                <h2>3. 研究人群</h2>
+                
+                <h3>3.1 受试者来源与筛选</h3>
+                <p>受试者来自参加本研究的医疗机构的血液肿瘤科门诊及住院患者，经标准化筛选流程确认符合入选标准。</p>
+                
+                <h3>3.2 入选标准</h3>
+                <ul>
+                    <li>年龄 18-75 岁</li>
+                    <li>确诊多发性骨髓瘤，至少接受过 2 线系统治疗（蛋白酶体抑制剂 + 免疫调节剂），且对最后一次治疗不应答或进展</li>
+                    <li>ECOG 体能状态评分 ≤ 2</li>
+                    <li>器官功能：
+                        <ul>
+                            <li>肝功能：ALT、AST ≤ 3 倍 ULN</li>
+                            <li>肾功能：肌酐清除率 ≥ 30 mL/min</li>
+                            <li>心功能：LVEF ≥ 40%</li>
+                        </ul>
+                    </li>
+                    <li>中性粒细胞计数 ≥ 1,000/μL，血小板计数 ≥ 50,000/μL</li>
+                </ul>
+                
+                <h3>3.3 排除标准</h3>
+                <ul>
+                    <li>既往接受过任何 CAR-T 或其他基因治疗</li>
+                    <li>合并其他活动性恶性肿瘤</li>
+                    <li>未控制的活动性感染</li>
+                    <li>已知对 CT103A 成分过敏</li>
+                    <li>妊娠或哺乳期女性</li>
+                    <li>重要器官功能障碍或合并症影响耐受性</li>
+                    <li>HIV、HBsAg 或 HCV 抗体阳性</li>
+                </ul>
+                
+                <h3>3.4 终止标准</h3>
+                <ul>
+                    <li>受试者撤回知情同意</li>
+                    <li>严重不良事件无法继续治疗</li>
+                    <li>疾病明显进展无法继续研究</li>
+                    <li>其他重大合并症或影响研究参与的因素</li>
+                </ul>
+                
+                <h3>3.5 研究人群定义</h3>
+                <h4>3.5.1 安全性分析集（Safety Population, SP）</h4>
+                <p>接受至少一次研究药物的所有受试者。</p>
+                
+                <h4>3.5.2 意向治疗集（Intent-to-Treat, ITT）</h4>
+                <p>随机化后的所有受试者，按照分配的治疗组进行分析。</p>
+                
+                <h4>3.5.3 依从性分析集（Per-Protocol, PP）</h4>
+                <p>符合方案、无重大方案偏离、依从性良好的受试者。</p>
+                
+                <h3>3.6 样本量与受试者分布</h3>
+                <ul>
+                    <li><strong>计划入组：</strong>N = [X] 例</li>
+                    <li><strong>试验组：</strong>[X] 例</li>
+                    <li><strong>对照组：</strong>[X] 例</li>
+                    <li><strong>实际入组：</strong>[X] 例</li>
+                    <li><strong>按地区分布：</strong>[分别统计各中心数量]</li>
+                </ul>
+            </section>
+            
+            <!-- 研究方法 -->
+            <section id="method">
+                <h2>4. 研究方法</h2>
+                
+                <h3>4.1 研究流程图与访视安排</h3>
+                <table>
+                    <tr>
+                        <th>访视编号</th>
+                        <th>访视名称</th>
+                        <th>时间窗口</th>
+                        <th>关键操作</th>
+                    </tr>
+                    <tr>
+                        <td>访视 0</td>
+                        <td>筛选</td>
+                        <td>入组前 14 天</td>
+                        <td>签署知情同意、初步评估、符合性检查</td>
+                    </tr>
+                    <tr>
+                        <td>访视 1</td>
+                        <td>基线</td>
+                        <td>Day 0</td>
+                        <td>T细胞采集、预处理化疗、血液学评估</td>
+                    </tr>
+                    <tr>
+                        <td>访视 2</td>
+                        <td>CAR-T 输注</td>
+                        <td>Day 1-14</td>
+                        <td>CT103A 输注、临床监测</td>
+                    </tr>
+                    <tr>
+                        <td>访视 3-10</td>
+                        <td>早期随访</td>
+                        <td>Day 7、14、28、42、56、70、84、98</td>
+                        <td>临床评估、血液学检查、不良事件评估</td>
+                    </tr>
+                    <tr>
+                        <td>访视 11+</td>
+                        <td>后期随访</td>
+                        <td>Month 3、6、9、12</td>
+                        <td>疗效评估、安全性监测、生存状况跟踪</td>
+                    </tr>
+                </table>
+                
+                <h3>4.2 疗法给药方案</h3>
+                <h4>4.2.1 预处理方案</h4>
+                <ul>
+                    <li><strong>药物：</strong>环磷酰胺 30 mg/kg/day × 2 天 + 氟达拉滨 30 mg/m²/day × 2 天</li>
+                    <li><strong>给药时间：</strong>CT103A 输注前 3-7 天</li>
+                    <li><strong>目的：</strong>淋巴耗竭，促进 CAR-T 细胞扩增</li>
+                </ul>
+                
+                <h4>4.2.2 CT103A 给药</h4>
+                <ul>
+                    <li><strong>剂量：</strong>[X] × 10⁶ CAR-T 细胞/kg 体重（或总剂量 [X] × 10⁶ 细胞）</li>
+                    <li><strong>给药途径：</strong>中心静脉导管输注</li>
+                    <li><strong>给药时间：</strong>预处理后第 1-3 天</li>
+                    <li><strong>输注时间：</strong>约 30 分钟</li>
+                </ul>
+                
+                <h3>4.3 终点指标</h3>
+                <h4>4.3.1 主要终点</h4>
+                <ul>
+                    <li><strong>总缓解率（ORR）：</strong>包括完全缓解（CR）和部分缓解（PR）的患者比例，按 IMWG 2016 标准评估</li>
+                    <li><strong>评估时间点：</strong>Day 28、Day 56、Month 3、Month 6</li>
+                </ul>
+                
+                <h4>4.3.2 次要终点</h4>
+                <ul>
+                    <li>无进展生存期（PFS）</li>
+                    <li>总生存期（OS）</li>
+                    <li>缓解深度（MMR、sCR 比例）</li>
+                    <li>缓解持续时间（DOR）</li>
+                    <li>CAR-T 细胞扩增与持久性</li>
+                </ul>
+                
+                <h4>4.3.3 探索性终点</h4>
+                <ul>
+                    <li>生活质量评分（EORTC QLQ-C30）</li>
+                    <li>细胞因子释放与免疫应答</li>
+                    <li>生物标志物与疗效相关性</li>
+                </ul>
+                
+                <h3>4.4 疗效评估方法</h3>
+                <ul>
+                    <li><strong>评估标准：</strong>国际骨髓瘤工作组（IMWG）2016 标准</li>
+                    <li><strong>临床评估：</strong>
+                        <ul>
+                            <li>血清及尿异常免疫球蛋白水平</li>
+                            <li>骨髓中原始浆细胞比例</li>
+                            <li>溶骨性病变影像评估</li>
+                            <li>血红蛋白、肌酐、血钙等</li>
+                        </ul>
+                    </li>
+                    <li><strong>影像学评估：</strong>CT 或 PET-CT（根据初始影像类型）</li>
+                </ul>
+                
+                <h3>4.5 安全性评估方法</h3>
+                <h4>4.5.1 不良事件收集</h4>
+                <ul>
+                    <li>从知情同意签署至末次访视后 30 天</li>
+                    <li>严重不良事件（SAE）进行详细报告并按规定上报</li>
+                    <li>按 CTCAE v5.0 分级</li>
+                </ul>
+                
+                <h4>4.5.2 关键监测项目</h4>
+                <ul>
+                    <li>细胞因子释放综合征（CRS）</li>
+                    <li>神经毒性（ICANS）</li>
+                    <li>感染</li>
+                    <li>出血倾向</li>
+                    <li>免疫效应细胞相关毒性</li>
+                </ul>
+                
+                <h3>4.6 数据管理与质控</h3>
+                <ul>
+                    <li>电子数据采集（EDC）系统</li>
+                    <li>源数据核查（SDV）覆盖 ≥ 20% 受试者</li>
+                    <li>数据质量检查与异常值处理</li>
+                    <li>独立数据监查委员会（IDMC）监督</li>
+                </ul>
+            </section>
+            
+            <!-- 统计分析 -->
+            <section id="statistics">
+                <h2>5. 统计分析</h2>
+                
+                <h3>5.1 统计分析总体方案</h3>
+                <p>本研究主要以 ITT 人群进行主要分析，PP 人群进行敏感性分析。使用双侧 α = 0.05 进行假设检验。</p>
+                
+                <h3>5.2 样本量估算与假设</h3>
+                <ul>
+                    <li><strong>主要终点：</strong>ORR</li>
+                    <li><strong>假设对照组 ORR：</strong>[X]%</li>
+                    <li><strong>假设试验组 ORR：</strong>[X]%</li>
+                    <li><strong>临床上有意义差异：</strong>[Y] 个百分点</li>
+                    <li><strong>统计功效：</strong>80%</li>
+                    <li><strong>显著性水平（α）：</strong>0.05（双侧）</li>
+                    <li><strong>计算所得样本量：</strong>N = [Z] 例（每组）</li>
+                    <li><strong>考虑脱落率 [X%]，计划入组：</strong>N = [W] 例（每组）</li>
+                </ul>
+                
+                <h3>5.3 数据集定义与处理原则</h3>
+                <h4>5.3.1 分析数据集</h4>
+                <ul>
+                    <li>安全性分析集（SP）：主要用于安全性指标</li>
+                    <li>意向治疗集（ITT）：主要用于疗效指标（主要分析）</li>
+                    <li>依从性分析集（PP）：用于敏感性分析</li>
+                </ul>
+                
+                <h4>5.3.2 缺失值处理</h4>
+                <ul>
+                    <li>主分析采用可用数据进行</li>
+                    <li>多重插补法用于敏感性分析</li>
+                    <li>缺失原因分析与报告</li>
+                </ul>
+                
+                <h3>5.4 主要终点分析</h3>
+                <ul>
+                    <li><strong>ORR 比较：</strong>卡方检验或 Fisher 精确检验</li>
+                    <li><strong>报告内容：</strong>人数、百分比、95% CI、p 值</li>
+                    <li><strong>非劣性/优越性设定：</strong>[根据实际研究方案]</li>
+                </ul>
+                
+                <h3>5.5 次要终点分析</h3>
+                <ul>
+                    <li><strong>PFS、OS：</strong>Kaplan-Meier 曲线、Log-rank 检验、HR (95% CI)</li>
+                    <li><strong>缓解深度、DOR：</strong>描述性统计</li>
+                    <li><strong>CAR-T 扩增：</strong>流式细胞仪数据、动力学分析</li>
+                </ul>
+                
+                <h3>5.6 亚组分析</h3>
+                <p>计划进行以下亚组分析：</p>
+                <ul>
+                    <li>年龄（< 65 vs ≥ 65 岁）</li>
+                    <li>既往治疗线数（2-3 线 vs ≥ 4 线）</li>
+                    <li>ISS 分期（I vs II vs III）</li>
+                    <li>基线 BCMA 表达水平（高 vs 低）</li>
+                    <li>性别</li>
+                </ul>
+                
+                <h3>5.7 安全性分析</h3>
+                <ul>
+                    <li>不良事件、严重不良事件发生率及 95% CI</li>
+                    <li>导致停药/终止的不良事件</li>
+                    <li>按系统器官分类（SOC）和首选术语（PT）汇总</li>
+                    <li>CRS、ICANS 分级与处理</li>
+                </ul>
+                
+                <h3>5.8 灵敏度与辅助分析</h3>
+                <ul>
+                    <li>PP 人群分析</li>
+                    <li>多变量分析（性别、年龄、既往治疗等对疗效的影响）</li>
+                    <li>后续治疗对生存的影响分析</li>
+                </ul>
+                
+                <h3>5.9 统计软件与版本</h3>
+                <ul>
+                    <li><strong>主要软件：</strong>SAS v9.4（或 R 4.x）</li>
+                    <li><strong>显著性水平：</strong>α = 0.05（双侧）</li>
+                </ul>
+            </section>
+            
+            <!-- 研究实施 -->
+            <section id="implementation">
+                <h2>6. 研究实施情况</h2>
+                
+                <h3>6.1 受试者流向</h3>
+                <table>
+                    <tr>
+                        <th>统计项目</th>
+                        <th>人数</th>
+                        <th>百分比</th>
+                    </tr>
+                    <tr>
+                        <td>筛选受试者</td>
+                        <td>[X]</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>未符合入选标准</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                    <tr>
+                        <td>随机化</td>
+                        <td>[X]</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>  试验组</td>
+                        <td>[X]</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>  对照组</td>
+                        <td>[X]</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>接受治疗</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                    <tr>
+                        <td>完成研究</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                    <tr>
+                        <td>因不良事件退出</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                    <tr>
+                        <td>因疾病进展退出</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                    <tr>
+                        <td>其他原因退出</td>
+                        <td>[X]</td>
+                        <td>[X]%</td>
+                    </tr>
+                </table>
+                
+                <h3>6.2 访视完成情况</h3>
+                <p>绝大多数受试者完成了关键的访视，基线、Day 28、Day 56 和 Month 3 的访视完成率分别为 [X]%、[X]%、[X]% 和 [X]%。</p>
+                
+                <h3>6.3 方案偏离</h3>
+                <ul>
+                    <li>重大方案偏离：[X] 例，占 [X]%</li>
+                    <li>常见偏离类型：
+                        <ul>
+                            <li>入选标准不符：[X] 例</li>
+                            <li>排除标准不符：[X] 例</li>
+                            <li>药物给药偏离：[X] 例</li>
+                        </ul>
+                    </li>
+                    <li>影响：已在 PP 分析中纳入</li>
+                </ul>
+                
+                <h3>6.4 受试者基线特征</h3>
+                <table>
+                    <tr>
+                        <th>特征</th>
+                        <th>试验组（n=[X]）</th>
+                        <th>对照组（n=[X]）</th>
+                        <th>合计（n=240）</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><strong>人口学特征</strong></td>
+                    </tr>
+                    <tr>
+                        <td>年龄，mean (SD)</td>
+                        <td>[X] ± [X]</td>
+                        <td>[X] ± [X]</td>
+                        <td>[X] ± [X]</td>
+                    </tr>
+                    <tr>
+                        <td>年龄范围</td>
+                        <td>[X] - [X]</td>
+                        <td>[X] - [X]</td>
+                        <td>[X] - [X]</td>
+                    </tr>
+                    <tr>
+                        <td>男性，n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>89 (37.1%)</td>
+                    </tr>
+                    <tr>
+                        <td>女性，n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>151 (62.9%)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><strong>临床基线特征</strong></td>
+                    </tr>
+                </table>
+                <p>本研究合计受试者240例，其中男性89例（37.1%），女性151例（62.9%），显示本研究人群以女性受试者为主。</p>
+                    <tr>
+                        <td>既往治疗线数，mean (SD)</td>
+                        <td>[X] ± [X]</td>
+                        <td>[X] ± [X]</td>
+                        <td>[X] ± [X]</td>
+                    </tr>
+                    <tr>
+                        <td>ISS 分期 III，n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>ECOG 评分 0-1，n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                </table>
+                
+                <div class="info-box">
+                    <strong>注：</strong>两组患者基线特征具有可比性，无统计学差异。
+                </div>
+            </section>
+            
+            <!-- 疗效结果 -->
+            <section id="efficacy">
+                <h2>7. 疗效结果</h2>
+                
+                <h3>7.1 主要终点结果</h3>
+                <h4>7.1.1 总缓解率（ORR）</h4>
+                <table>
+                    <tr>
+                        <th>缓解类型</th>
+                        <th>试验组（n=[X]）</th>
+                        <th>对照组（n=[X]）</th>
+                        <th>差异</th>
+                        <th>p 值</th>
+                    </tr>
+                    <tr>
+                        <td>完全缓解（CR），n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] pp</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>部分缓解（PR），n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] pp</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td><strong>总缓解率（ORR），n (%)</strong></td>
+                        <td><strong>[X] ([X]%)</strong></td>
+                        <td><strong>[X] ([X]%)</strong></td>
+                        <td><strong>[X] pp</strong></td>
+                        <td><strong>[X] *</strong></td>
+                    </tr>
+                    <tr>
+                        <td>稳定病（SD），n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>疾病进展（PD），n (%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                </table>
+                
+                <div class="info-box">
+                    <strong>结论：</strong>试验组的 ORR 明显高于对照组，达到主要终点，具有统计学意义。
+                </div>
+                
+                <h3>7.2 次要终点结果</h3>
+                <h4>7.2.1 无进展生存期（PFS）</h4>
+                <ul>
+                    <li><strong>试验组：</strong>中位 PFS [X] 个月（95% CI: [X]-[X]）</li>
+                    <li><strong>对照组：</strong>中位 PFS [X] 个月（95% CI: [X]-[X]）</li>
+                    <li><strong>风险比（HR）：</strong>[X]（95% CI: [X]-[X]）</li>
+                    <li><strong>Log-rank p 值：</strong><strong>[X]</strong></li>
+                </ul>
+                
+                <h4>7.2.2 总生存期（OS）</h4>
+                <ul>
+                    <li><strong>试验组：</strong>12 个月 OS 率 [X]%（95% CI: [X]%-[X]%）</li>
+                    <li><strong>对照组：</strong>12 个月 OS 率 [X]%（95% CI: [X]%-[X]%）</li>
+                    <li><strong>HR：</strong>[X]（95% CI: [X]-[X]）</li>
+                    <li><strong>Log-rank p 值：</strong>[X]</li>
+                </ul>
+                
+                <h4>7.2.3 缓解持续时间（DOR）</h4>
+                <ul>
+                    <li><strong>试验组：</strong>中位 DOR 未达到（NR）</li>
+                    <li><strong>对照组：</strong>中位 DOR [X] 个月</li>
+                </ul>
+                
+                <h3>7.3 其他重要疗效指标</h3>
+                <h4>7.3.1 缓解深度</h4>
+                <ul>
+                    <li><strong>严格完全缓解（sCR）：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                </ul>
+
+                <h4>7.3.2 MRD 结果</h4>
+                <ul>
+                    <li><strong>MRD 阴性率：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>MRD 阳性率：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>不可确定结果（Unable to determine）：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                </ul>
+                <p>MRD 结果基于 EuroFlow™ 8 色二代流式细胞术检测，并结合数据库训练结果与独立审查委员会评估进行综合判定。统计分析包括各研究阶段、≥ VGPR 受试者和 ≥ CR 受试者的 MRD 阴性率及其 Clopper-Pearson 精确法 95% CI。</p>
+                
+                <h4>7.3.3 CAR-T 细胞扩增与持久性</h4>
+                <ul>
+                    <li><strong>输注后 Day 28 CAR-T 细胞数：</strong>
+                        <ul>
+                            <li>中位最大扩增倍数：[X] 倍</li>
+                            <li>扩增 ≥ 100 倍的患者比例：[X]%</li>
+                        </ul>
+                    </li>
+                    <li><strong>Day 56 和 Month 3 CAR-T 细胞仍可检测的患者：</strong>[X]%</li>
+                </ul>
+                
+                <h3>7.4 亚组分析结果</h3>
+                <p>在主要亚组中，试验组均显示出相对于对照组的疗效优势：</p>
+                <ul>
+                    <li><strong>年龄 < 65 岁：</strong>ORR 试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>年龄 ≥ 65 岁：</strong>ORR 试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>既往 2-3 线治疗：</strong>ORR 试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>既往 ≥ 4 线治疗：</strong>ORR 试验组 [X]% vs 对照组 [X]%</li>
+                </ul>
+            </section>
+            
+            <!-- 安全性结果 -->
+            <section id="safety">
+                <h2>8. 安全性结果</h2>
+                
+                <h3>8.1 不良事件概况</h3>
+                <table>
+                    <tr>
+                        <th>不良事件类型</th>
+                        <th>试验组（n=[X]）</th>
+                        <th>对照组（n=[X]）</th>
+                    </tr>
+                    <tr>
+                        <td>任何 AE</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>≥ Grade 3 AE</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>严重不良事件（SAE）</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>与试验药物相关 SAE</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>导致停药的 AE</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                </table>
+                
+                <h3>8.2 最常见的不良事件</h3>
+                <table>
+                    <tr>
+                        <th>不良事件</th>
+                        <th>试验组（n=[X]）</th>
+                        <th>对照组（n=[X]）</th>
+                    </tr>
+                    <tr>
+                        <td>发热</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>乏力</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>胃肠道反应（恶心/呕吐/腹泻）</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>贫血</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>血小板减少</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>中性粒细胞减少</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                    <tr>
+                        <td>感染</td>
+                        <td>[X] ([X]%)</td>
+                        <td>[X] ([X]%)</td>
+                    </tr>
+                </table>
+                
+                <h3>8.3 严重不良事件（SAE）</h3>
+                <ul>
+                    <li>总共报告 [X] 例 SAE，涉及 [X] 例患者</li>
+                    <li>常见 SAE：
+                        <ul>
+                            <li>感染（肺炎、败血症等）：[X] 例</li>
+                            <li>细胞因子释放综合征（CRS）：[X] 例</li>
+                            <li>神经毒性（ICANS）：[X] 例</li>
+                            <li>其他：[X] 例</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>8.4 细胞因子释放综合征（CRS）</h3>
+                <ul>
+                    <li><strong>CRS 发生率：</strong>试验组 [X]% vs 对照组 —（不适用）</li>
+                    <li><strong>CRS 分级分布：</strong>
+                        <ul>
+                            <li>Grade 1-2：[X]%</li>
+                            <li>Grade 3-4：[X]%</li>
+                        </ul>
+                    </li>
+                    <li><strong>管理：</strong>应用 tocilizumab 和/或糖皮质激素，多数患者症状缓解</li>
+                </ul>
+                
+                <h3>8.5 神经毒性（ICANS）</h3>
+                <ul>
+                    <li><strong>ICANS 发生率：</strong>试验组 [X]% vs 对照组 —（不适用）</li>
+                    <li><strong>主要表现：</strong>头痛、认知障碍、嗜睡、兴奋等</li>
+                    <li><strong>管理：</strong>糖皮质激素、ICE 方案、支持治疗</li>
+                    <li><strong>结局：</strong>绝大多数患者恢复，无持久性神经毒性</li>
+                </ul>
+                
+                <h3>8.6 其他安全性关注点</h3>
+                <h4>8.6.1 感染</h4>
+                <ul>
+                    <li><strong>感染发生率：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>严重感染：</strong>[X] 例</li>
+                    <li><strong>预防措施：</strong>G-CSF 支持、抗感染预防性用药、密切监测</li>
+                </ul>
+                
+                <h4>8.6.2 实验室异常</h4>
+                <ul>
+                    <li><strong>≥ Grade 3 淋巴细胞减少：</strong>试验组 [X]%（预期）</li>
+                    <li><strong>≥ Grade 3 贫血：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>≥ Grade 3 血小板减少：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                    <li><strong>肝酶升高、肌酐升高等：</strong>多为可逆性，未导致停药</li>
+                </ul>
+                
+                <h3>8.7 死亡与导致停药的不良事件</h3>
+                <ul>
+                    <li><strong>研究期间死亡：</strong>[X] 例（试验组）vs [X] 例（对照组）</li>
+                    <li><strong>与试验药物相关死亡：</strong>[X] 例（试验组）vs [X] 例（对照组）</li>
+                    <li><strong>导致停药的 AE：</strong>试验组 [X]% vs 对照组 [X]%</li>
+                </ul>
+            </section>
+            
+            <!-- 讨论 -->
+            <section id="discussion">
+                <h2>9. 讨论</h2>
+                
+                <h3>9.1 结果总结与解释</h3>
+                <p>本研究是一项随机、对照的 Phase III 临床试验，共纳入 [X] 例 RRMM 患者。研究结果表明，CT103A 作为一种靶向 BCMA 的 CAR-T 细胞疗法，在 RRMM 的治疗中显示出显著的临床疗效。</p>
+                <ul>
+                    <li><strong>疗效方面：</strong>试验组 ORR 达 [X]%（CR [X]%，PR [X]%），明显高于对照组的 [X]%，两组差异具有统计学意义。中位 PFS 试验组为 [X] 个月，对照组为 [X] 个月，HR [X]。</li>
+                    <li><strong>CAR-T 扩增：</strong>大多数患者输注后 CAR-T 细胞出现明显扩增，最大扩增倍数中位数为 [X] 倍，提示试验药物具有良好的体内活性。</li>
+                    <li><strong>安全性方面：</strong>试验组与对照组的不良事件发生率相似，主要为预期内的血液学不良反应（贫血、血小板减少、中性粒细胞减少）。CAR-T 特异性毒性（CRS、ICANS）可控，多数患者通过标准管理措施（tocilizumab、糖皮质激素等）有效缓解。</li>
+                </ul>
+                
+                <h3>9.2 与既往研究对比</h3>
+                <p>本研究结果与既往报道的 BCMA 靶向 CAR-T 研究（如 CARTITUDE-1 等）具有可比的疗效与安全性：</p>
+                <ul>
+                    <li>ORR 水平与国际同类产品相近</li>
+                    <li>PFS 和 OS 曲线显示持久的临床益处</li>
+                    <li>CRS、ICANS 发生率、严重程度和管理方法与国际数据一致</li>
+                </ul>
+                
+                <h3>9.3 研究局限性</h3>
+                <ul>
+                    <li>样本量相对较小，某些亚组分析的统计效能可能不足</li>
+                    <li>随访期限制（[X] 个月），后期生存数据需继续观察</li>
+                    <li>单一国家多中心研究，结果推广至全球群体需谨慎</li>
+                    <li>CAR-T 细胞产品的个体差异可能影响部分患者疗效</li>
+                </ul>
+                
+                <h3>9.4 研究优势</h3>
+                <ul>
+                    <li>随机、对照、双盲设计增强结果的可信度</li>
+                    <li>严格的患者选择标准和规范化治疗方案</li>
+                    <li>全面的安全性监测，建立了 IDMC 进行实时监督</li>
+                    <li>详细的机制研究（CAR-T 扩增、持久性、细胞因子水平等）</li>
+                    <li>完整的药代动力学（PK）评估，为CAR-T细胞疗法的临床应用提供重要参考</li>
+                    <li>严格的数据管理和质量保证体系，确保数据准确性和完整性</li>
+                </ul>
+                
+                <h4>9.4.1 数据管理和质量保证</h4>
+                <p>本研究建立了完善的数据管理和质量保证体系，确保临床试验数据的准确性、完整性和可靠性。</p>
+                
+                <h5>数据一致性核查</h5>
+                <p>数据录入人员（或临床协调员）完成电子病例报告表（eCRF）后，需检查eCRF数据与原始记录的一致性，确保数据准确录入系统。监测员按照监测计划验证eCRF系统中所有数据录入的完整性、准确性和与原始医疗记录的一致性。</p>
+                
+                <h5>查询管理和问题解决</h5>
+                <p>对任何可疑或与原始医疗记录不一致的数据项，应及时提出查询，同时提示数据录入人员和研究者回答这些查询并检查、纠正不一致数据。当数据传输出现错误时，研究者需提供研究文件或医疗记录中的原始数据。</p>
+                
+                <h5>质量保证文档</h5>
+                <p>针对特殊问题、监管查询和/或检查要求，在保护受试者隐私的前提下，应提供完整的试验记录。研究过程中质量保证程序的文档记录详见附录。</p>
+                
+                <div class="info-box">
+                    <strong>质量保证意义：</strong>严格的数据管理和质量保证体系为试验结果的可靠性提供了有力保障，符合GCP要求和监管标准。
+                </div>
+                
+                <h3>9.5 药代动力学评估</h3>
+                <h4>9.5.1 药代动力学终点指标</h4>
+                <p>本研究对CT103A进行了全面的药代动力学评估，主要关注BCMA CAR-T细胞在白细胞中的百分比以及外周血中病毒拷贝数（VCN）的药代动力学特征。评估的PK参数包括：</p>
+                <ul>
+                    <li><strong>最大浓度（Cmax）：</strong>CAR-T细胞扩增峰值</li>
+                    <li><strong>达峰时间（Tmax）：</strong>细胞扩增达峰的时间点</li>
+                    <li><strong>曲线下面积（AUC）：</strong>
+                        <ul>
+                            <li>AUC<sub>0-28d</sub>：输注后28天的累积暴露</li>
+                            <li>AUC<sub>0-90d</sub>：输注后90天的累积暴露</li>
+                            <li>AUC<sub>0-180d</sub>：输注后180天的累积暴露</li>
+                            <li>AUC<sub>0-last</sub>：可准确测定的最后时间点的累积暴露</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h4>9.5.2 PK血样采集方案</h4>
+                <p>按照预设的采样方案收集外周血样本进行BCMA CAR-T细胞和VCN检测。采样持续至患者退出研究或研究终止，以先发生者为准。特别注意的是，细胞输注后20分钟的血样仅检测VCN，不检测BCMA CAR-T细胞。</p>
+                
+                <div class="info-box">
+                    <strong>PK评估意义：</strong>CT103A的药代动力学数据为CAR-T细胞疗法的个体化治疗提供了重要依据，有助于优化给药方案、预测疗效并指导临床决策。
+                </div>
+                
+                <h3>9.6 临床意义与发展建议</h3>
+                <ul>
+                    <li><strong>临床意义：</strong>CT103A 的疗效与安全性达到预期，为 RRMM 患者提供了一种新的、有效的治疗选择。尤其是对于既往多线治疗失败的患者，CT103A 可能显著改善生存预后。</li>
+                    <li><strong>后续研究建议：</strong>
+                        <ul>
+                            <li>进行更长期的随访，确认生存获益的持久性</li>
+                            <li>开展与其他新型药物（蛋白酶体抑制剂、IMiD、DAC 等）的联合研究</li>
+                            <li>探索更早治疗阶段（一线、二线）的应用潜力</li>
+                            <li>深入分析预测响应和耐药的生物标志物</li>
+                            <li>优化 CRS/ICANS 的预防和管理策略</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>9.7 统计分析方法与样本量确定</h3>
+                <h4>9.7.1 统计分析方法</h4>
+                <p>本节描述了主要终点和选定次要终点的统计方法。详细的统计分析方法规定见附录16.1.9统计分析计划和PK/PD统计分析计划。</p>
+                
+                <h5>9.7.1.1 分析集定义</h5>
+                <p>本研究的分析集定义如下：</p>
+                <ul>
+                    <li><strong>筛选分析集：</strong>所有签署知情同意书的受试者将纳入筛选分析集中。</li>
+                    <li><strong>入组分析集（EAS）：</strong>筛选分析集中符合入选标准但不符合排除标准、并已分配入组编号的受试者将纳入EAS。</li>
+                    <li><strong>单采分析集：</strong>EAS中已采集单核细胞的受试者将纳入此分析集中。单核细胞的单采分析集在本文件中统称为"单采分析集"，单采统称为"单采"。</li>
+                    <li><strong>淋巴耗竭预处理分析集：</strong>EAS中已接受淋巴耗竭预处理的受试者将纳入淋巴耗竭预处理分析集中。</li>
+                    <li><strong>全分析集（FAS）：</strong>所有接受CT103A输注的受试者将纳入此分析集中。FAS是疗效终点的主要分析集。</li>
+                    <li><strong>依从性分析集（PPS）：</strong>FAS的子集，包括FAS中所有无缺失主要疗效评估测量且无影响疗效的主要方案偏离的受试者。PPS是Phase 2中主要疗效终点ORR的敏感性分析集。</li>
+                    <li><strong>安全性分析集（SS）：</strong>所有接受细胞输注且有至少一次输注后安全性评估的受试者将构成本研究的安全性分析集。SS将用于安全性指标的分析。</li>
+                    <li><strong>PK分析集（PKS）：</strong>所有接受CT103A输注且有至少一个输注后PK数据（浓度/参数）的受试者构成本研究的PKS。</li>
+                    <li><strong>PD分析集（PDS）：</strong>所有接受CT103A输注且有至少一个输注后PD数据的受试者构成本研究的PDS。</li>
+                </ul>
+                
+                <h5>9.7.1.2 数据监查委员会</h5>
+                <p>本研究成立了独立的数据监查委员会（DMC），定期审查疗效和安全性数据，对研究进行风险-获益评估。DMC由独立于申办方且与申办方无潜在利益冲突的临床和统计专家组成。DMC的主要职责包括在临床试验过程中定期或不定期的审查疗效和安全性数据，并基于研究治疗的风险/获益向申办方建议研究的进一步开展。DMC的操作流程见DMC章程（附件16.1.9）。</p>
+                
+                <h5>9.7.1.3 基线定义</h5>
+                <p>实验室检查、体格检查、生命体征、心电图、ECOG评分、疗效及相关参数分析的基线为淋巴耗竭当天及之前最后一次非缺失的检测值，包括非计划访视的值。对在淋巴耗竭前退出研究的受试者，选择退出前最后一次非缺失的检测值作为基线。</p>
+                <p>除非另有规定，sBCMA的基线定义为淋巴耗竭预处理前最后一次非缺失的检测值；PK以及炎症细胞因子的基线定义为细胞输注前最后一次非缺失的检测值。</p>
+                
+                <h5>9.7.1.4 一般分析方法</h5>
+                <h6>疗效和安全性</h6>
+                <p>除非另有规定，IRC反应评估中的不可评估（NE）进一步分为UE（无法评估）和ND（未完成）。根据附录16.1.9统计分析计划（版本号1.1，日期2022年4月17日），本次分析仅汇总NE分类。除非另有规定，如果第3个月的疗效数据缺失，将其作为"无反应"进行分析。</p>
+                
+                <p>所有统计分析使用SAS® Version 9.4进行。除非另有规定，汇总表按研究阶段（Phase 1、Phase 2以及两阶段合并）和预定检查时间点进行汇总，列表按受试者编号、检查时间点等排序。连续变量（如年龄）使用观测数、缺失观测数、均数、中位数、上四分位数、下四分位数、标准差、最小值和最大值进行统计描述；分类变量使用各分类的频数和百分比进行统计描述。</p>
+                
+                <p>时间-事件数据使用Kaplan-Meier方法进行统计描述，并为总体人群估计中位时间及其95%置信区间。</p>
+                
+                <p>最小值和最大值的小数位数与CRF记录一致，均数和中位数比原始数据多1位小数，标准差比原始数据多2位小数，百分比四舍五入到1位小数。所有统计量一般四舍五入到不超过4位小数。P值四舍五入到4位小数。四舍五入到0.0000的P值显示为"&lt; 0.0001"，四舍五入到1.000的P值显示为"&gt; 0.9999"。</p>
+                
+                <p>统计汇总表和图表基于相应分析集制作，使用列表列出所有受试者的相关数据。</p>
+                
+                <h6>PK和PD</h6>
+                <p>除非另有规定，PK（包括PK浓度和PK参数分析）、PD基于Phase 1、Phase 2以及总计（Phase 1和Phase 2合并）进行分析，PK暴露与疗效的相关性基于Phase 2和总计（Phase 1和2合并）进行分析，免疫原性、RCL及其他分析（相关性分析）基于Phase 1和Phase 2合并数据进行。</p>
+                
+                <p>PK参数计算基于WinNonlin Version 8.4，而所有其他统计分析基于SAS® Version 9.4。</p>
+                
+                <p>P值四舍五入到4位小数。四舍五入到0.0000的P值表示为"&lt; 0.0001"，四舍五入到1.000的P值表示为"&gt; 0.9999"。除非另有规定，P &lt; 0.05标为*，P &lt; 0.01标为**，P &lt; 0.001标为***，P &lt; 0.0001标为****。</p>
+                
+                <p>连续变量（如血浆浓度）使用观测数(n)、均数(Mean)、中位数(Median)、标准差(SD)、上下四分位数(Q3、Q1)、最小值(Min)和最大值(Max)进行统计描述。PK参数还包括变异系数(CV%)、几何均数(Geomean)和几何变异系数(Geometric CV%)。</p>
+                
+                <p>最小值和最大值的小数位数与原始数据相同，均数和中位数比原始数据多1位小数，标准差比原始数据多2位小数，变异系数和几何变异系数保留到2位小数。所有统计量一般四舍五入到不超过4位小数。</p>
+                
+                <p>一般情况下，对于单个受试者，PK参数的单位应与生物分析数据使用的单位一致。AUC四舍五入到2位小数，Cmax按原始浓度数据的小数位数呈现，Tmax按实际采血天数（天）以整数形式呈现。</p>
+                
+                <h5>9.7.1.5 受试者处置分析</h5>
+                <p>按研究阶段汇总受试者人数和百分比，分类如下：</p>
+                <ul>
+                    <li><strong>筛选受试者数量</strong>：纳入筛选分析集的受试者总数</li>
+                    <li><strong>筛选失败数量及其原因</strong>：不符合入选标准或符合排除标准的受试者</li>
+                    <li><strong>入组受试者数量</strong>：符合入选标准并分配入组编号的受试者</li>
+                    <li><strong>单采数量</strong>：成功采集单核细胞的受试者</li>
+                    <li><strong>桥接治疗数量</strong>：接受桥接治疗的受试者</li>
+                    <li><strong>淋巴耗竭预处理受试者数量</strong>：接受淋巴耗竭预处理的受试者</li>
+                    <li><strong>淋巴耗竭预处理后退出研究数量及其原因</strong>：在淋巴耗竭预处理后、输注前退出的受试者</li>
+                    <li><strong>完成研究至研究结束的受试者数量及其原因</strong>：完成所有研究访视的受试者</li>
+                    <li><strong>接受细胞输注的受试者数量</strong>：实际接受CT103A细胞输注的受试者</li>
+                    <li><strong>输注后1个月随访数量</strong>：完成输注后1个月访视的受试者</li>
+                    <li><strong>输注后3个月随访数量</strong>：完成输注后3个月访视的受试者</li>
+                    <li><strong>输注后6和9个月随访数量</strong>：完成输注后6个月和9个月访视的受试者</li>
+                    <li><strong>完成主要随访期的受试者数量</strong>：完成主要疗效评估期的受试者</li>
+                    <li><strong>退出主要随访期的受试者数量及其原因</strong>：在主要随访期内退出的受试者</li>
+                    <li><strong>主要随访期内受试者数量</strong>：处于主要随访期内的受试者</li>
+                    <li><strong>进入长期随访期的受试者数量</strong>：进入长期随访阶段的受试者</li>
+                    <li><strong>退出长期随访期的受试者数量及其原因</strong>：在长期随访期内退出的受试者</li>
+                    <li><strong>长期随访期内受试者数量</strong>：处于长期随访期内的受试者</li>
+                </ul>
+                
+                <p>此外，还需汇总纳入各分析集的受试者数量：</p>
+                <ul>
+                    <li><strong>筛选分析集（Screened Analysis Set）</strong></li>
+                    <li><strong>入组分析集（EAS）</strong></li>
+                    <li><strong>单采分析集（Apheresis Analysis Set）</strong></li>
+                    <li><strong>淋巴耗竭预处理分析集（Lymphodepletion Pre-Treatment Analysis Set）</strong></li>
+                    <li><strong>全分析集（FAS）</strong></li>
+                    <li><strong>依从性分析集（PPS）</strong></li>
+                    <li><strong>安全性分析集（SS）</strong></li>
+                </ul>
+                
+                <p>其中，FAS、PPS和SS中的受试者数量基于截至2025年5月13日接受CT103A输注的前109例受试者的数据进行划分。</p>
+                
+                <div class="info-box">
+                    <strong>受试者处置分析意义：</strong>本研究建立了完整的受试者处置跟踪体系，确保从筛选到长期随访的每个阶段都有详细的人数统计，为研究完整性和数据解释提供重要依据。
+                </div>
+                
+                <h5>9.7.1.8. 人口统计学和基线分析</h5>
+                <p>对FAS中筛选时受试者的年龄、民族、性别、身高、体重、体表面积和ECOG评分按研究阶段进行描述性汇总。年龄、身高、体重和体表面积的数据使用可评价例数(n)、算术均数(Mean)和标准差(SD)、中位数(Median)、Q1、Q3、最小值(Min)和最大值(Max)等描述性统计量进行汇总。性别、民族、ECOG评分、筛选时血浆细胞BCMA+比例(&lt; 50%、≥ 50%)以及筛选时骨髓细胞中血浆细胞百分比(&lt; 50%、≥ 50%，涂片或活检中较高者)使用可评价例数和相应总数的百分比进行描述性汇总。</p>
+                
+                <p><strong>年龄计算公式：</strong>年龄(年) = (签署知情同意书日期 - 出生日期 + 1)/365.25，四舍五入取整。</p>
+                <p><strong>体表面积计算公式：</strong>体表面积 = SQRT(身高cm × 体重kg/3600)，保留1位小数。</p>
+                
+                <div class="info-box">
+                    <strong>分析要点：</strong>
+                    <ul>
+                        <li>连续变量：年龄、身高、体重、体表面积使用描述性统计</li>
+                        <li>分类变量：性别、民族、ECOG评分等使用频数和百分比</li>
+                        <li>特殊指标：BCMA表达水平和骨髓浆细胞比例按阈值分组统计</li>
+                    </ul>
+                </div>
+                
+                <h5>9.7.1.9. 疗效分析</h5>
+                
+                <h6>9.7.1.9.1. 主要疗效分析</h6>
+                
+                <h7>3个月ORR（IRC评估）</h7>
+                <p>基于FAS按研究阶段估计3个月ORR（IRC评估），使用Clopper-Pearson精确法估计95%置信区间(CI)。如果3个月IRC评估的反应评价缺失，则按无反应进行分析。</p>
+                
+                <p><strong>主要假设检验：</strong>如果Phase 2中FAS纳入受试者的3个月ORR（IRC评估）的95% CI下限高于35%，则拒绝原假设H0并接受备择假设H1。</p>
+                
+                <h7>主要疗效敏感性分析</h7>
+                <p>基于FAS，按照附录16.1.9统计分析计划第6.1.4.2.1节的插补规则对3个月IRC反应评估进行插补后，使用与附录16.1.9统计分析计划第6.3.1.1节相同的方法进行敏感性分析。</p>
+                <p>基于PPS的3个月IRC反应评估敏感性分析见附录16.1.9统计分析计划第6.3.1.1节。</p>
+                
+                <h7>主要疗效支持性分析</h7>
+                <p>将Phase 1的FAS(n1)和Phase 2的FAS(n2)合并，基于FAS和PPS计算IRC评估的3个月ORR值。使用保守的Bonferroni方法将I类错误α分配给Phase 1：n1/(n1+n2)×0.05（双侧）；剩余α分配给Phase 1/2合并数据，并使用Clopper-Pearson精确法计算其置信区间。</p>
+                
+                <h6>9.7.1.9.2. 次要疗效分析</h6>
+                
+                <p>次要疗效终点分析基于FAS进行。</p>
+                
+                <h7>3个月ORR（研究者评估）</h7>
+                <p>按研究阶段进行研究者评估的3个月ORR点估计，使用Clopper-Pearson精确法估计双侧95%置信区间(CI)。</p>
+                
+                <h7>3个月反应评价一致性分析（IRC评估与研究者评估）</h7>
+                <p>使用配对列联表按研究阶段分别呈现不同反应评估结果、反应和无反应结果的数量和比例。</p>
+                
+                <h7>各访视ORR（基于研究者评估和IRC评估）</h7>
+                <p>按研究阶段汇总各访视的ORR和疗效评价结果，为每个受试者制表各访视的反应情况，并绘制研究者反应评估的游泳图。</p>
+                <p>对IMWG标准下用于反应评估的实验室参数进行统计表格描述（附录16.1.9统计分析计划附件1）。包括血清免疫球蛋白定量、血清游离轻链定量、血清蛋白电泳、血清免疫固定电泳、血红蛋白、肌酐、血清钙、24小时尿M蛋白定量、24小时尿轻链定量、尿蛋白电泳、尿蛋白免疫固定电泳、外周血涂片、影像学检查、骨髓穿刺细胞学涂片和活检等。</p>
+                
+                <h7>最佳ORR（研究者评估、IRC评估）</h7>
+                <p>按研究阶段和评估方式（研究者评估、IRC评估）计算1个月、3个月、6个月、9个月、12个月、18个月、24个月和所有访视的最佳ORR（sCR > CR > VGPR > PR）点估计，使用Clopper-Pearson精确法估计双侧95%置信区间(CI)。此外，提供每个受试者的最佳反应列表。</p>
+                
+                <h7>TTR/TTCR分析（研究者评估、IRC评估）</h7>
+                <p>TTR和TTCR分析仅包括研究期间达到反应和完全反应的受试者。首次疾病反应日期和首次完全反应日期分别为确认首次反应和首次完全反应的所有检查中最晚日期。反应包括：sCR、CR、VGPR和PR，完全反应包括：sCR和CR。</p>
+                <p>按研究阶段描述性汇总并制表研究者评估和IRC评估的TTR和TTCR。</p>
+                
+                <h7>DOR分析（研究者评估、IRC评估）</h7>
+                <p>DOR分析仅包括有疾病反应的受试者。首次疾病反应日期为确认首次反应的所有检查中最晚日期，首次进展日期为确认首次疾病进展的所有检查中最早期。删失规则见附录16.1.9统计分析计划附件4。</p>
+                <p>按研究阶段使用Kaplan-Meier方法估计中位DOR，使用Brookmeyer和Crowley方法（选择log-log变换）估计双侧95% CI，并绘制Kaplan-Meier生存曲线。提供反应持续时间列表。</p>
+                
+                <h7>MRD反应评估分析</h7>
+                <p>骨髓样本采用EuroFlow™ 8色二代流式细胞术检测MRD。输注后随访期间，当受试者达到VGPR，或研究者判定达到CR/sCR或出现进展时，需进行骨髓穿刺/活检；其他随访时间由研究者评估决定。非分泌型受试者需在每个访视时间点进行骨髓穿刺/活检检测。</p>
+                <p>MRD反应评估标准如下：</p>
+                <ul>
+                    <li><strong>Flow MRD negative：</strong>“MRD异常浆细胞百分比(%)”=“BLD”或“&lt; LOD”，且“MRD分析最低检测限(%)”×10^-2 ≤ 10^-5。</li>
+                    <li><strong>Flow MRD positive：</strong>“MRD异常浆细胞百分比(%)”>0或“MRD异常浆细胞百分比(%)”=“BLQ”。</li>
+                    <li><strong>Unable to determine：</strong>“MRD异常浆细胞百分比(%)”=“BLD”或“&lt; LOD”，且“MRD分析最低检测限(%)”×10^-2 > 10^-5。</li>
+                </ul>
+                
+                <h7>MRD阴性率分析</h7>
+                <p>按研究阶段汇总输注后至少获得一次MRD阴性结果的受试者数量和百分比，分别统计：</p>
+                <ul>
+                    <li>所有受试者</li>
+                    <li>达到≥ VGPR的受试者</li>
+                    <li>达到≥ CR的受试者</li>
+                </ul>
+                <p>使用Clopper-Pearson精确法估计百分比的95%置信区间。</p>
+                <p>MRD数据来源于数据库训练结果，并结合EuroFlow™ 8色二代流式细胞术测定值进行确认。最终统计结果应与数据库输出一致。</p>
+                <p>按研究阶段分别汇总各访视MRD反应评估结果，提供全部MRD测量结果和疗效评估结果的列表。</p>
+                
+                <h7>MRD阴性持续时间分析</h7>
+                <p>仅分析获得MRD阴性的受试者。MRD阴性持续时间定义为输注后首次发生MRD阴性至首次从首次阴性结果转为阳性的时间间隔。删失规则见附录16.1.9统计分析计划附件4。</p>
+                <p>按研究阶段分别对以下受试者群体估计MRD阴性持续时间的中位数，并使用Brookmeyer和Crowley方法（选择log变换）估计双侧95% CI：</p>
+                <ul>
+                    <li>所有受试者</li>
+                    <li>达到≥ VGPR的受试者</li>
+                    <li>达到≥ CR的受试者</li>
+                </ul>
+                <p>并提供MRD阴性持续时间的受试者列表。</p>
+                
+                <div class="info-box">
+                    <strong>疗效分析框架：</strong>
+                    <ul>
+                        <li><strong>主要终点：</strong>3个月ORR（IRC评估）- 关键疗效指标</li>
+                        <li><strong>敏感性分析：</strong>确保结果稳健性</li>
+                        <li><strong>次要终点：</strong>全面评估治疗效果和持续性</li>
+                        <li><strong>统计方法：</strong>精确法CI估计，Kaplan-Meier生存分析</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- 结论 -->
+            <section id="conclusion">
+                <h2>10. 结论</h2>
+                
+                <div class="info-box">
+                    <p><strong>✓ 研究主要结论：</strong></p>
+                    <ul>
+                        <li>CT103A 在 RRMM 患者中表现出显著的临床疗效，ORR 和 PFS 相对于对照组均显著改善。</li>
+                        <li>CT103A 的安全性可以接受，主要不良事件为可预期和可管理的血液学毒性和 CAR-T 相关毒性。</li>
+                        <li>本研究支持 CT103A 的继续开发与上市申报，有望为 RRMM 患者带来临床获益。</li>
+                    </ul>
+                </div>
+                
+                <h3>10.1 疗效评价</h3>
+                <ul>
+                    <li>达到主要终点：ORR 优于对照组 ✓</li>
+                    <li>次要终点多数获得正性结果 ✓</li>
+                    <li>临床相关性显著 ✓</li>
+                </ul>
+                
+                <h3>10.2 安全性评价</h3>
+                <ul>
+                    <li>不良事件与预期一致 ✓</li>
+                    <li>严重不良事件发生率可接受 ✓</li>
+                    <li>毒性可管理，患者可耐受 ✓</li>
+                </ul>
+                
+                <h3>10.3 整体结论与建议</h3>
+                <p>基于本 Phase III 研究的结果，CT103A（Equecabtagene Autoleucel Injection）在 RRMM 治疗中的疗效与安全性令人满意，达到了研究的主要目标。申办方建议：</p>
+                <ul>
+                    <li>推进上市申报程序，向监管部门提交完整的 CSR 和支持性文件</li>
+                    <li>启动后上市临床研究（Phase IV），进一步评估真实世界有效性与安全性</li>
+                    <li>探索早期治疗阶段与其他治疗的联合应用</li>
+                    <li>建立患者长期随访体系，确保用药安全</li>
+                </ul>
+            </section>
+            
+            <!-- 附录 -->
+            <section id="appendix">
+                <h2>11. 附录</h2>
+                
+                <h3>A. 术语表</h3>
+                <table>
+                    <tr>
+                        <th>术语</th>
+                        <th>定义</th>
+                    </tr>
+                    <tr>
+                        <td>BCMA</td>
+                        <td>B 细胞成熟抗原（B-cell maturation antigen）</td>
+                    </tr>
+                    <tr>
+                        <td>CAR-T</td>
+                        <td>嵌合抗原受体T细胞</td>
+                    </tr>
+                    <tr>
+                        <td>CR</td>
+                        <td>完全缓解（Complete Response）</td>
+                    </tr>
+                    <tr>
+                        <td>PR</td>
+                        <td>部分缓解（Partial Response）</td>
+                    </tr>
+                    <tr>
+                        <td>ORR</td>
+                        <td>总缓解率（Overall Response Rate）</td>
+                    </tr>
+                    <tr>
+                        <td>PFS</td>
+                        <td>无进展生存期（Progression-Free Survival）</td>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>总生存期（Overall Survival）</td>
+                    </tr>
+                    <tr>
+                        <td>RRMM</td>
+                        <td>复发/难治性多发性骨髓瘤</td>
+                    </tr>
+                    <tr>
+                        <td>CRS</td>
+                        <td>细胞因子释放综合征（Cytokine Release Syndrome）</td>
+                    </tr>
+                    <tr>
+                        <td>ICANS</td>
+                        <td>免疫效应细胞相关神经毒性</td>
+                    </tr>
+                    <tr>
+                        <td>PK</td>
+                        <td>药代动力学（Pharmacokinetics）</td>
+                    </tr>
+                    <tr>
+                        <td>Cmax</td>
+                        <td>最大浓度（Maximum Concentration）</td>
+                    </tr>
+                    <tr>
+                        <td>Tmax</td>
+                        <td>达峰时间（Time to Maximum Concentration）</td>
+                    </tr>
+                    <tr>
+                        <td>AUC</td>
+                        <td>曲线下面积（Area Under the Curve）</td>
+                    </tr>
+                    <tr>
+                        <td>VCN</td>
+                        <td>病毒拷贝数（Viral Copy Number）</td>
+                    </tr>
+                    <tr>
+                        <td>eCRF</td>
+                        <td>电子病例报告表（Electronic Case Report Form）</td>
+                    </tr>
+                    <tr>
+                        <td>GCP</td>
+                        <td>良好临床实践规范（Good Clinical Practice）</td>
+                    </tr>
+                    <tr>
+                        <td>SDV</td>
+                        <td>源数据核查（Source Data Verification）</td>
+                    </tr>
+                    <tr>
+                        <td>DMC</td>
+                        <td>数据监查委员会（Data Monitoring Committee）</td>
+                    </tr>
+                    <tr>
+                        <td>FAS</td>
+                        <td>全分析集（Full Analysis Set）</td>
+                    </tr>
+                    <tr>
+                        <td>PPS</td>
+                        <td>依从性分析集（Per Protocol Set）</td>
+                    </tr>
+                    <tr>
+                        <td>SS</td>
+                        <td>安全性分析集（Safety Set）</td>
+                    </tr>
+                    <tr>
+                        <td>PKS</td>
+                        <td>药代动力学分析集（Pharmacokinetic Analysis Set）</td>
+                    </tr>
+                    <tr>
+                        <td>PDS</td>
+                        <td>药效动力学分析集（Pharmacodynamic Analysis Set）</td>
+                    </tr>
+                    <tr>
+                        <td>IRC</td>
+                        <td>独立审查委员会（Independent Review Committee）</td>
+                    </tr>
+                    <tr>
+                        <td>NE</td>
+                        <td>不可评估（Non-Evaluable）</td>
+                    </tr>
+                    <tr>
+                        <td>UE</td>
+                        <td>无法评估（Unable to Evaluate）</td>
+                    </tr>
+                    <tr>
+                        <td>ND</td>
+                        <td>未完成（Not Done）</td>
+                    </tr>
+                    <tr>
+                        <td>RCL</td>
+                        <td>复制能力测定（Replication Competent Lentivirus）</td>
+                    </tr>
+                    <tr>
+                        <td>Subject Disposition</td>
+                        <td>受试者处置</td>
+                    </tr>
+                    <tr>
+                        <td>Screen Failure</td>
+                        <td>筛选失败</td>
+                    </tr>
+                    <tr>
+                        <td>Bridging Therapy</td>
+                        <td>桥接治疗</td>
+                    </tr>
+                    <tr>
+                        <td>Long-term Follow-up</td>
+                        <td>长期随访</td>
+                    </tr>
+                    <tr>
+                        <td>TTR</td>
+                        <td>至反应时间（Time to Response）</td>
+                    </tr>
+                    <tr>
+                        <td>TTCR</td>
+                        <td>至完全反应时间（Time to Complete Response）</td>
+                    </tr>
+                    <tr>
+                        <td>DOR</td>
+                        <td>反应持续时间（Duration of Response）</td>
+                    </tr>
+                    <tr>
+                        <td>MRD</td>
+                        <td>微小残留病灶（Minimal Residual Disease）</td>
+                    </tr>
+                    <tr>
+                        <td>VGPR</td>
+                        <td>极好部分缓解（Very Good Partial Response）</td>
+                    </tr>
+                    <tr>
+                        <td>sCR</td>
+                        <td>严格完全缓解（Stringent Complete Response）</td>
+                    </tr>
+                    <tr>
+                        <td>CI</td>
+                        <td>置信区间（Confidence Interval）</td>
+                    </tr>
+                    <tr>
+                        <td>BSA</td>
+                        <td>体表面积（Body Surface Area）</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>缩略语</th>
+                        <th>全称</th>
+                    </tr>
+                    <tr>
+                        <td>IMWG</td>
+                        <td>International Myeloma Working Group（国际骨髓瘤工作组）</td>
+                    </tr>
+                    <tr>
+                        <td>ISS</td>
+                        <td>International Staging System（国际分期系统）</td>
+                    </tr>
+                    <tr>
+                        <td>ECOG</td>
+                        <td>Eastern Cooperative Oncology Group（体能状态评分）</td>
+                    </tr>
+                    <tr>
+                        <td>CTCAE</td>
+                        <td>Common Terminology Criteria for Adverse Events（不良事件通用术语标准）</td>
+                    </tr>
+                    <tr>
+                        <td>SAE</td>
+                        <td>Serious Adverse Event（严重不良事件）</td>
+                    </tr>
+                    <tr>
+                        <td>AE</td>
+                        <td>Adverse Event（不良事件）</td>
+                    </tr>
+                    <tr>
+                        <td>PK</td>
+                        <td>Pharmacokinetics（药代动力学）</td>
+                    </tr>
+                    <tr>
+                        <td>Cmax</td>
+                        <td>Maximum Concentration（最大浓度）</td>
+                    </tr>
+                    <tr>
+                        <td>Tmax</td>
+                        <td>Time to Maximum Concentration（达峰时间）</td>
+                    </tr>
+                    <tr>
+                        <td>AUC</td>
+                        <td>Area Under the Curve（曲线下面积）</td>
+                    </tr>
+                    <tr>
+                        <td>VCN</td>
+                        <td>Viral Copy Number（病毒拷贝数）</td>
+                    </tr>
+                    <tr>
+                        <td>eCRF</td>
+                        <td>Electronic Case Report Form（电子病例报告表）</td>
+                    </tr>
+                    <tr>
+                        <td>GCP</td>
+                        <td>Good Clinical Practice（良好临床实践规范）</td>
+                    </tr>
+                    <tr>
+                        <td>SDV</td>
+                        <td>Source Data Verification（源数据核查）</td>
+                    </tr>
+                    <tr>
+                        <td>DMC</td>
+                        <td>Data Monitoring Committee（数据监查委员会）</td>
+                    </tr>
+                    <tr>
+                        <td>FAS</td>
+                        <td>Full Analysis Set（全分析集）</td>
+                    </tr>
+                    <tr>
+                        <td>PPS</td>
+                        <td>Per Protocol Set（依从性分析集）</td>
+                    </tr>
+                    <tr>
+                        <td>SS</td>
+                        <td>Safety Set（安全性分析集）</td>
+                    </tr>
+                    <tr>
+                        <td>PKS</td>
+                        <td>Pharmacokinetic Analysis Set（药代动力学分析集）</td>
+                    </tr>
+                    <tr>
+                        <td>PDS</td>
+                        <td>Pharmacodynamic Analysis Set（药效动力学分析集）</td>
+                    </tr>
+                    <tr>
+                        <td>IRC</td>
+                        <td>Independent Review Committee（独立审查委员会）</td>
+                    </tr>
+                    <tr>
+                        <td>NE</td>
+                        <td>Non-Evaluable（不可评估）</td>
+                    </tr>
+                    <tr>
+                        <td>UE</td>
+                        <td>Unable to Evaluate（无法评估）</td>
+                    </tr>
+                    <tr>
+                        <td>ND</td>
+                        <td>Not Done（未完成）</td>
+                    </tr>
+                    <tr>
+                        <td>RCL</td>
+                        <td>Replication Competent Lentivirus（复制能力测定）</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Subject Disposition相关</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Screen Failure</td>
+                        <td>筛选失败</td>
+                    </tr>
+                    <tr>
+                        <td>Bridging Therapy</td>
+                        <td>桥接治疗</td>
+                    </tr>
+                    <tr>
+                        <td>Long-term Follow-up</td>
+                        <td>长期随访</td>
+                    </tr>
+                    <tr>
+                        <td>TTR</td>
+                        <td>Time to Response（至反应时间）</td>
+                    </tr>
+                    <tr>
+                        <td>TTCR</td>
+                        <td>Time to Complete Response（至完全反应时间）</td>
+                    </tr>
+                    <tr>
+                        <td>DOR</td>
+                        <td>Duration of Response（反应持续时间）</td>
+                    </tr>
+                    <tr>
+                        <td>VGPR</td>
+                        <td>Very Good Partial Response（极好部分缓解）</td>
+                    </tr>
+                    <tr>
+                        <td>sCR</td>
+                        <td>Stringent Complete Response（严格完全缓解）</td>
+                    </tr>
+                    <tr>
+                        <td>CI</td>
+                        <td>Confidence Interval（置信区间）</td>
+                    </tr>
+                    <tr>
+                        <td>BSA</td>
+                        <td>Body Surface Area（体表面积）</td>
+                    </tr>
+                </table>
+                <p>[列表：主要研究者、所在机构、负责患者数量等]</p>
+                
+                <h3>D. 研究流程图</h3>
+                <p>[插入：访视流程、给药时间点、评估时间表的图示]</p>
+                
+                <h3>E. 伦理委员会批准文件摘要</h3>
+                <p>[每个研究中心的 IRB/伦理委员会批准日期与文件编号]</p>
+                
+                <h3>F. 关键病例报告摘要</h3>
+                <p>[选择代表性的患者案例，展示疗效与管理策略]</p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>本 CSR 模板基于 Phase III 临床试验的标准要求编制</p>
+            <p>Document Type: Clinical Study Report (CSR)</p>
+            <p>Prepared Date: May 7, 2026</p>
+            <p style="margin-top: 15px; font-size: 11px;">此文档仅供参考，需根据实际研究数据与监管要求调整。</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本进口单采血流程报告 — 南京驯鹿生物医药</title>
+<style>
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8f0fe;
+    --danger: #c53030;
+    --danger-light: #fff5f5;
+    --success: #276749;
+    --success-light: #f0fff4;
+    --warning: #975a16;
+    --warning-light: #fffff0;
+    --gray-50: #f7fafc;
+    --gray-100: #edf2f7;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e0;
+    --gray-600: #718096;
+    --gray-700: #4a5568;
+    --gray-800: #2d3748;
+    --gray-900: #1a202c;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    color: var(--gray-800); background: var(--gray-50); line-height: 1.7;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a56db 100%);
+    color: white; padding: 48px 32px; text-align: center;
+  }
+  .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 16px; opacity: .85; margin-bottom: 4px; }
+  .hero .meta { font-size: 13px; opacity: .6; margin-top: 16px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  /* Sections */
+  h2 {
+    font-size: 22px; color: var(--gray-900); border-left: 4px solid var(--primary);
+    padding-left: 12px; margin: 40px 0 16px;
+  }
+  h3 { font-size: 17px; color: var(--gray-800); margin: 24px 0 12px; }
+
+  /* Overview cards */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .card {
+    background: white; border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 20px; border: 1px solid var(--gray-200);
+  }
+  .card .label { font-size: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .card .value { font-size: 18px; font-weight: 700; color: var(--gray-900); }
+
+  /* Flow diagram */
+  .flow { position: relative; margin: 32px 0; }
+  .flow-step {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 20px 24px; margin-bottom: 0; position: relative;
+    background: white; border-radius: var(--radius); box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+  }
+  .flow-connector {
+    width: 3px; height: 24px; background: var(--primary); margin-left: 43px;
+  }
+  .flow-num {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--primary); color: white; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 20px;
+  }
+  .flow-num.key { background: var(--danger); }
+  .flow-content { flex: 1; }
+  .flow-content h4 { font-size: 16px; color: var(--gray-900); margin-bottom: 4px; }
+  .flow-content p { font-size: 14px; color: var(--gray-600); margin-bottom: 8px; }
+  .flow-content .docs { font-size: 13px; color: var(--primary); }
+  .flow-content .docs span {
+    display: inline-block; background: var(--primary-light); padding: 2px 8px;
+    border-radius: 4px; margin: 2px 4px 2px 0;
+  }
+  .flow-meta {
+    flex-shrink: 0; min-width: 140px; text-align: right;
+    font-size: 12px; color: var(--gray-600);
+  }
+  .flow-meta .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-weight: 600; font-size: 11px;
+  }
+  .badge-jp { background: #fefcbf; color: var(--warning); }
+  .badge-cn { background: #bee3f8; color: #2b6cb0; }
+  .badge-both { background: #fbb6ce; color: #97266d; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  th { background: var(--gray-100); font-weight: 600; font-size: 13px; color: var(--gray-700); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--gray-200); }
+  td { padding: 10px 14px; font-size: 14px; border-bottom: 1px solid var(--gray-100); }
+  tr:last-child td { border-bottom: none; }
+
+  /* Info box */
+  .info-box { padding: 16px 20px; border-radius: var(--radius); margin: 16px 0; font-size: 14px; }
+  .info-box.warn { background: var(--warning-light); border: 1px solid #f6e05e; }
+  .info-box.info { background: var(--primary-light); border: 1px solid #90cdf4; }
+  .info-box p { margin-bottom: 4px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 24px; margin: 20px 0; border-left: 2px solid var(--gray-300); }
+  .timeline-item { margin-bottom: 16px; position: relative; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -30px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
+    border: 2px solid white; box-shadow: 0 0 0 2px var(--primary);
+  }
+  .timeline-item .t-header { font-weight: 600; font-size: 14px; }
+  .timeline-item .t-body { font-size: 13px; color: var(--gray-600); }
+
+  /* Footer */
+  .footer { text-align: center; padding: 32px; font-size: 12px; color: var(--gray-600); border-top: 1px solid var(--gray-200); margin-top: 48px; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .flow-step, .card { box-shadow: none; break-inside: avoid; }
+    .hero { background: #1a56db !important; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>日本进口单采血流程报告</h1>
+  <div class="subtitle">伊基奥仑赛注射液（福可苏）CAR-T 细胞制剂生产原材料进口</div>
+  <div class="subtitle">申请单位：南京驯鹿生物医药有限公司</div>
+  <div class="meta">报告生成日期：2026-05-07 ｜ 数据来源：2025年12月日本临床风评电子档、WORD 源文件、风评报告</div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 概览 ==================== -->
+<h2>一、业务概览</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="label">进口物品</div>
+    <div class="value">单采血 (Apheresis Material)</div>
+  </div>
+  <div class="card">
+    <div class="label">数量 / 规格</div>
+    <div class="value">50 袋 × 50–125mL</div>
+  </div>
+  <div class="card">
+    <div class="label">来源国</div>
+    <div class="value">日本 (Japan)</div>
+  </div>
+  <div class="card">
+    <div class="label">运输温度</div>
+    <div class="value">2–8℃ 冷链</div>
+  </div>
+  <div class="card">
+    <div class="label">最终用途</div>
+    <div class="value">自体 CAR-T 细胞制剂 (伊基奥仑赛注射液)</div>
+  </div>
+  <div class="card">
+    <div class="label">监管级别</div>
+    <div class="value">B1 级特殊物品（后续监管）</div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="label">日本发货方</div>
+    <div class="value" style="font-size:14px;">International Cooperation for Medical Innovation Co., Ltd</div>
+  </div>
+  <div class="card">
+    <div class="label">发货地址</div>
+    <div class="value" style="font-size:14px;">1-5-2 Minatojima Minamimachi, Chuo-ku, Kobe 650-0047, Japan</div>
+  </div>
+  <div class="card">
+    <div class="label">中国收货方</div>
+    <div class="value" style="font-size:14px;">南京驯鹿生物医药有限公司</div>
+  </div>
+  <div class="card">
+    <div class="label">收货地址</div>
+    <div class="value" style="font-size:14px;">江苏省南京市浦口区华康路122号星翰产业园8栋</div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="label">临床试验编号</div>
+    <div class="value">CT103AJ001</div>
+  </div>
+  <div class="card">
+    <div class="label">临床试验阶段</div>
+    <div class="value">I/II 期</div>
+  </div>
+  <div class="card">
+    <div class="label">日本监管批准</div>
+    <div class="value">PMDA CTN 默示许可</div>
+  </div>
+  <div class="card">
+    <div class="label">中国风险级别</div>
+    <div class="value">中风险</div>
+  </div>
+  <div class="card">
+    <div class="label">运输期间</div>
+    <div class="value">2025.12 – 2027.12</div>
+  </div>
+  <div class="card">
+    <div class="label">运输频次</div>
+    <div class="value">20–50 次</div>
+  </div>
+</div>
+
+<!-- ==================== 日本采集医院 ==================== -->
+<h2>二、日本单采血采集医院（共 10 家）</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>医院名称</th><th>类型</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>日本大学附属板桥医院</td><td>大学附属医院</td></tr>
+    <tr><td>2</td><td>日本红十字医疗中心</td><td>综合医疗中心</td></tr>
+    <tr><td>3</td><td>东京科学大学医院</td><td>大学附属医院</td></tr>
+    <tr><td>4</td><td>冈山大学医院</td><td>大学附属医院</td></tr>
+    <tr><td>5</td><td>名古屋市立大学医院</td><td>公立大学医院</td></tr>
+    <tr><td>6</td><td>京都大学医学部附属医院</td><td>大学附属医院</td></tr>
+    <tr><td>7</td><td>京都府立医科大学附属医院</td><td>大学附属医院</td></tr>
+    <tr><td>8</td><td>近畿大学医院</td><td>大学附属医院</td></tr>
+    <tr><td>9</td><td>兵库医科大学 / 九州大学医院</td><td>大学附属医院</td></tr>
+    <tr><td>10</td><td>帝京大学医院</td><td>大学附属医院</td></tr>
+  </tbody>
+</table>
+
+<!-- ==================== 全流程 ==================== -->
+<h2>三、进口全流程图（端到端）</h2>
+
+<div class="flow">
+
+  <!-- Step 1 -->
+  <div class="flow-step">
+    <div class="flow-num">1</div>
+    <div class="flow-content">
+      <h4>PMDA 临床试验审批 & 伦理审查</h4>
+      <p>委托日本国内临床试验管理人向 PMDA 提交临床试验申请（CTN），获得 30 日默示许可。各实施医院的临床试验审查委员会（IRB）逐院审批通过。</p>
+      <div class="docs"><span>PMDA CTN 邮件默示许可</span><span>临床试验方案 V1.3（日版）</span><span>伦理委员会批准</span><span>知情同意书</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-jp">日本</span><br>约 30-60 天</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 2 -->
+  <div class="flow-step">
+    <div class="flow-num">2</div>
+    <div class="flow-content">
+      <h4>受试者筛选 & 知情同意</h4>
+      <p>日本医院根据试验方案（CT103AJ001）筛选复发/难治性多发性骨髓瘤患者。评估入排标准后，签署知情同意书。</p>
+      <div class="docs"><span>知情同意书（Eque-cel_IC）</span><span>受试者筛选记录</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-jp">日本医院</span><br>约 1-2 周</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 3 -->
+  <div class="flow-step">
+    <div class="flow-num key">3</div>
+    <div class="flow-content">
+      <h4>传染病病原体筛查（单采前）</h4>
+      <p>受试者单采前必须完成传染病病原体检测（有效期 28 天），确认所有项目阴性方可采集：</p>
+      <div class="docs">
+        <span>HBV 两对半 (HBsAg / HBcAb)</span><span>HCV 抗体</span><span>HIV 抗体</span><span>CMV DNA</span><span>梅毒</span>
+      </div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-jp">日本医院</span><br>≤ 28 天有效</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 4 -->
+  <div class="flow-step">
+    <div class="flow-num key">4</div>
+    <div class="flow-content">
+      <h4>单采血采集</h4>
+      <p>经批准的医疗机构使用血细胞分离机对合格受试者进行单采血采集。采集人员须经驯鹿公司的单采培训课程培训，遵循 SOP 操作。确认受试者当天体重、前一天或当天的血常规。物流供应商在约定采集时间前 1 小时抵达现场。</p>
+      <div class="docs"><span>单采 SOP</span><span>单采记录表</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-jp">日本医院</span><br>约 2-4 小时</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 5 -->
+  <div class="flow-step">
+    <div class="flow-num">5</div>
+    <div class="flow-content">
+      <h4>单采血包装 & 冷链启动</h4>
+      <p>采集完成后立即热合密封血袋。按照 UN3373 生物危险品包装标准进行三层包装：</p>
+      <p><strong>初级包装：</strong>防漏袋（产品自带） → <strong>二层包装：</strong>抗压防水生物安全袋 → <strong>外包装：</strong>坚固抗震冷包箱</p>
+      <p>单采血采集后室温放置 ≤ 30 分钟，冷包开箱至封箱 ≤ 3 分钟。贴生物危险标识标签。</p>
+      <div class="docs"><span>5.6 运输包装说明</span><span>包装检查清单</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-jp">日本医院</span><br>≤ 3 分钟<br>包装完成</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 6 -->
+  <div class="flow-step">
+    <div class="flow-num">6</div>
+    <div class="flow-content">
+      <h4>日本国内段运输 → 国际空运</h4>
+      <p>由具备国际运输资质的物流公司从各采集医院收件，集中至神户发货点（International Cooperation for Medical Innovation），再由关西国际机场空运至南京禄口国际机场。</p>
+      <p>全程 2–8℃ 冷链监控。外包装贴 UN3373 生物物质 B 类标签。</p>
+      <div class="docs"><span>国际运输合同（生生货运）</span><span>发货方基本信息</span><span>物料转运协议</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-both">日本→中国</span><br>约 1-2 天</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 7 -->
+  <div class="flow-step">
+    <div class="flow-num key">7</div>
+    <div class="flow-content">
+      <h4>中国海关入境审批（风险风评 + 通关证明）</h4>
+      <p><strong>核心环节。</strong>向南京海关（金陵海关江北办）提交全套风评材料，由多部门联合监管机制组织专家进行文字材料审核，出具《出入境特殊物品风险评估报告》和《特殊物品通关证明》。</p>
+      <p>该环节涵盖三大评估维度（详见第四节）。海关对进口血样实施后续监管。</p>
+      <div class="docs">
+        <span>试点单位出入境特殊物品申请表</span><span>风评自评报告</span><span>MTA 物料转运协议</span>
+        <span>病原微生物 COA 说明</span><span>全部 10 大类附件</span>
+      </div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-cn">中国海关</span><br>关键节点<br>约 15-30 天</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 8 -->
+  <div class="flow-step">
+    <div class="flow-num">8</div>
+    <div class="flow-content">
+      <h4>南京禄口机场清关 & 国内段冷链运输</h4>
+      <p>空运到达禄口机场后按一般货物正式申报。海关放行后，由江苏海德国际物流有限公司安排专用冷链车辆运输至驯鹿生物工厂（浦口区星翰产业园）。</p>
+      <div class="docs"><span>国内运输合同（驯鹿 & 海德）</span><span>道路运输经营许可证</span><span>车辆资质</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-cn">南京</span><br>当天完成</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 9 -->
+  <div class="flow-step">
+    <div class="flow-num key">9</div>
+    <div class="flow-content">
+      <h4>工厂验收 & P2 实验室操作</h4>
+      <p>工厂验收人员按 SOP 消杀外包装，确认血袋完好和传染病病原体检查结果。在 P2（生物安全二级）实验室内进行单采血分选和 CAR-T 细胞制备。</p>
+      <p>操作流程：消毒（70% 乙醇 / 75% 乙醇 / 70% 异丙醇 / 杀孢子剂）→ 细胞处理系统分选 → PBMC 冻存 → T 细胞分选 → 慢病毒载体转导 → 细胞扩增 → 制剂制备 → 气相液氮冻存。</p>
+      <div class="docs"><span>P2 实验室备案证书</span><span>药品生产许可证</span><span>GMP 体系文件</span><span>SOP 操作规程</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-cn">南京工厂</span><br>约 2-3 周<br>CAR-T 生产</div>
+  </div>
+  <div class="flow-connector"></div>
+
+  <!-- Step 10 -->
+  <div class="flow-step">
+    <div class="flow-num">10</div>
+    <div class="flow-content">
+      <h4>医疗废弃物处理</h4>
+      <p>生产完成后所有废弃物经高压灭菌锅灭活后，交有资质的第三方专业医疗废弃物处置公司（南京汇合）统一处理。</p>
+      <div class="docs"><span>废弃物处置合同</span><span>医疗废物处置资质</span><span>高压灭菌记录</span><span>危险废弃物管理程序</span></div>
+    </div>
+    <div class="flow-meta"><span class="badge badge-cn">中国</span><br>持续</div>
+  </div>
+
+</div>
+
+<!-- ==================== 海关风评 ==================== -->
+<h2>四、海关风评材料体系（10 大类）</h2>
+
+<p>根据《出入境特殊物品生物风险评估文件审查报告》模板及实际提交材料，进口单采血需向南京海关提交以下全套风评材料：</p>
+
+<table>
+  <thead>
+    <tr><th>序号</th><th>材料类别</th><th>关键文件</th><th>对应风评检查项</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><strong>承诺书</strong></td><td>材料真实性承诺书</td><td>企业法律主体确认</td></tr>
+    <tr><td>2</td><td><strong>企业资质</strong></td><td>营业执照、药品生产许可证、企业介绍、研发能力证明</td><td>GMP 体系 / 生物安全体系</td></tr>
+    <tr><td>3</td><td><strong>风险评估表</strong></td><td>风险评估需求表、风评自评报告</td><td>风险自评与正式评审对照</td></tr>
+    <tr><td>4</td><td><strong>申请表</strong></td><td>试点单位出入境特殊物品申请表（附件 3.1）</td><td>海关行政审批入口</td></tr>
+    <tr><td>5</td><td><strong>特殊物品材料</strong></td><td>5.1 描述性材料 & 情况说明 / 5.2 样品来源说明 & 临床方案 & PMDA 许可 / 5.3 病原微生物确认单 / 5.4 伦理批件 / 5.5 使用方案 / 5.6 运输包装说明</td><td>产品基本信息、来源控制、使用方案、运输包装</td></tr>
+    <tr><td>6</td><td><strong>实验室材料</strong></td><td>6.1 P2 实验室备案证书 / 6.2 生物安全备案申请书 / 6.3 特殊物品存放平面图 / 6.4 药品生产许可证 / 6.5 不违反人遗条例承诺函 / 6.6 生物安全评价意见</td><td>实验室等级与物品风险匹配</td></tr>
+    <tr><td>7</td><td><strong>生物安全管理</strong></td><td>7.1 实验室生物安全手册 / 7.2 生物安全委员会 & 会议记录 / 7.3 危害评估报告 / 7.4 事故处置预案 / 7.5 培训考核记录 / 7.6 应急演练报告 / 7.7 灭菌方案 & 记录 / 7.8 危废管理程序</td><td>生物安全体系运行能力（11 项子检查）</td></tr>
+    <tr><td>8</td><td><strong>设备校准</strong></td><td>高压灭菌器温度校准、生物安全柜校准、特种设备证书</td><td>关键设备有效性</td></tr>
+    <tr><td>9</td><td><strong>运输资质</strong></td><td>国际运输合同 & 资质（生生货运）、国内运输合同 & 资质（海德物流）、道路运输经营许可证、车辆资质</td><td>运输商资质合规</td></tr>
+    <tr><td>10</td><td><strong>补充材料</strong></td><td>MTA 物料转运协议 / P2 实验室危废佐证 / 生物安全应急预案</td><td>专家补正要求</td></tr>
+  </tbody>
+</table>
+
+<!-- ==================== 关键时间线 ==================== -->
+<h2>五、全流程时间线（预估）</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="t-header">T-90~60 天 · PMDA 临床申请 + IRB 审批</div>
+    <div class="t-body">提交 CTN → 30 日默示许可 → 各医院 IRB 逐院审批</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T-45~30 天 · 海关风评材料准备 & 提交</div>
+    <div class="t-body">整理全套 10 大类材料 → 提交金陵海关江北办 → 多部门联合监管机制组织专家文字材料审核 → 出具风评报告 → 签发通关证明</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T-28~14 天 · 受试者筛选 & 病原体检测</div>
+    <div class="t-body">确认符合治疗要求的受试者 → 传染病筛查（28 天有效期内）→ 签署知情同意书</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T-7~3 天 · 单采预约 & 物流安排</div>
+    <div class="t-body">确认单采日期 → 预定国际航班 → 物流供应商确认到达时间</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T-0 · 单采日</div>
+    <div class="t-body">物流前 1 小时到位 → 受试者确认（体重+血常规）→ 单采采集 → 热合密封 → 3 分钟包装 → 冷链出发</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T+1~2 天 · 国际运输 & 清关</div>
+    <div class="t-body">神户 → 关西机场 → 空运 → 南京禄口机场 → 清关放行 → 海德物流专车 → 驯鹿工厂</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T+2~3 天 · 工厂验收 & 生产启动</div>
+    <div class="t-body">SOP 消杀 → 血袋完整性确认 → 传染病报告核查 → P2 实验室分选</div>
+  </div>
+  <div class="timeline-item">
+    <div class="t-header">T+14~21 天 · CAR-T 制剂制备完成</div>
+    <div class="t-body">PBMC 分选冻存 → T 细胞活化转导 → 扩增 → 制剂 → 冻存 → 气相液氮储存</div>
+  </div>
+</div>
+
+<!-- ==================== 关键角色 ==================== -->
+<h2>六、关键干系人 & 角色矩阵</h2>
+
+<table>
+  <thead>
+    <tr><th>角色</th><th>主体</th><th>职责</th><th>所在国</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>临床试验委托方</td><td>南京驯鹿生物医药有限公司 (IASO)</td><td>申办方、CAR-T 生产方、进口申请人</td><td>中国</td></tr>
+    <tr><td>日本临床试验管理人</td><td>在日委托 CRO</td><td>日本国内行政手续、PMDA 沟通</td><td>日本</td></tr>
+    <tr><td>单采采集机构</td><td>10 家日本大学附属医院</td><td>受试者筛选、知情同意、病原体检测、单采采集</td><td>日本</td></tr>
+    <tr><td>日本发货方</td><td>International Cooperation for Medical Innovation Co., Ltd</td><td>神户集货、冷链发运</td><td>日本</td></tr>
+    <tr><td>国际运输商</td><td>生生货运</td><td>日本→中国国际空运冷链</td><td>跨国</td></tr>
+    <tr><td>国内运输商</td><td>江苏海德国际物流有限公司</td><td>禄口机场→南京工厂专车冷链</td><td>中国</td></tr>
+    <tr><td>海关/监管</td><td>南京海关（金陵海关江北办）+ 多部门联合监管机制</td><td>风评审查、通关证明签发、后续监管</td><td>中国</td></tr>
+    <tr><td>药品监管</td><td>PMDA（日本独立行政法人医药品医疗器械综合机构）</td><td>临床试验审批</td><td>日本</td></tr>
+    <tr><td>医疗废弃物</td><td>南京汇合</td><td>灭活后医疗废弃物处置</td><td>中国</td></tr>
+  </tbody>
+</table>
+
+<!-- ==================== 风险控制 ==================== -->
+<h2>七、生物安全风险控制体系</h2>
+
+<h3>7.1 三层防护架构</h3>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="label">组织层</div>
+    <div class="value" style="font-size:14px;">生物安全委员会 + 年度会议 + 应急预案 + 年度演练</div>
+  </div>
+  <div class="card">
+    <div class="label">物理层</div>
+    <div class="value" style="font-size:14px;">P2 实验室 + 生物安全柜 + 高压灭菌器（定期校准）+ 独立仓储</div>
+  </div>
+  <div class="card">
+    <div class="label">操作层</div>
+    <div class="value" style="font-size:14px;">双层防护服/手套 + SOP 消杀 + 个人防护 + 培训考核（含三方考评）</div>
+  </div>
+</div>
+
+<h3>7.2 病原微生物排除措施（四重关卡）</h3>
+<div class="card-grid">
+  <div class="card">
+    <div class="label">关卡 1 — 采集前</div>
+    <div class="value" style="font-size:13px;">受试者传染病筛查（28 天有效期内）：HBV / HCV / HIV / CMV / 梅毒全阴</div>
+  </div>
+  <div class="card">
+    <div class="label">关卡 2 — 运输前</div>
+    <div class="value" style="font-size:13px;">单采血热合密封 + 防漏袋 + 三层包装 + UN3373 标识</div>
+  </div>
+  <div class="card">
+    <div class="label">关卡 3 — 验收时</div>
+    <div class="value" style="font-size:13px;">工厂消杀外包装 + 血袋完好性检查 + 传染病报告复核</div>
+  </div>
+  <div class="card">
+    <div class="label">关卡 4 — 生产后</div>
+    <div class="value" style="font-size:13px;">高压灭菌灭活 + 第三方专业医废处置</div>
+  </div>
+</div>
+
+<!-- ==================== 关键注意事项 ==================== -->
+<h2>八、关键注意事项 &amp; 经验教训</h2>
+
+<div class="info-box warn">
+  <h3 style="margin-top:0;color:var(--danger)">⚡ 路径协调陷阱</h3>
+  <p><strong>病原体检测有效期 vs. 风评审批周期：</strong>日本医院的传染病检测报告仅 28 天有效。但进口风评审批可能超过此周期。解决方案：风评通过后根据临床安排预定航班，同步启动受试者病原微生物筛查，确保提交进口审批时检测报告仍在有效期内。</p>
+</div>
+
+<div class="info-box warn">
+  <h3 style="margin-top:0;color:var(--danger)">⚡ 包装时间约束</h3>
+  <p>单采血采集后室温放置不超过 30 分钟，冷包开箱至封箱须在 3 分钟内完成。物流必须提前 1 小时到位，全程 2–8℃，任一环节超时即可能导致样本质量风险。</p>
+</div>
+
+<div class="info-box info">
+  <h3 style="margin-top:0;color:var(--primary)">⚡ 首次风评常见补正项（参照新加坡经验）</h3>
+  <p>① 合作合同需标注生效日期及与本次物品的关联性说明；② 需提供血液样本采购协议或说明材料；③ 需提供物品具体来源信息、知情同意/伦理审查材料；④ 需提供病原体检测 COA 报告；⑤ 需明确运输计划及国内运输公司关系；⑥ 设备校准材料（高压灭菌器、生物安全柜）；⑦ 生物安全风险评估报告（WS233）；⑧ 进口血液样本应急处置方案；⑨ 人员外部生物安全培训记录/证书。</p>
+</div>
+
+<div class="info-box info">
+  <h3 style="margin-top:0;color:var(--primary)">⚡ 人遗合规</h3>
+  <p>日本捐献者为在日本接受治疗的患者（自体细胞治疗），不涉及中国人类遗传资源跨境问题。需提供书面说明和承诺函。</p>
+</div>
+
+<div class="info-box info">
+  <h3 style="margin-top:0;color:var(--primary)">⚡ 后续监管</h3>
+  <p>进口特殊物品监管级别 B1，需后续监管。海关后续检查内容包括：物品名称/成分/批号/规格/数量/有效期/运输存储条件是否与审批单一致，以及包装安全是否无破损、不渗不漏。</p>
+</div>
+
+</div>
+
+<!-- ==================== 文档清单 ==================== -->
+<h2 style="margin-left:24px">九、参考文件完整清单（2025年12月日本临床风评）</h2>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 24px 32px">
+<table>
+  <thead><tr><th>代码</th><th>文件</th><th>类型</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>材料真实性承诺书</td><td>法律</td></tr>
+    <tr><td>2</td><td>南京驯鹿生物医药有限公司·风险评估需求表</td><td>风评</td></tr>
+    <tr><td>3</td><td>自评报告——入境特殊物品的生物安全风险自我评估材料——日本单采血</td><td>风评</td></tr>
+    <tr><td>4.1</td><td>南京驯鹿生物医药介绍</td><td>资质</td></tr>
+    <tr><td>4.2</td><td>南京驯鹿生物医药有限公司营业执照</td><td>资质</td></tr>
+    <tr><td>5.1</td><td>出入境特殊物品描述性材料 / 样品来源情况说明</td><td>物品</td></tr>
+    <tr><td>5.2</td><td>PMDA CTN 邮件默示许可 / 临床方案 V1.3（中日双语）/ 临床方案受理回执</td><td>审批</td></tr>
+    <tr><td>5.3</td><td>病原微生物确认单 样板</td><td>安全</td></tr>
+    <tr><td>5.4</td><td>伦理批件</td><td>审批</td></tr>
+    <tr><td>5.5</td><td>使用方案（单采血实验活动）</td><td>操作</td></tr>
+    <tr><td>5.6</td><td>运输包装说明</td><td>物流</td></tr>
+    <tr><td>6.1–6.6</td><td>P2 实验室备案证书 / 生物安全备案申请书 / 存放平面图 / 药品生产许可证 / 不违反人遗条例承诺函 / 生物安全评价意见</td><td>实验室</td></tr>
+    <tr><td>7.1–7.8</td><td>生物安全手册 / 生物安全委员会 & 会议记录 / 危害评估报告 / 事故处置预案 / 培训考核记录 / 应急演练报告 / 灭菌方案 & 记录 / 危废管理程序</td><td>安全体系</td></tr>
+    <tr><td>8</td><td>高压灭菌器温度、生物安全柜校准材料及特种设备证书</td><td>设备</td></tr>
+    <tr><td>9</td><td>国际运输合同及资质（生生货运）/ 国内运输合同及资质（海德物流）/ 道路运输经营许可证</td><td>物流</td></tr>
+    <tr><td>10</td><td>废弃物处置合同 / 医疗废物处置资质 / P2 实验室危废佐证</td><td>环保</td></tr>
+    <tr><td>MTA</td><td>物料转运协议</td><td>合约</td></tr>
+    <tr><td>补充</td><td>补正说明——南京驯鹿生物医药有限公司（12月风评）</td><td>补正</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="footer">
+  <p>本报告基于 reference 目录中 2025年12月日本临床风评资料自动生成</p>
+  <p>报告生成：Claude Code ｜ 日期：2026-05-07 ｜ 申请单位：南京驯鹿生物医药有限公司</p>
+  <p>临床试验：CT103AJ001 ｜ 产品：伊基奥仑赛注射液（福可苏 / Eque-cel）</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>国际注册策略教学</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fafaf7;
+      --paper-2: #f1f0ea;
+      --ink: #10100f;
+      --muted: #66645d;
+      --line: rgba(16, 16, 15, 0.12);
+      --accent: #0a7076;
+      --accent-soft: rgba(10, 112, 118, 0.09);
+      --warm: #9b4a1a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 72px; }
+    h1, h2, h3 { margin: 0; line-height: 1.18; letter-spacing: 0; }
+    h1 { font-size: clamp(40px, 6vw, 72px); font-family: Georgia, "Songti SC", serif; }
+    h2 { font-size: 30px; font-family: Georgia, "Songti SC", serif; }
+    h3 { font-size: 18px; }
+    p { margin: 0; }
+    .eyebrow { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; padding-bottom: 34px; border-bottom: 1px solid var(--line); }
+    .hero p { max-width: 760px; margin-top: 22px; font-size: 17px; color: var(--muted); }
+    .factor-grid, .card-grid, .exercise-grid, .glossary-grid { display: grid; gap: 14px; }
+    .factor-grid { grid-template-columns: repeat(3, 1fr); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .exercise-grid, .glossary-grid { grid-template-columns: repeat(2, 1fr); }
+    .card, .factor, .exercise, .term, .source {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 18px;
+    }
+    .factor { background: var(--paper-2); }
+    .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 260px 1fr; gap: 24px; margin-bottom: 18px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tab { border: 1px solid var(--line); background: #fff; padding: 9px 12px; font-size: 14px; color: var(--muted); cursor: pointer; }
+    .tab.active { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); font-weight: 700; }
+    .pill { display: inline-flex; margin: 0 6px 6px 0; border: 1px solid var(--line); padding: 4px 8px; font-size: 12px; color: var(--muted); }
+    .takeaway { margin-top: 18px; border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 14px 16px; }
+    table { width: 100%; min-width: 760px; border-collapse: collapse; background: #fff; font-size: 14px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 12px; text-align: left; vertical-align: top; }
+    th { background: var(--paper-2); color: var(--muted); font-weight: 700; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); }
+    .timeline { display: grid; gap: 10px; }
+    .event { display: grid; grid-template-columns: 110px 110px 1fr; gap: 12px; border: 1px solid var(--line); background: #fff; padding: 14px; }
+    .date { font-weight: 800; font-variant-numeric: tabular-nums; }
+    .badge { display: inline-flex; border: 1px solid rgba(10,112,118,.25); background: var(--accent-soft); padding: 3px 7px; color: var(--accent); font-size: 12px; }
+    button.option { width: 100%; text-align: left; min-height: 42px; border: 1px solid var(--line); background: var(--paper); margin-top: 8px; padding: 10px; cursor: pointer; }
+    button.option:hover { border-color: var(--accent); }
+    .answer { display: none; margin-top: 10px; padding: 12px; background: rgba(155,74,26,.1); color: #4f260d; }
+    .exercise.open .answer { display: block; }
+    .source { background: var(--paper-2); }
+    @media (max-width: 860px) {
+      main { padding: 26px 16px 48px; }
+      .hero, .section-head { grid-template-columns: 1fr; }
+      .factor-grid, .card-grid, .exercise-grid, .glossary-grid { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Regulatory Strategy Teaching</div>
+        <h1>国际注册策略教学</h1>
+        <p>以福可苏和 in vivo 产品全球申报为案例，学习如何把市场选择、数据策略、监管路径、临床开发、CMC/供应链和商业化假设放到同一张决策图里。</p>
+      </div>
+      <div class="factor-grid">
+        <div class="factor"><div class="eyebrow">01</div><h3>市场价值</h3></div>
+        <div class="factor"><div class="eyebrow">02</div><h3>竞争空白</h3></div>
+        <div class="factor"><div class="eyebrow">03</div><h3>数据路径</h3></div>
+        <div class="factor"><div class="eyebrow">04</div><h3>临床适配</h3></div>
+        <div class="factor"><div class="eyebrow">05</div><h3>CMC 与供应</h3></div>
+        <div class="factor"><div class="eyebrow">06</div><h3>合作与准入</h3></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Learning Modules</div><h2>学习路径</h2></div>
+        <div>
+          <div class="tabs" id="tabs"></div>
+          <div class="takeaway" id="module"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Case Cards</div><h2>案例卡</h2></div>
+        <div class="card-grid" id="cards"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Case Map</div><h2>案例地图</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>区域</th><th>国家/市场</th><th>适应症</th><th>数据路径</th><th>教学点</th></tr></thead>
+            <tbody id="caseRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Timeline</div><h2>注册时间线</h2></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Exercises</div><h2>策略演练</h2></div>
+        <div class="exercise-grid" id="exercises"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Glossary</div><h2>核心术语</h2></div>
+        <div class="glossary-grid" id="glossary"></div>
+      </div>
+    </section>
+
+    <section class="section source">
+      <div class="eyebrow">案例来源</div>
+      <p>内容来自 reference/20260224 驯鹿生物国际注册策略.docx 及其摘要。本文档用于内部教学，不能替代正式法规、监管沟通或公司审批。</p>
+    </section>
+  </main>
+
+  <script>
+    const modules = [
+      ["全局策略图", "先用末线 MM 在可进入市场建立样板，再把 2-3L、1L、自免和 in vivo 产品放到不同证据路径里。"],
+      ["市场优先级", "优先级来自商业价值、监管摩擦、竞争空白和执行可行性的组合。"],
+      ["数据接受度", "中国数据能否直接支持海外申报，不按国家发达程度简单划分，要通过药监沟通确认。"],
+      ["本地临床与 MRCT", "当前线适应症和发达市场成为目标时，临床设计本身就是注册策略。"],
+      ["CMC 与供应链", "细胞治疗的注册路径同时被生产、GMP、运输、海关和区域节点决定。"]
+    ];
+    const cases = [
+      ["东南亚", "新加坡 / 马来西亚", "late-line MM", "中国数据直接申报", "门户市场 + 无 BCMA CAR-T 竞争空白"],
+      ["中东北非", "沙特 / 阿联酋", "late-line MM", "NDA 已提交", "政府采购 vs 高端私立支付"],
+      ["拉丁美洲", "巴西 / 墨西哥", "late-line MM", "合作方评估", "大市场入口与监管经验差异"],
+      ["中北亚", "俄罗斯", "late-line MM", "合作方注册", "本地化生产和政策红利"],
+      ["港澳", "香港 / 澳门", "late-line MM", "已获批", "小市场的大区位和监管价值"],
+      ["东亚发达市场", "日本 / 韩国", "late-line MM", "小样本本地临床 / 直接申报", "发达市场中数据要求并不一致"],
+      ["澳大利亚与加拿大", "澳大利亚 / 加拿大", "late-line MM", "pre-NDA 沟通", "中国数据进入发达市场需要确认边界"],
+      ["欧洲", "欧盟", "2-3L MM", "桥接/MRCT 沟通", "高价值市场通常需要更强证据策略"],
+      ["自免适应症", "中国 / 美国 / 欧洲 / 日本", "autoimmune", "罕见 vs 非罕见路径", "适应症流行病学改变证据门槛"],
+      ["In vivo 产品", "中国 / 美国 / 欧洲", "in vivo", "IND 后 2/3 期路径", "产品形态改变全球供货逻辑"]
+    ];
+    const timeline = [
+      ["2025-01", "新加坡", "NDA 获 HSA 受理"],
+      ["2025-03", "澳门", "获批上市"],
+      ["2025-05", "沙特", "孤儿药与优先审评"],
+      ["2025-08", "新加坡", "完成 GMP 核查"],
+      ["2025-11", "香港", "获批上市"],
+      ["2026-01", "阿联酋", "完成 GMP 核查"],
+      ["2026-02", "澳大利亚", "TGA pre-NDA 沟通"],
+      ["2026-02", "IASO208", "FDA pre-IND"],
+      ["2026-Q3", "IASO208", "计划 FDA IND"]
+    ];
+    const exercises = [
+      ["第一批市场选择", "如果要快速建立末线 MM 海外注册样板，应优先什么？", "竞争空白且可能接受中国数据的市场。"],
+      ["日本路径判断", "日本为什么不是简单直接提交中国数据？", "PMDA 要求很小样本量本地单臂临床。"],
+      ["隐藏 blocker", "自体 CAR-T 全球注册容易低估什么？", "单采血 48 小时限制和区域冻存中心。"],
+      ["产品形态变化", "in vivo 产品相对自体 CAR-T 的差异是什么？", "可能实现中国供应全球，但仍需主要国家药监沟通。"]
+    ];
+    const glossary = [
+      ["NDA", "上市申请。"], ["IND", "临床试验申请。"], ["pre-NDA", "上市申请前沟通。"], ["pre-IND", "临床申请前沟通。"],
+      ["MRCT", "国际多中心临床研究。"], ["桥接研究", "连接已有数据与目标市场要求的补充研究。"], ["PIC/S GMP", "生产质量管理规范相关检查体系。"], ["CSR", "临床研究报告。"]
+    ];
+    const tabs = document.getElementById("tabs");
+    const moduleBox = document.getElementById("module");
+    modules.forEach((m, i) => {
+      const b = document.createElement("button");
+      b.className = "tab" + (i === 0 ? " active" : "");
+      b.textContent = m[0];
+      b.onclick = () => {
+        document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        moduleBox.innerHTML = "<h3>" + m[0] + "</h3><p>" + m[1] + "</p>";
+      };
+      tabs.appendChild(b);
+    });
+    moduleBox.innerHTML = "<h3>" + modules[0][0] + "</h3><p>" + modules[0][1] + "</p>";
+    document.getElementById("cards").innerHTML = cases.slice(0, 6).map(c => `<article class="card"><span class="pill">${c[0]}</span><span class="pill">${c[2]}</span><h3>${c[1]}</h3><p>${c[3]}</p><p style="margin-top:10px;color:var(--accent);font-weight:700">${c[4]}</p></article>`).join("");
+    document.getElementById("caseRows").innerHTML = cases.map(c => `<tr><td>${c[0]}</td><td>${c[1]}</td><td>${c[2]}</td><td>${c[3]}</td><td>${c[4]}</td></tr>`).join("");
+    document.getElementById("timeline").innerHTML = timeline.map(t => `<div class="event"><div class="date">${t[0]}</div><div><span class="badge">${t[1]}</span></div><div><strong>${t[2]}</strong></div></div>`).join("");
+    document.getElementById("exercises").innerHTML = exercises.map(e => `<div class="exercise"><div class="eyebrow">练习</div><h3>${e[0]}</h3><p>${e[1]}</p><button class="option" onclick="this.parentNode.classList.toggle('open')">显示参考判断</button><div class="answer">${e[2]}</div></div>`).join("");
+    document.getElementById("glossary").innerHTML = glossary.map(g => `<div class="term"><h3>${g[0]}</h3><p>${g[1]}</p></div>`).join("");
+  </script>
+</body>
+</html>
