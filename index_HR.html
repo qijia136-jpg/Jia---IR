@@ -1070,12 +1070,400 @@
       }
     };
 
+    const mediaSources = {
+      global: [
+        { name: "Endpoints News - People Moves", url: "https://endpoints.news/topic-hub/biopharma-people-moves-ceo-changes-executive-hires-board-positions/", use: "追踪 CEO、C-suite、R&D、董事会变动" },
+        { name: "Fierce Biotech / Fierce Pharma", url: "https://www.fiercebiotech.com/", use: "Chutes & Ladders、高管任命、并购后团队变化" },
+        { name: "BioPharma Dive", url: "https://www.biopharmadive.com/", use: "高管 reshuffle、MNC 人才流向、战略背景" },
+        { name: "STAT Biopharma", url: "https://www.statnews.com/category/biotech/", use: "美国 biotech 管理层、研发和资本市场动态" },
+        { name: "Evaluate Vantage", url: "https://www.evaluate.com/vantage", use: "管线、交易、资本事件背后的人才信号" },
+        { name: "Labiotech", url: "https://www.labiotech.eu/", use: "欧洲 biotech、细胞与基因治疗公司动态" }
+      ],
+      vertical: [
+        { name: "GEN - Genetic Engineering & Biotechnology News", url: "https://www.genengnews.com/", use: "细胞与基因治疗、平台技术、研发负责人变动" },
+        { name: "Cell & Gene", url: "https://www.cellandgene.com/", use: "CGT 制造、质量、供应链与技术领导者" },
+        { name: "Pharmaceutical Technology", url: "https://www.pharmaceutical-technology.com/", use: "制药产业、供应链、商业化和高管新闻" },
+        { name: "FirstWord Pharma", url: "https://www.firstwordpharma.com/", use: "MNC 和创新药公司高管任命快讯" },
+        { name: "Scrip / Citeline", url: "https://scrip.citeline.com/", use: "全球药企战略、人事、交易和管线新闻" }
+      ],
+      china: [
+        { name: "药时代 DrugTimes", url: "https://www.drugtimes.cn/", use: "中国创新药公司高管变动、融资和出海新闻" },
+        { name: "药渡", url: "https://www.pharmacodia.com/", use: "创新药、管线和企业人事新闻，可辅助交叉验证" },
+        { name: "E药经理人", url: "https://www.yyjjb.com.cn/", use: "医药企业管理层、商业化和组织变化" },
+        { name: "医药魔方", url: "https://www.pharmcube.com/", use: "公司、管线、交易和行业数据库线索" },
+        { name: "动脉网", url: "https://www.vbdata.cn/", use: "医疗健康产业、数字医疗和资本化人才动向" },
+        { name: "每日经济新闻医药频道", url: "https://www.nbd.com.cn/", use: "上市药企公告解读和高层变动报道" }
+      ]
+    };
+
+    const governanceMoves = [
+      {
+        name: "Stephen Griffin",
+        move: "Anika Therapeutics CFO/COO -> President & CEO，并加入董事会",
+        governanceSignal: "财务+运营型高管接任 CEO，适合战略转型、资产剥离和运营重塑阶段参考。",
+        matchRoles: ["cfo", "commercial_vp", "quality_supply_head"],
+        matchLevel: "相邻强匹配",
+        source: "https://ir.anika.com/2026-01-08-Anika-Therapeutics-Announces-Leadership-Transition"
+      },
+      {
+        name: "Cheryl Blanchard",
+        move: "Anika Therapeutics CEO -> Executive Chair of the Board",
+        governanceSignal: "创始/现任 CEO 退到执行主席，保留战略连续性，同时交棒日常经营。",
+        matchRoles: ["cfo", "commercial_vp"],
+        matchLevel: "治理启发",
+        source: "https://ir.anika.com/2026-01-08-Anika-Therapeutics-Announces-Leadership-Transition"
+      },
+      {
+        name: "周云曙",
+        move: "恒瑞医药前高管 -> 先声药业 CEO",
+        governanceSignal: "成熟药企转型经验进入创新药平台，适合观察中国药企国际化与商业化治理升级。",
+        matchRoles: ["commercial_vp", "cfo", "medical_affairs_vp"],
+        matchLevel: "相邻强匹配",
+        source: "https://finance.sina.com.cn/wm/2026-03-26/doc-inhsikav8973952.shtml"
+      },
+      {
+        name: "冯佶",
+        move: "获任恒瑞医药总裁兼 COO",
+        governanceSignal: "总裁/COO 用于强化经营管理和国际化运营落地，是 CEO 下方的关键治理抓手。",
+        matchRoles: ["commercial_vp", "quality_supply_head", "cfo"],
+        matchLevel: "相邻强匹配",
+        source: "https://finance.sina.com.cn/roll/2026-04-17/doc-inhuuptn1057170.shtml"
+      },
+      {
+        name: "刘健俊",
+        move: "获任恒瑞医药首席财务官",
+        governanceSignal: "CFO 是上市公司治理、预算、资本和国际化经营控制的关键岗位。",
+        matchRoles: ["cfo"],
+        matchLevel: "直接匹配",
+        source: "https://finance.sina.com.cn/roll/2026-04-17/doc-inhuuptn1057170.shtml"
+      },
+      {
+        name: "Kevin Tang",
+        move: "Aurinia 董事会主席 -> CEO；同时任命 COO 和 CFO",
+        governanceSignal: "董事会主导的管理层重组，常见于战略压力、业绩修复或资本市场治理场景。",
+        matchRoles: ["cfo", "commercial_vp"],
+        matchLevel: "治理启发",
+        source: "https://www.stocktitan.net/sec-filings/AUPH/8-k-aurinia-pharmaceuticals-inc-reports-material-event-c97d95f2372e.html"
+      },
+      {
+        name: "Jonathan Piazza",
+        move: "加入 Diagonal Therapeutics 任 CFO",
+        governanceSignal: "临床前/早期 biotech 在进入价值拐点前补 CFO，用于资本形成、M&A 和公司建设。",
+        matchRoles: ["cfo"],
+        matchLevel: "直接匹配",
+        source: "https://www.globenewswire.com/news-release/2026/05/05/3287450/0/en/Diagonal-Therapeutics-Expands-Executive-Leadership-Team-Appoints-Industry-Veteran-Jonathan-Piazza-as-Chief-Financial-Officer.html"
+      },
+      {
+        name: "Donald Munoz",
+        move: "加入 Aurion Biotech 任 CFO",
+        governanceSignal: "再生医学/细胞治疗公司补强战略财务和投行背景，服务临床推进与融资。",
+        matchRoles: ["cfo", "cell_therapy_director"],
+        matchLevel: "直接匹配",
+        source: "https://www.nasdaq.com/press-release/aurion-biotech-appoints-donald-munoz-chief-financial-officer-2025-02-10"
+      },
+      {
+        name: "Uwe Buecheler",
+        move: "Rentschler Biopharma 监事会副主席 -> Interim CEO",
+        governanceSignal: "CDMO 战略换挡时由监督层临时接管经营，体现董事会/监事会在治理中的干预能力。",
+        matchRoles: ["quality_supply_head", "cfo"],
+        matchLevel: "相邻强匹配",
+        source: "https://www.globenewswire.com/news-release/2026/01/20/3221961/0/en/Rentschler-Biopharma-Announces-Executive-Board-Changes-and-Next-Phase-of-Corporate-Strategy.html"
+      },
+      {
+        name: "宗忱 Adam Zong",
+        move: "前恒瑞医药高管 -> 和铂医药总裁",
+        governanceSignal: "首次设立总裁职位，通常意味着公司从科学驱动进入规模化经营和组织治理升级。",
+        matchRoles: ["commercial_vp", "medical_affairs_vp", "cfo"],
+        matchLevel: "相邻强匹配",
+        source: "https://cn.investing.com/news/stock-market-news/article-3315816"
+      }
+    ];
+
+    const benchmarkPeople = [
+      {
+        name: "Shreeram Aradhye, M.D.",
+        company: "Novartis",
+        title: "President, Development and Chief Medical Officer",
+        matchRoles: ["global_clinical_head", "regulatory_head", "medical_affairs_vp"],
+        why: "全球开发与 CMO 复合背景，可作为全球临床、医学和注册协同的一号位对标。",
+        contact: "优先通过共同医学专家/KOL、临床开发圈层或会议引荐；LinkedIn 只适合轻触达和信息访谈。",
+        source: "https://www.novartis.com/about/executive-committee"
+      },
+      {
+        name: "Karen L. Hale",
+        company: "Novartis",
+        title: "Chief Legal and Compliance Officer",
+        matchRoles: ["cfo", "regulatory_head"],
+        why: "法务合规和治理负责人样本，适合对标上市公司治理、合规体系和国际化风险控制。",
+        contact: "建议走董事会/法务合规顾问/投资人网络转介绍，不建议冷启动直接招聘触达。",
+        source: "https://www.novartis.com/about/executive-committee"
+      },
+      {
+        name: "Steffen Lang, Ph.D.",
+        company: "Novartis",
+        title: "President, Operations",
+        matchRoles: ["quality_supply_head"],
+        why: "全球运营和供应体系对标，可用于理解质量、生产、供应链一体化管理要求。",
+        contact: "优先通过制造/质量行业会议、供应链服务商、CDMO 网络建立信息访谈。",
+        source: "https://www.novartis.com/about/executive-committee"
+      },
+      {
+        name: "Mukul Mehta",
+        company: "Novartis",
+        title: "Chief Financial Officer",
+        matchRoles: ["cfo"],
+        why: "大型药企 CFO 对标，适合观察全球预算治理、资本配置和财务组织能力。",
+        contact: "通过投资人、审计/咨询伙伴、生命科学财务圈层转介绍；不作为直接候选优先级。",
+        source: "https://www.novartis.com/about/executive-committee"
+      },
+      {
+        name: "Reshema Kemps-Polanco",
+        company: "Novartis US",
+        title: "Chief Commercial Officer, US",
+        matchRoles: ["commercial_vp"],
+        why: "美国商业化一号位对标，适合拆解 oncology 产品增长、市场准入和团队建设能力。",
+        contact: "优先通过商业化会议、市场准入顾问、J&J/Novartis 共同人脉做信息访谈。",
+        source: "https://www.novartis.com/us-en/about/leadership-team/reshema-kemps-polanco"
+      },
+      {
+        name: "Teresa Graham",
+        company: "Roche",
+        title: "CEO Roche Pharmaceuticals",
+        matchRoles: ["commercial_vp", "medical_affairs_vp"],
+        why: "全球制药业务负责人样本，可对标商业化、医学、产品组合和全球市场管理。",
+        contact: "通过行业会议、前 Roche/Genentech 高管、医学商业顾问网络间接连接。",
+        source: "https://www.roche.com/about/leadership/"
+      },
+      {
+        name: "Dr Levi Garraway",
+        company: "Roche",
+        title: "Head of Global Product Development and Chief Medical Officer",
+        matchRoles: ["global_clinical_head", "medical_affairs_vp", "regulatory_head"],
+        why: "全球产品开发与 CMO 对标，适合验证临床开发、医学战略和注册路径能力。",
+        contact: "优先通过学术医学网络、肿瘤 KOL、临床开发会议进行弱连接转介绍。",
+        source: "https://www.roche.com/about/leadership/"
+      },
+      {
+        name: "Dr Aviv Regev",
+        company: "Roche / Genentech",
+        title: "Head of Genentech Research and Early Development",
+        matchRoles: ["ai_platform_head", "cell_therapy_director"],
+        why: "前沿研发和数据科学领导者样本，可对标 AI/生物学结合、早研平台和转化能力。",
+        contact: "通过学术会议、AI drug discovery 社群、科研合作网络做信息访谈，不建议直接招聘式触达。",
+        source: "https://www.roche.com/about/leadership/"
+      },
+      {
+        name: "Dr Alan Hippe",
+        company: "Roche",
+        title: "Chief Financial Officer",
+        matchRoles: ["cfo"],
+        why: "成熟 MNC CFO 样本，可对标全球财务治理、资本配置和内控体系。",
+        contact: "通过投行、审计、投资人关系网络做二度连接。",
+        source: "https://www.roche.com/about/leadership/"
+      },
+      {
+        name: "Ying Huang, Ph.D.",
+        company: "Legend Biotech",
+        title: "Chief Executive Officer",
+        matchRoles: ["cfo", "commercial_vp", "global_clinical_head"],
+        why: "细胞治疗公司从临床、上市到商业化阶段的治理样本，兼具资本和全球化经验启发。",
+        contact: "通过董事会/投资人/行业峰会转介绍；更适合作为对标学习对象，而非直接候选。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Carlos Santos",
+        company: "Legend Biotech",
+        title: "Chief Financial Officer",
+        matchRoles: ["cfo"],
+        why: "商业化细胞治疗公司 CFO 样本，贴近 IASO 国际化资本和财务治理需求。",
+        contact: "优先通过投行、IR、审计咨询伙伴或细胞治疗资本市场圈层转介绍。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Birk Vanderweeën",
+        company: "Legend Biotech",
+        title: "SVP, Global Manufacturing & Supply",
+        matchRoles: ["quality_supply_head", "cell_therapy_director"],
+        why: "细胞治疗全球制造与供应负责人，对标质量、供应链、产能和商业供给体系。",
+        contact: "通过 CDMO、冷链物流、质量会议、供应链服务商转介绍；LinkedIn 可辅助确认路径。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Ananda Martin",
+        company: "Legend Biotech",
+        title: "Global Compliance Officer",
+        matchRoles: ["regulatory_head", "quality_supply_head", "cfo"],
+        why: "细胞治疗公司合规负责人样本，适合治理、合规、质量和商业化风险控制对标。",
+        contact: "通过法务合规圈层、审计咨询伙伴或行业合规会议建立连接。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Alan Bash",
+        company: "Legend Biotech",
+        title: "President of CARVYKTI",
+        matchRoles: ["commercial_vp", "medical_affairs_vp"],
+        why: "细胞治疗产品级商业化负责人，对标上市后产品经营、医学商业协同和全球推广。",
+        contact: "通过细胞治疗商业化会议、市场准入顾问、共同前同事转介绍。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Guowei Fang, Ph.D.",
+        company: "Legend Biotech",
+        title: "President of Research and Development",
+        matchRoles: ["cell_therapy_director", "global_clinical_head", "ai_platform_head"],
+        why: "细胞治疗研发负责人样本，可对标平台研发、管线推进和跨区域研发组织。",
+        contact: "通过科研合作网络、细胞治疗会议、学术顾问转介绍。",
+        source: "https://legendbiotech.com/leadership/"
+      },
+      {
+        name: "Mythili Koneru, M.D., Ph.D.",
+        company: "Legend Biotech",
+        title: "Former Chief Medical Officer appointment sample",
+        matchRoles: ["global_clinical_head", "medical_affairs_vp"],
+        why: "公开任命新闻显示其从 Marker Therapeutics 加入，并有 Eli Lilly 免疫肿瘤开发经历，是 CMO/临床医学画像样本。",
+        contact: "通过医学专家、免疫肿瘤临床圈层、Lilly/Marker 前同事网络转介绍。",
+        source: "https://investors.legendbiotech.com/news-releases/news-release-details/legend-biotech-announces-appointment-chief-medical-officer/"
+      },
+      {
+        name: "Ken Takeshita, M.D.",
+        company: "Kite Pharma",
+        title: "Global Head of Clinical Development appointment sample",
+        matchRoles: ["global_clinical_head", "medical_affairs_vp"],
+        why: "Kite 任命其领导全球临床开发，是细胞治疗全球临床一号位对标样本。",
+        contact: "通过 Gilead/Kite 前员工、临床开发会议、肿瘤医学顾问转介绍。",
+        source: "https://www.kitepharma.com/news/press-releases/2019/11/industry-veterans-appointed-to-head-the-global-technical-operations-and-clinical-development-organizations-at-kite"
+      },
+      {
+        name: "Charles Calderaro",
+        company: "Kite Pharma",
+        title: "Global Head of Technical Operations appointment sample",
+        matchRoles: ["quality_supply_head", "cell_therapy_director"],
+        why: "Kite 任命其领导全球技术运营，是细胞治疗制造、技术运营和供应体系对标样本。",
+        contact: "通过技术运营、制造质量、CDMO 和细胞治疗供应链网络转介绍。",
+        source: "https://www.kitepharma.com/news/press-releases/2019/11/industry-veterans-appointed-to-head-the-global-technical-operations-and-clinical-development-organizations-at-kite"
+      }
+    ];
+
     function getCompanyPool(role) {
       return companyPools[role.id] || {
         core: ["跨国药企", "头部创新药公司", "成熟 Biotech"],
         china: ["中国创新药出海公司", "细胞治疗公司"],
         adjacent: ["CRO", "CDMO", "行业服务平台"]
       };
+    }
+
+    function renderMediaList(items) {
+      return items.map(item => `
+        <li><a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>：${item.use}</li>
+      `).join("");
+    }
+
+    function renderGovernanceMoves() {
+      return governanceMoves.map(item => `
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.move}</td>
+          <td>${item.governanceSignal}</td>
+          <td><a href="${item.source}" target="_blank" rel="noopener">来源</a></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderGovernanceMatches(selected) {
+      return selected.map(role => {
+        const matches = governanceMoves.filter(item => item.matchRoles.includes(role.id));
+        const rows = matches.length ? matches.map(item => `
+          <tr>
+            <td>${role.title}</td>
+            <td>${item.name}</td>
+            <td>${item.matchLevel}</td>
+            <td>${item.governanceSignal}</td>
+            <td><a href="${item.source}" target="_blank" rel="noopener">来源</a></td>
+          </tr>
+        `).join("") : `
+          <tr>
+            <td>${role.title}</td>
+            <td>暂无直接样本</td>
+            <td>待补充</td>
+            <td>继续从垂直媒体和公司公告追踪相同 title 的公开任命。</td>
+            <td>-</td>
+          </tr>
+        `;
+        return rows;
+      }).join("");
+    }
+
+    function renderBenchmarkPeopleMatches(selected) {
+      return selected.map(role => {
+        const matches = benchmarkPeople
+          .filter(item => item.matchRoles.includes(role.id))
+          .slice(0, 5);
+        const rows = matches.length ? matches.map(item => `
+          <tr>
+            <td>${role.title}</td>
+            <td>${item.name}</td>
+            <td>${item.company}</td>
+            <td>${item.title}</td>
+            <td>${item.why}</td>
+            <td>${item.contact}</td>
+            <td><a href="${item.source}" target="_blank" rel="noopener">来源</a></td>
+          </tr>
+        `).join("") : `
+          <tr>
+            <td>${role.title}</td>
+            <td>待补充</td>
+            <td>对标公司池</td>
+            <td>相同或相邻 title</td>
+            <td>继续从官网 leadership、任命新闻和行业媒体补样本。</td>
+            <td>优先用共同人脉和信息访谈，不做冷硬销售式触达。</td>
+            <td>-</td>
+          </tr>
+        `;
+        return rows;
+      }).join("");
+    }
+
+    function roleMappingSummary(role) {
+      const pool = getCompanyPool(role);
+      const matches = governanceMoves.filter(item => item.matchRoles.includes(role.id)).slice(0, 3);
+      const people = benchmarkPeople.filter(item => item.matchRoles.includes(role.id)).slice(0, 3);
+      const matchText = matches.length
+        ? matches.map(item => `${item.name}（${item.matchLevel}）`).join("、")
+        : "暂无直接治理样本，需继续从垂直媒体补样本";
+      const peopleText = people.length
+        ? people.map(item => `${item.name} / ${item.company}`).join("、")
+        : "暂无公开对标人脉样本";
+      return `
+        <li>
+          <strong>P${role.rank} ${role.title}</strong>
+          <ul>
+            <li><strong>公司池：</strong>${pool.core.slice(0, 4).join("、")}；中国/亚太：${pool.china.slice(0, 4).join("、")}</li>
+            <li><strong>公开样本：</strong>${matchText}</li>
+            <li><strong>对标人脉：</strong>${peopleText}</li>
+            <li><strong>关键词：</strong>${mappingKeywords(role).slice(0, 5).join(" / ")}</li>
+            <li><strong>下一步：</strong>按公司池查官网任命公告、垂直媒体 people moves 和监管披露，建立 30-40 人长名单。</li>
+          </ul>
+        </li>
+      `;
+    }
+
+    function summaryPeopleList(selected) {
+      const people = selected
+        .flatMap(role => benchmarkPeople
+          .filter(item => item.matchRoles.includes(role.id))
+          .slice(0, 3)
+          .map(item => ({ ...item, roleTitle: role.title })))
+        .filter((item, index, arr) => arr.findIndex(person => person.name === item.name && person.company === item.company) === index)
+        .slice(0, 8);
+
+      if (!people.length) return "<li>暂无匹配样本，建议先从公司官网 leadership 和垂直媒体任命新闻补充。</li>";
+
+      return people.map(item => `
+        <li>
+          <strong>${item.name}</strong> / ${item.company} / ${item.title}
+          <br><span>${item.roleTitle} 对标；建议路径：${item.contact}</span>
+        </li>
+      `).join("");
     }
 
     function mappingKeywords(role) {
@@ -1132,6 +1520,84 @@
           <div class="pipeline-step"><strong>首轮校准</strong><span>7 天内完成</span></div>
           <div class="pipeline-step"><strong>Shortlist</strong><span>${timeline.value} 天窗口</span></div>
         </div>
+        <h3>垂直媒体新闻源</h3>
+        <p><strong>用途：</strong>追踪高层人才变动、前任公司、加入原因、战略背景和同类公司的人才流向。</p>
+        <div class="two-col">
+          <div>
+            <p><strong>全球 biopharma 媒体：</strong></p>
+            <ul>${renderMediaList(mediaSources.global)}</ul>
+          </div>
+          <div>
+            <p><strong>细胞治疗/产业垂直媒体：</strong></p>
+            <ul>${renderMediaList(mediaSources.vertical)}</ul>
+          </div>
+        </div>
+        <p><strong>中国医药媒体与财经医药报道：</strong></p>
+        <ul>${renderMediaList(mediaSources.china)}</ul>
+        <p><strong>新闻搜索式：</strong></p>
+        <ul>
+          <li><code>"appointed" "chief medical officer" "cell therapy" "previously"</code></li>
+          <li><code>"joins" "global clinical development" "FDA" "EMA" biotech</code></li>
+          <li><code>"任命" "首席医学官" "曾任" "创新药"</code></li>
+          <li><code>"高管" "出任" "CEO" "曾任" "医药"</code></li>
+        </ul>
+        <h3>对标人脉与推荐联系路径</h3>
+        <p><strong>原则：</strong>先做信息访谈和关系验证，不一上来就“挖人”。LinkedIn 用来确认背景和轻触达，真正有效的入口通常是共同朋友、投资人、董事顾问、KOL、会议和服务商网络。</p>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>你要招的岗位</th>
+              <th>对标人脉</th>
+              <th>公司</th>
+              <th>公开职位</th>
+              <th>为什么相关</th>
+              <th>推荐联系方式</th>
+              <th>来源</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${renderBenchmarkPeopleMatches(selected)}
+          </tbody>
+        </table>
+        <h3>筛选与评估流程</h3>
+        <ol>
+          <li><strong>第一步：背景确认。</strong>只用公开资料确认现公司、职位、职责范围、任命新闻和过往公司，不批量抓取个人隐私数据。</li>
+          <li><strong>第二步：相关性分层。</strong>A 类是做过相似阶段结果的人；B 类是专业强但一号位经验不足的人；C 类只作行业信息源。</li>
+          <li><strong>第三步：关系路径判断。</strong>优先朋友/投资人/董事/医学专家转介绍，其次行业会议和信息访谈，最后才是 LinkedIn 轻触达。</li>
+          <li><strong>第四步：信息访谈。</strong>先问行业判断、组织能力、岗位难点，不直接谈 offer，观察其战略判断和表达质量。</li>
+          <li><strong>第五步：候选评估。</strong>进入候选池后要求 90 天落地计划，并按业务结果、阶段匹配、组织建设、动机和风险五项打分。</li>
+        </ol>
+        <h3>治理高管公开新闻样本</h3>
+        <p><strong>看法：</strong>治理相关岗位不要只看 title，要看“为什么此刻发生变动”：战略换挡、资本市场压力、商业化准备、董事会接管、创始人交棒或国际化运营升级。</p>
+        <p><strong>匹配到当前推荐岗位：</strong>下面这张表会随战略推荐变化，把公开样本匹配到你当前要招的人。</p>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>你要招的岗位</th>
+              <th>公开样本</th>
+              <th>匹配等级</th>
+              <th>为什么相关</th>
+              <th>来源</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${renderGovernanceMatches(selected)}
+          </tbody>
+        </table>
+        <p><strong>完整样本池：</strong></p>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>高管</th>
+              <th>公开流动事件</th>
+              <th>Mapping 启发</th>
+              <th>来源</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${renderGovernanceMoves()}
+          </tbody>
+        </table>
       `;
 
       mappingBoard.innerHTML = selected.map(role => {
@@ -1174,6 +1640,7 @@
       const roleItems = selected.map(role => `
         <li><strong>P${role.rank} ${role.title}：</strong>${role.reason}</li>
       `).join("");
+      const mappingItems = selected.map(roleMappingSummary).join("");
       const interviewItems = selected.map(role => `
         <li><strong>${role.title}：</strong>${role.interview}</li>
       `).join("");
@@ -1187,6 +1654,8 @@
         <p><strong>战略重点：</strong>${focusText[strategyFocus.value]}</p>
         <p><strong>业务缺口：</strong>${escapeHtml(gap.value.trim() || "尚未填写")}</p>
         <p><strong>团队基础：</strong>${escapeHtml(teamBase.value.trim() || "尚未填写")}</p>
+        <h3>优先对标人脉</h3>
+        <ul>${summaryPeopleList(selected)}</ul>
         <div class="tag-row">
           <span class="tag">战略牵引</span>
           <span class="tag blue">能力补位</span>
@@ -1198,6 +1667,8 @@
         <h3>推荐招聘顺序</h3>
         <ol>${roleItems}</ol>
         <p><strong>推荐逻辑：</strong>先补对战略结果影响最大的能力，再补让该能力可复制、可合规、可落地的支撑岗位。</p>
+        <h3>对应 Mapping 线索</h3>
+        <ol>${mappingItems}</ol>
       `;
 
       actionOutput.innerHTML = `
