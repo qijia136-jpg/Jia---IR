@@ -1,849 +1,853 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IASO 2026-2030人才战略报告</title>
-  <meta name="description" content="IASO 2026-2030人才战略报告：从本土生物科技到全球化跨国制药企业的战略转型规划">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+  <title>高管招聘工作台 | HR 专家助手</title>
+  <meta name="description" content="面向非 HR 高管的招聘指导工具：定义岗位、设计面试、评估候选人并管理招聘风险。">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #18202a;
+      --muted: #667085;
+      --line: #d9dee7;
+      --brand: #0f766e;
+      --brand-dark: #0b5f59;
+      --accent: #b54708;
+      --soft: #e9f7f5;
+      --warn: #fff4df;
+      --danger: #b42318;
+      --shadow: 0 18px 50px rgba(17, 24, 39, .08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 240px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    .brand-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .nav-tabs a {
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 14px;
+    }
+
+    .nav-tabs a:hover {
+      color: var(--brand-dark);
+      background: var(--soft);
+      border-color: #bfe7e1;
+    }
+
+    .hero {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 42px 24px 22px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      max-width: 760px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 740px;
+      margin: 0 0 26px;
+      color: #405060;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 14px;
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(17, 24, 39, .08);
+    }
+
+    .button.primary {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .button.ghost {
+      background: transparent;
+    }
+
+    .expert-panel {
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .expert-panel h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+
+    .expert-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .expert-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .check {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--brand-dark);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px 52px;
+    }
+
+    .section {
+      margin-top: 26px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .section-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 390px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 10px 30px rgba(17, 24, 39, .05);
+    }
+
+    .panel-pad {
+      padding: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: #26313d;
+      font-weight: 650;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cfd6e1;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 11px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, .13);
+    }
+
+    .inline-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .output-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 18px;
+    }
+
+    .output-card h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .output-card ul,
+    .output-card ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .output-card li + li {
+      margin-top: 7px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid #c7e7e2;
+      background: var(--soft);
+      color: var(--brand-dark);
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .step-card strong {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .step-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .score-table th,
+    .score-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .score-table th {
+      background: #edf4f3;
+      color: #203431;
+      font-size: 13px;
+    }
+
+    .score-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .warning {
+      border-left: 4px solid var(--accent);
+      background: var(--warn);
+    }
+
+    .redflag {
+      color: var(--danger);
+      font-weight: 750;
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .topbar-inner,
+      .hero-grid,
+      .workspace,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        display: grid;
+      }
+
+      .playbook-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner,
+      .hero,
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .inline-fields,
+      .playbook-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="lan-notice">
-    <p>📡 本页面已部署在局域网服务器，可通过 <code>http://[本地IP]:8000</code> 访问</p>
-  </div>
-  <div class="container">
-    <!-- 封面页 -->
-    <section class="cover-page">
-      <div class="cover-content">
-        <div class="company-logo">
-          <span class="logo-icon">🧬</span>
-          <h1 class="company-name">IASO</h1>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">HR</div>
+          <div>
+            <p class="brand-title">高管招聘工作台</p>
+            <p class="brand-subtitle">给非 HR 负责人的专业招聘导航</p>
+          </div>
         </div>
-        <h2 class="report-title">2026-2030人才战略报告</h2>
-        <h3 class="report-subtitle">从本土生物科技到全球化跨国制药企业</h3>
-        <div class="report-meta">
-          <p><strong>报告日期：</strong>2026年5月</p>
-          <p><strong>战略周期：</strong>2026-2030年</p>
-          <p><strong>版本：</strong>v2.0</p>
-        </div>
-        <div class="confidential">机密文档 - 仅限内部使用</div>
+        <nav class="nav-tabs" aria-label="页面导航">
+          <a href="#diagnosis">岗位诊断</a>
+          <a href="#playbook">招聘流程</a>
+          <a href="#interview">面试设计</a>
+          <a href="#scorecard">评估表</a>
+          <a href="#risk">风险清单</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- 导航 -->
-    <nav class="main-nav">
-      <div class="nav-container">
-        <div class="lang-switch">
-          <a href="en.html" class="lang-btn">English</a>
-        </div>
-        <div class="nav-menu">
-          <a href="#executive-summary">执行摘要</a>
-          <a href="#company-overview">公司概况</a>
-          <a href="#market-analysis">市场分析</a>
-          <a href="#strategic-goals">战略目标</a>
-          <a href="#talent-framework">人才框架</a>
-          <a href="#implementation">实施计划</a>
-          <a href="#kpis">关键指标</a>
-          <a href="#risks">风险评估</a>
-          <a href="#conclusion">结论</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- 执行摘要 -->
-    <section id="executive-summary" class="section">
-      <div class="section-header">
-        <span class="section-number">01</span>
-        <h2>执行摘要</h2>
-      </div>
-      <div class="executive-summary">
-        <div class="summary-highlight">
-          <h3>战略愿景</h3>
-          <p>到2030年，将完成从本土生物科技企业向初步具备全球竞争力的跨国制药企业的战略转型。</p>
-        </div>
-        <div class="summary-stats">
-          <div class="stat-item">
-            <div class="stat-number">5年</div>
-            <div class="stat-label">战略周期</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">7个</div>
-            <div class="stat-label">关键岗位</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">核心人才</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">3大</div>
-            <div class="stat-label">技术平台</div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>让业务高管也能像专业 HR 一样推进招聘。</h1>
+          <p class="hero-copy">把“我要招个人”拆成清晰的岗位定义、候选人画像、面试分工、评估标准和录用决策。适合 CEO、业务负责人、技术负责人和职能高管独立启动招聘。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#diagnosis">开始生成招聘方案</a>
+            <a class="button" href="#scorecard">查看评估标准</a>
           </div>
         </div>
-        <div class="summary-key-points">
-          <h3>核心战略</h3>
-          <ul>
-            <li><strong>技术转型：</strong>构建AI制药与细胞治疗双轮驱动的研发体系</li>
-            <li><strong>全球化布局：</strong>建立美欧亚三大研发与商业中心</li>
-            <li><strong>人才先行：</strong>打造具备全球视野的国际化人才梯队</li>
-            <li><strong>合规优先：</strong>确保FDA/EMA标准的全流程质量管理体系</li>
+        <aside class="expert-panel" aria-label="HR 专家原则">
+          <h2>HR 专家会先问的 4 个问题</h2>
+          <ul class="expert-list">
+            <li><span class="check">1</span><span>这个岗位解决的业务问题是什么，而不只是头衔是什么？</span></li>
+            <li><span class="check">2</span><span>哪些能力是入职第一年必须兑现的成果，哪些只是加分项？</span></li>
+            <li><span class="check">3</span><span>面试官如何分工，避免每个人都问一遍“自我介绍”？</span></li>
+            <li><span class="check">4</span><span>录用标准是否提前写清楚，避免最后只凭感觉拍板？</span></li>
           </ul>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <!-- 公司概况 -->
-    <section id="company-overview" class="section">
-      <div class="section-header">
-        <span class="section-number">02</span>
-        <h2>公司概况</h2>
-      </div>
-      <div class="overview-grid">
-        <div class="overview-card">
-          <h3>发展历程</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-year">2017</div>
-              <div class="timeline-content">IASO成立，专注于细胞治疗</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">2023</div>
-              <div class="timeline-content">首个CAR-T产品获批，开启商业化</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">2024-2025</div>
-              <div class="timeline-content">启动AI制药平台，布局国际化</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">2030</div>
-              <div class="timeline-content">完成全球化布局，成为跨国企业</div>
-            </div>
+    <main>
+      <section id="diagnosis" class="section">
+        <div class="section-head">
+          <div>
+            <h2>岗位诊断生成器</h2>
+            <p>填写基本信息，自动生成一份可执行的招聘作战单。</p>
           </div>
+          <button class="button ghost" type="button" id="resetBtn">清空</button>
         </div>
-        <div class="overview-card">
-          <h3>核心技术平台</h3>
-          <div class="tech-platforms">
-            <div class="platform-item">
-              <div class="platform-icon">🤖</div>
-              <h4>AI制药平台</h4>
-              <p>基于深度学习的小分子药物设计与优化</p>
-            </div>
-            <div class="platform-item">
-              <div class="platform-icon">🧬</div>
-              <h4>CAR-T平台</h4>
-              <p>In vivo CAR与外泌体递送技术</p>
-            </div>
-            <div class="platform-item">
-              <div class="platform-icon">🔬</div>
-              <h4>生物标志物平台</h4>
-              <p>精准医学与分子诊断协同</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 市场分析 -->
-    <section id="market-analysis" class="section">
-      <div class="section-header">
-        <span class="section-number">03</span>
-        <h2>市场环境分析</h2>
-      </div>
-      <div class="market-analysis">
-        <div class="market-trends">
-          <h3>行业发展趋势</h3>
-          <div class="trend-grid">
-            <div class="trend-card">
-              <h4>AI驱动创新</h4>
-              <p>AI技术正在重塑药物发现流程，预计2030年AI将参与80%的药物研发项目</p>
-            </div>
-            <div class="trend-card">
-              <h4>细胞治疗爆发</h4>
-              <p>全球细胞治疗市场规模将从2026年的50亿美元增长到2035年的500亿美元</p>
-            </div>
-            <div class="trend-card">
-              <h4>全球化竞争</h4>
-              <p>跨国药企正在加大对中国市场的投入，同时中国企业加速国际化</p>
-            </div>
-            <div class="trend-card">
-              <h4>监管趋严</h4>
-              <p>FDA/EMA对细胞治疗产品的监管要求日益严格，质量合规成为核心竞争力</p>
-            </div>
-          </div>
-        </div>
-        <div class="competitive-landscape">
-          <h3>竞争格局</h3>
-          <div class="competition-matrix">
-            <div class="matrix-quadrant">
-              <h4>区域性创新药公司</h4>
-              <p>IASO、传奇生物、科济生物、药明巨诺</p>
-              <small>IASO当前定位：区域性创新药公司，技术差异化领先，国际化加速中</small>
-            </div>
-            <div class="matrix-quadrant">
-              <h4>入门级 MNC 公司</h4>
-              <p>百济神州、康方生物、信达生物</p>
-              <small>已进入初步国际化阶段，向成熟MNC跃迁中</small>
-            </div>
-            <div class="matrix-quadrant">
-              <h4>成熟的 MNC 公司</h4>
-              <p>诺华、吉利德、百时美施贵宝</p>
-              <small>全球产品线完善，成熟运营体系</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="workspace">
+          <form class="panel panel-pad form-grid" id="jobForm">
+            <label>
+              岗位名称
+              <input id="roleName" value="全球临床运营负责人" placeholder="例如：销售总监、研发负责人、财务经理">
+            </label>
 
-    <!-- 战略目标 -->
-    <section id="strategic-goals" class="section">
-      <div class="section-header">
-        <span class="section-number">04</span>
-        <h2>战略目标</h2>
-      </div>
-      <div class="strategic-goals">
-        <div class="goals-summary">
-          <p>本阶段战略围绕“技术领先、国际化落地、组织赋能”三大支柱展开，确保IASO在2026-2030年期间实现从区域性创新药公司到具备国际影响力的跨国企业的转型。</p>
-        </div>
-        <div class="goals-timeline">
-          <h3>五年战略路线图</h3>
-          <div class="timeline-roadmap">
-            <div class="roadmap-phase">
-              <div class="phase-year">2026-2027</div>
-              <h4>Phase 1: 技术基础夯实</h4>
-              <ul>
-                <li>完成AI制药平台核心算法开发与数据治理体系落地</li>
-                <li>建立In vivo CAR临床前验证体系，启动首批关键候选药物项目</li>
-                <li>启动中美欧三地研发中心建设，形成区域协同创新网络</li>
-                <li>组建国际化核心管理团队，并开展中西方管理经验融合</li>
-                <li>建立首批国际合规与质量管理标准，支持后续海外申报</li>
-              </ul>
+            <div class="inline-fields">
+              <label>
+                岗位级别
+                <select id="roleLevel">
+                  <option>高管 / VP</option>
+                  <option>总监 / Head</option>
+                  <option>经理 / Lead</option>
+                  <option>专家 / IC</option>
+                </select>
+              </label>
+              <label>
+                紧急程度
+                <select id="urgency">
+                  <option>30 天内必须到 shortlist</option>
+                  <option>60 天内完成录用</option>
+                  <option>90 天内稳妥推进</option>
+                </select>
+              </label>
             </div>
-            <div class="roadmap-phase">
-              <div class="phase-year">2028-2029</div>
-              <h4>Phase 2: 全球化扩张</h4>
-              <ul>
-                <li>获得FDA/EMA关键产品批准，启动首批海外商业化准备</li>
-                <li>建立全球供应链体系与跨区域运营协同机制</li>
-                <li>完成商业化团队国际化，形成海外市场进入方案</li>
-                <li>强化本地化合作伙伴与渠道网络，提升市场准入速度</li>
-                <li>实现国际市场收入占比大幅提升，验证全球化商业模式</li>
-              </ul>
-            </div>
-            <div class="roadmap-phase">
-              <div class="phase-year">2029-2030</div>
-              <h4>Phase 3: 领导地位确立</h4>
-              <ul>
-                <li>成为AI+细胞治疗领域具备国际竞争力的领先企业</li>
-                <li>建立完整的全球化运营体系与全球人才梯队</li>
-                <li>培育世界级科学家团队，形成一批具有国际影响力的技术成果</li>
-                <li>实现可持续发展商业模式，并在关键市场形成品牌认知</li>
-                <li>构建企业文化与组织能力，确保长期稳定增长</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    </section>
 
-    <!-- 人才战略框架 -->
-    <section id="talent-framework" class="section">
-      <div class="section-header">
-        <span class="section-number">05</span>
-        <h2>人才战略框架</h2>
-      </div>
-      <div class="talent-framework">
-        <div class="framework-overview">
-          <h3>人才战略定位</h3>
-          <p>构建"技术驱动+全球化视野"的复合型人才体系，实现从本土企业到跨国公司的华丽转身。</p>
-        </div>
-        <div class="talent-portrait">
-          <h3>核心人才画像</h3>
-          <div class="portrait-grid">
-            <div class="portrait-card">
-              <div class="portrait-icon">🌍</div>
-              <h4>全球视野</h4>
-              <p>在欧美与亚太之间无缝切换，兼顾国际标准与本地执行速度</p>
-            </div>
-            <div class="portrait-card">
-              <div class="portrait-icon">⚖️</div>
-              <h4>合规思维</h4>
-              <p>深入理解GxP、ICH、FDA/EMA要求，确保全球项目质量可控</p>
-            </div>
-            <div class="portrait-card">
-              <div class="portrait-icon">🔄</div>
-              <h4>技术商业转化</h4>
-              <p>将前沿科研转化为可执行的产品策略与商业方案</p>
-            </div>
-            <div class="portrait-card">
-              <div class="portrait-icon">👑</div>
-              <h4>领导执行力</h4>
-              <p>从战略规划到组织建设再到落地执行形成完整闭环</p>
-            </div>
-          </div>
-        </div>
-        <div class="talent-pyramid">
-          <h3>人才金字塔结构</h3>
-          <div class="pyramid-container">
-            <div class="pyramid-row pyramid-top">
-              <div class="pyramid-level executive">
-                <div class="level-count">5-8人</div>
-                <h4>执行层</h4>
-                <p>CEO、CTO、CFO等核心决策者</p>
-                <small>国际化视野，战略决策能力</small>
-              </div>
-            </div>
-            <div class="pyramid-row pyramid-middle">
-              <div class="pyramid-level senior">
-                <div class="level-count">50-80人</div>
-                <h4>高级管理层</h4>
-                <p>VP级别，部门负责人</p>
-                <small>业务领导力，跨部门协作</small>
-              </div>
-            </div>
-            <div class="pyramid-row pyramid-middle">
-              <div class="pyramid-level middle">
-                <div class="level-count">200-300人</div>
-                <h4>中级管理层</h4>
-                <p>总监、经理级别</p>
-                <small>专业技术，项目管理</small>
-              </div>
-            </div>
-            <div class="pyramid-row pyramid-base">
-              <div class="pyramid-level specialist">
-                <div class="level-count">500+人</div>
-                <h4>专业技术人才</h4>
-                <p>科学家、工程师、临床专家</p>
-                <small>技术专精，创新能力</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <label>
+              业务目标
+              <textarea id="businessGoal">搭建国际多中心临床运营体系，确保欧美及亚太临床试验按质量、预算和时间节点交付。</textarea>
+            </label>
 
-    <!-- 实施计划 -->
-    <section id="implementation" class="section">
-      <div class="section-header">
-        <span class="section-number">06</span>
-        <h2>实施计划</h2>
-      </div>
-      <div class="implementation-plan">
-        <div class="implementation-overview">
-          <h3>关键岗位规划</h3>
-          <p>本报告明确列出7个核心岗位，覆盖AI研发、细胞治疗、临床、医学、供应链、商业化与财务，形成从技术到市场的完整人才闭环。</p>
-          <div class="role-summary">
-            <h4>7个关键岗位</h4>
+            <label>
+              必须具备的经验
+              <textarea id="mustHave">ICH-GCP、多区域临床试验、CRO 管理、FDA/EMA 沟通、跨文化团队管理</textarea>
+            </label>
+
+            <label>
+              团队现状
+              <select id="teamStage">
+                <option>从 0 到 1 搭建团队</option>
+                <option>已有团队但能力不足</option>
+                <option>替换关键负责人</option>
+                <option>扩张期补强管理层</option>
+              </select>
+            </label>
+
+            <button class="button primary" type="submit">生成招聘方案</button>
+          </form>
+
+          <div class="result-grid" aria-live="polite">
+            <article class="output-card" id="profileOutput"></article>
+            <article class="output-card" id="processOutput"></article>
+            <article class="output-card warning" id="decisionOutput"></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="playbook" class="section">
+        <div class="section-head">
+          <div>
+            <h2>非 HR 高管的招聘流程</h2>
+            <p>不要从“发 JD”开始，从业务问题和判断标准开始。</p>
+          </div>
+        </div>
+        <div class="playbook-grid">
+          <article class="step-card">
+            <strong>1</strong>
+            <h3>定义成功</h3>
+            <p>写出入职 6-12 个月必须完成的 3 个业务成果，用成果倒推能力。</p>
+          </article>
+          <article class="step-card">
+            <strong>2</strong>
+            <h3>校准画像</h3>
+            <p>把经验拆成必须项、可培养项和文化匹配项，减少“完美候选人”幻想。</p>
+          </article>
+          <article class="step-card">
+            <strong>3</strong>
+            <h3>设计面试</h3>
+            <p>让每位面试官只负责 1-2 个维度，使用行为问题和案例题取证。</p>
+          </article>
+          <article class="step-card">
+            <strong>4</strong>
+            <h3>做出决策</h3>
+            <p>用同一张评分表比较候选人，先讨论证据，再讨论个人偏好。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="interview" class="section">
+        <div class="section-head">
+          <div>
+            <h2>面试问题库</h2>
+            <p>适合高管直接使用，每个问题都对应一个判断维度。</p>
+          </div>
+        </div>
+        <div class="two-col">
+          <article class="output-card">
+            <h3>业务能力取证</h3>
+            <ol>
+              <li>请讲一个你接手复杂业务目标后，把目标拆成团队行动的案例。你的第一周做了什么？</li>
+              <li>上一份工作中，你最难推动的跨部门合作是什么？阻力来自哪里，你如何处理？</li>
+              <li>如果入职后发现资源比承诺少 30%，你会如何重新排序目标？</li>
+              <li>请拿一个失败项目举例：你当时判断错了什么，后来如何修正？</li>
+            </ol>
+          </article>
+          <article class="output-card">
+            <h3>领导力与动机取证</h3>
+            <ol>
+              <li>你最擅长带什么类型的人？最不擅长带什么类型的人？</li>
+              <li>当老板和团队对优先级判断相反时，你如何向上管理？</li>
+              <li>你为什么愿意离开现在的平台？你下一阶段真正想获得什么？</li>
+              <li>请描述一个你主动放弃短期利益、保护长期组织能力的决定。</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="scorecard" class="section">
+        <div class="section-head">
+          <div>
+            <h2>候选人评估表</h2>
+            <p>建议所有面试官按同一标准打分，5 分代表有明确证据支撑。</p>
+          </div>
+        </div>
+        <div class="panel">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>维度</th>
+                <th>权重</th>
+                <th>看什么证据</th>
+                <th>低分信号</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>业务成果匹配</td>
+                <td>30%</td>
+                <td>过去是否做成过相似规模、阶段和复杂度的事情。</td>
+                <td>只讲参与，不讲自己负责的结果。</td>
+              </tr>
+              <tr>
+                <td>关键专业能力</td>
+                <td>25%</td>
+                <td>是否掌握岗位不可替代的硬技能、方法论和判断框架。</td>
+                <td>概念熟悉，但无法解释具体决策。</td>
+              </tr>
+              <tr>
+                <td>领导与协作</td>
+                <td>20%</td>
+                <td>能否影响资源、建设团队、处理冲突并承担结果。</td>
+                <td>把问题主要归因于上级、同事或环境。</td>
+              </tr>
+              <tr>
+                <td>动机与稳定性</td>
+                <td>15%</td>
+                <td>加入原因是否与公司阶段、岗位挑战和个人追求一致。</td>
+                <td>只被薪酬、头衔或短期机会驱动。</td>
+              </tr>
+              <tr>
+                <td>文化与价值观</td>
+                <td>10%</td>
+                <td>决策方式、沟通习惯、风险偏好是否适配组织。</td>
+                <td>对透明反馈、流程约束或团队协作明显排斥。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="risk" class="section">
+        <div class="section-head">
+          <div>
+            <h2>招聘风险清单</h2>
+            <p>高管招聘最容易贵在“看起来对”，真正风险通常在证据不足处。</p>
+          </div>
+        </div>
+        <div class="two-col">
+          <article class="output-card">
+            <h3>必须追问的红旗</h3>
             <ul>
-              <li>AI制药平台负责人</li>
-              <li>细胞治疗技术总监</li>
-              <li>全球临床开发总监</li>
-              <li>医学事务副总裁</li>
-              <li>全球供应链总监</li>
-              <li>商业化副总裁</li>
-              <li>财务规划总监</li>
+              <li><span class="redflag">成果归属不清：</span>候选人说“我们做了”，但无法说明自己的决策和贡献。</li>
+              <li><span class="redflag">频繁跳槽无逻辑：</span>每次离开都归因于外部问题，缺少自我复盘。</li>
+              <li><span class="redflag">只会大平台：</span>资源丰富时表现好，但没有在不确定环境里搭体系的证据。</li>
+              <li><span class="redflag">管理语言空泛：</span>讲价值观很多，讲具体管理动作很少。</li>
             </ul>
-          </div>
+          </article>
+          <article class="output-card">
+            <h3>录用前检查</h3>
+            <ul>
+              <li>至少完成 2 位与候选人共事过的背调，不只找候选人提供的推荐人。</li>
+              <li>确认薪酬、奖金、股权、汇报线、决策权限和试用期目标。</li>
+              <li>要求候选人提交 90 天入职计划，用它校验思考质量。</li>
+              <li>提前约定 30/60/90 天复盘机制，避免入职后才发现期待不一致。</li>
+            </ul>
+          </article>
         </div>
-        <div class="key-roles">
-          <div class="role-category">
-            <h4>技术创新岗位</h4>
-            <div class="role-item">
-              <h5>AI制药平台负责人</h5>
-              <p>统筹AI药物发现平台建设，推动算法、数据和产品化落地。</p>
-              <div class="role-requirements">
-                <span class="req-item">博士学位</span>
-                <span class="req-item">AI/ML背景</span>
-                <span class="req-item">药物化学经验</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>构建药物发现算法架构，实施数据治理与模型验证；实现AI平台与实验平台的闭环协同。</p>
-                <p><strong>关键成果：</strong>平台算法成熟度达标、候选分子产出速度提升、数据可复现性提升。</p>
-              </div>
-            </div>
-            <div class="role-item">
-              <h5>细胞治疗技术总监</h5>
-              <p>负责CAR-T与新型细胞治疗技术的研发转化与技术转移。</p>
-              <div class="role-requirements">
-                <span class="req-item">免疫学博士</span>
-                <span class="req-item">临床前经验</span>
-                <span class="req-item">FDA申报经验</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>领导细胞治疗项目技术路线，推进工艺开发与质量一致性；协调研发与CMC团队。</p>
-                <p><strong>关键成果：</strong>关键候选药物IND提交进度、工艺转移成功率、质量一致性指标。</p>
-              </div>
-            </div>
-          </div>
-          <div class="role-category">
-            <h4>临床医学岗位</h4>
-            <div class="role-item">
-              <h5>全球临床开发总监</h5>
-              <p>定义国际临床试验方案，管理多中心试验执行。</p>
-              <div class="role-requirements">
-                <span class="req-item">医学博士</span>
-                <span class="req-item">ICH-GCP认证</span>
-                <span class="req-item">多区域经验</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>制定全球临床战略，管理CRO、伦理和监管沟通，确保试验数据质量。</p>
-                <p><strong>关键成果：</strong>入组进度、试验数据合规性、关键里程碑按期达成。</p>
-              </div>
-            </div>
-            <div class="role-item">
-              <h5>医学事务副总裁</h5>
-              <p>负责全球医学策略、KOL关系与出版计划。</p>
-              <div class="role-requirements">
-                <span class="req-item">临床医学背景</span>
-                <span class="req-item">肿瘤学专科</span>
-                <span class="req-item">国际网络</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>制定医学传播策略，构建关键意见领袖网络，支持注册和市场准入。</p>
-                <p><strong>关键成果：</strong>KOL覆盖率、临床案例传播效果、医学会发表和审评反馈。</p>
-              </div>
-            </div>
-          </div>
-          <div class="role-category">
-            <h4>商业运营岗位</h4>
-            <div class="role-item">
-              <h5>全球供应链总监</h5>
-              <p>构建跨区域供应链与质量管理体系，保障项目生产供应。</p>
-              <div class="role-requirements">
-                <span class="req-item">供应链管理经验</span>
-                <span class="req-item">GMP合规</span>
-                <span class="req-item">国际物流</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>负责供应商选择、物流网络与GMP现场管理，确保全球项目按时供给。</p>
-                <p><strong>关键成果：</strong>供应连续性、审计合规率、材料成本控制。</p>
-              </div>
-            </div>
-            <div class="role-item">
-              <h5>商业化副总裁</h5>
-              <p>驱动国际市场准入和商业化执行，推动产品快速落地。</p>
-              <div class="role-requirements">
-                <span class="req-item">商业化经验</span>
-                <span class="req-item">市场准入知识</span>
-                <span class="req-item">跨文化领导</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>制定全球商业策略，协调本地市场团队、渠道和定价策略。</p>
-                <p><strong>关键成果：</strong>市场准入计划、产品上市准备程度、渠道覆盖率。</p>
-              </div>
-            </div>
-            <div class="role-item">
-              <h5>财务规划总监</h5>
-              <p>负责全球化预算、资本运作与绩效评估。</p>
-              <div class="role-requirements">
-                <span class="req-item">CFO经验</span>
-                <span class="req-item">国际会计准则</span>
-                <span class="req-item">资本运作</span>
-              </div>
-              <div class="role-details">
-                <p><strong>核心职责：</strong>构建全球财务模型，支持战略投资决策与ROI评估。</p>
-                <p><strong>关键成果：</strong>预算达成率、资本效率、培训与招聘投资回报。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="recruitment-strategy">
-          <h3>招聘策略</h3>
-          <div class="strategy-overview">
-            <p>基于全球化战略布局，制定精准的人才获取策略，确保关键岗位及时到位</p>
-          </div>
-          <div class="strategy-sections">
-            <div class="strategy-section">
-              <h4>🎯 需求分布</h4>
-              <div class="demand-distribution">
-                <div class="demand-region">
-                  <h5>北美地区 (30%)</h5>
-                  <p>重点招聘FDA/EMA申报经验丰富的临床开发、法规事务和商业化人才</p>
-                  <small>目标公司：辉瑞、默沙东、诺华、强生等大型制药企业</small>
-                </div>
-                <div class="demand-region">
-                  <h5>欧洲地区 (25%)</h5>
-                  <p>聚焦EMA认证体系和欧洲市场准入的专业人才</p>
-                  <small>目标公司：阿斯利康、赛诺菲、罗氏等欧洲制药巨头</small>
-                </div>
-                <div class="demand-region">
-                  <h5>亚太地区 (30%)</h5>
-                  <p>招聘具备中美欧三地工作经验的复合型人才</p>
-                  <small>目标公司：武田制药、卫材、第一三共等日企，以及本土创新药企</small>
-                </div>
-                <div class="demand-region">
-                  <h5>中国大陆 (15%)</h5>
-                  <p>补充AI技术、细胞治疗和临床研究的本土优秀人才</p>
-                  <small>目标来源：中科院、清华大学、上海交大等顶尖科研机构</small>
-                </div>
-              </div>
-            </div>
-            <div class="strategy-section">
-              <h4>🚀 招聘策略</h4>
-              <div class="recruitment-tactics">
-                <div class="tactic-item">
-                  <h5>精准猎头策略</h5>
-                  <p>与顶级猎头公司建立战略合作，针对性挖掘目标公司的核心人才</p>
-                  <ul>
-                    <li>建立专属人才数据库，持续追踪目标候选人</li>
-                    <li>提供具有竞争力的薪酬包和股权激励</li>
-                    <li>强调IASO的创新平台和国际化发展机会</li>
-                  </ul>
-                </div>
-                <div class="tactic-item">
-                  <h5>内部推荐计划</h5>
-                  <p>激活现有员工网络，挖掘潜在的高质量候选人</p>
-                  <ul>
-                    <li>设立丰厚推荐奖金，鼓励员工推荐优秀人才</li>
-                    <li>建立内部人才推荐系统和快速响应机制</li>
-                    <li>针对核心岗位实施"朋友圈"深度挖掘</li>
-                  </ul>
-                </div>
-                <div class="tactic-item">
-                  <h5>校园招聘升级</h5>
-                  <p>提前布局顶尖高校，培养国际化视野的年轻人才</p>
-                  <ul>
-                    <li>与哈佛、斯坦福、剑桥等建立校企合作关系</li>
-                    <li>设立国际化培养项目和海外实习机会</li>
-                    <li>提供博士后科研项目和联合培养计划</li>
-                  </ul>
-                </div>
-                <div class="tactic-item">
-                  <h5>生态圈渗透</h5>
-                  <p>深度参与行业生态，扩大人才获取渠道</p>
-                  <ul>
-                    <li>加入国际制药协会和行业联盟</li>
-                    <li>举办高端学术会议和行业论坛</li>
-                    <li>建立与CRO、CDMO企业的战略合作关系</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 关键绩效指标 -->
-    <section id="kpis" class="section">
-      <div class="section-header">
-        <span class="section-number">07</span>
-        <h2>关键绩效指标</h2>
-      </div>
-      <div class="kpi-dashboard">
-        <div class="kpi-overview">
-          <h3>战略目标达成度量</h3>
-          <p>通过量化指标确保战略执行的有效性</p>
-        </div>
-        <div class="kpi-categories">
-          <div class="kpi-category">
-            <h4>人才建设指标</h4>
-            <div class="kpi-metrics">
-              <div class="metric-item">
-                <div class="metric-name">国际化人才比例</div>
-                <div class="metric-target">2028: 30% | 2030: 50%</div>
-                <div class="metric-note">衡量IASO团队中具备海外教育、海外项目经验或国际化管理背景的人才占比。</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">核心岗位满意度</div>
-                <div class="metric-target">年度目标: ≥85%</div>
-                <div class="metric-note">通过关键岗位员工调研、岗位保留率和绩效反馈综合评分。</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">人才培养投资回报率</div>
-                <div class="metric-target">ROI ≥ 300%</div>
-                <div class="metric-note">计算方式：=(新增产能产出+节省外部招聘成本-培养投入成本)/培养投入成本。</div>
-              </div>
-            </div>
-          </div>
-          <div class="kpi-category">
-            <h4>业务发展指标</h4>
-            <div class="kpi-metrics">
-              <div class="metric-item">
-                <div class="metric-name">新药研发管线</div>
-                <div class="metric-target">2028: 5个候选药物 | 2030: 10个</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">国际市场收入占比</div>
-                <div class="metric-target">2028: 20% | 2030: 40%</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">FDA/EMA批准产品</div>
-                <div class="metric-target">2030年前获得首个海外批准</div>
-              </div>
-            </div>
-          </div>
-          <div class="kpi-category">
-            <h4>组织能力指标</h4>
-            <div class="kpi-metrics">
-              <div class="metric-item">
-                <div class="metric-name">合规审计通过率</div>
-                <div class="metric-target">≥98%</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">跨部门协作效率</div>
-                <div class="metric-target">项目延期率 ≤5%</div>
-                <div class="metric-note">通过任务闭环率、关键节点准时交付率和跨部门满意度综合评分。</div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-name">员工敬业度指数</div>
-                <div class="metric-target">≥4.0/5.0</div>
-                <div class="metric-note">基于年度敬业度调查、参与率≥75%与关键岗位离职率≤8%的综合评分。</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="kpi-monitoring">
-          <h3>监控与评估机制</h3>
-          <div class="monitoring-framework">
-            <div class="monitoring-item">
-              <h4>季度评审</h4>
-              <p>各部门汇报关键指标达成情况，识别潜在风险</p>
-            </div>
-            <div class="monitoring-item">
-              <h4>年度评估</h4>
-              <p>全面评估战略目标达成度，调整下一年度计划</p>
-            </div>
-            <div class="monitoring-item">
-              <h4>里程碑审查</h4>
-              <p>对关键节点进行专项审计，确保合规与质量</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 风险评估 -->
-    <section id="risks" class="section">
-      <div class="section-header">
-        <span class="section-number">08</span>
-        <h2>风险评估</h2>
-      </div>
-      <div class="risk-assessment">
-        <div class="risk-overview">
-          <h3>主要风险识别</h3>
-          <p>系统性识别全球化转型过程中的关键风险，并制定应对策略</p>
-        </div>
-        <div class="risk-matrix">
-          <div class="risk-category">
-            <h4>人才风险</h4>
-            <div class="risk-item high-risk">
-              <h5>核心人才流失</h5>
-              <p>国际化高管与技术专家流失导致项目中断</p>
-              <div class="risk-level">高风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>实施股权激励、建立人才梯队、优化企业文化
-              </div>
-            </div>
-            <div class="risk-item medium-risk">
-              <h5>招聘困难</h5>
-              <p>全球化背景下难以招聘具备复合技能的人才</p>
-              <div class="risk-level">中风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>建立海外招聘网络、加强内部培养、与顶尖院校合作
-              </div>
-            </div>
-          </div>
-          <div class="risk-category">
-            <h4>技术风险</h4>
-            <div class="risk-item high-risk">
-              <h5>技术路线失败</h5>
-              <p>AI制药或细胞治疗技术研发失败</p>
-              <div class="risk-level">高风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>多元化技术投资、阶段性里程碑评估、外部合作
-              </div>
-            </div>
-            <div class="risk-item medium-risk">
-              <h5>知识产权纠纷</h5>
-              <p>技术专利保护不力导致核心技术泄露</p>
-              <div class="risk-level">中风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>加强知识产权管理体系、国际专利布局
-              </div>
-            </div>
-          </div>
-          <div class="risk-category">
-            <h4>合规风险</h4>
-            <div class="risk-item high-risk">
-              <h5>监管审批失败</h5>
-              <p>FDA/EMA审批标准不达标导致产品无法上市</p>
-              <div class="risk-level">高风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>提前建立合规体系、聘请国际专家顾问、模拟审批流程
-              </div>
-            </div>
-            <div class="risk-item medium-risk">
-              <h5>质量事故</h5>
-              <p>生产质量问题导致产品召回或临床暂停</p>
-              <div class="risk-level">中风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>实施全面质量管理体系、建立应急响应机制
-              </div>
-            </div>
-          </div>
-          <div class="risk-category">
-            <h4>市场风险</h4>
-            <div class="risk-item medium-risk">
-              <h5>市场竞争加剧</h5>
-              <p>竞争对手技术突破或市场策略变化</p>
-              <div class="risk-level">中风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>持续技术创新、差异化市场定位、战略联盟
-              </div>
-            </div>
-            <div class="risk-item low-risk">
-              <h5>经济波动</h5>
-              <p>全球经济衰退影响药品需求与融资</p>
-              <div class="risk-level">低风险</div>
-              <div class="mitigation">
-                <strong>应对策略：</strong>多元化融资渠道、现金流管理、灵活定价策略
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="risk-management">
-          <h3>风险管理框架</h3>
-          <div class="management-framework">
-            <div class="framework-item">
-              <h4>识别与评估</h4>
-              <p>定期进行风险识别，量化风险影响与发生概率</p>
-            </div>
-            <div class="framework-item">
-              <h4>监控与预警</h4>
-              <p>建立风险监控指标体系，设置预警阈值</p>
-            </div>
-            <div class="framework-item">
-              <h4>应对与缓解</h4>
-              <p>制定详细的风险应对预案，确保快速响应</p>
-            </div>
-            <div class="framework-item">
-              <h4>审查与改进</h4>
-              <p>定期审查风险管理效果，持续优化策略</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 结论 -->
-    <section id="conclusion" class="section">
-      <div class="section-header">
-        <span class="section-number">09</span>
-        <h2>结论</h2>
-      </div>
-      <div class="conclusion-content">
-        <div class="conclusion-summary">
-          <h3>战略执行路径</h3>
-          <p>IASO的2030-2035人才战略是一个系统性工程，需要全公司上下的共同努力。通过构建国际化人才体系、夯实技术创新能力、完善合规管理体系，我们有信心在5年内完成从本土生物科技企业到全球化跨国制药企业的华丽转身。</p>
-        </div>
-        <div class="success-factors">
-          <h3>成功关键要素</h3>
-          <div class="factors-grid">
-            <div class="factor-item">
-              <div class="factor-icon">👥</div>
-              <h4>领导力</h4>
-              <p>高层领导的坚定决心与亲自推动是战略成功的基础</p>
-            </div>
-            <div class="factor-item">
-              <div class="factor-icon">🎯</div>
-              <h4>执行力</h4>
-              <p>将战略目标分解为可操作的具体行动计划</p>
-            </div>
-            <div class="factor-item">
-              <div class="factor-icon">🔄</div>
-              <h4>适应性</h4>
-              <p>在执行过程中灵活调整策略，应对外部变化</p>
-            </div>
-            <div class="factor-item">
-              <div class="factor-icon">🤝</div>
-              <h4>协同性</h4>
-              <p>打破部门壁垒，形成跨职能的协作机制</p>
-            </div>
-          </div>
-        </div>
-        <div class="call-to-action">
-          <h3>行动号召</h3>
-          <p>人才战略的实施需要每一位员工的参与。我们期待与所有同事一起，共同书写IASO国际化发展的新篇章。</p>
-          <div class="action-buttons">
-            <a href="#implementation" class="action-btn primary">查看实施计划</a>
-            <a href="#kpis" class="action-btn secondary">了解关键指标</a>
-          </div>
-        </div>
-        <div class="report-footer">
-          <p><strong>报告编制：</strong>IASO人力资源部 | <strong>审批日期：</strong>2026年5月 | <strong>有效期：</strong>至2035年12月</p>
-          <p><em>本报告为机密文件，仅限IASO内部使用。未经授权，不得复制、传播或公开。</em></p>
-        </div>
-      </div>
-    </section>
-
+      <p class="footer">本工具用于招聘管理参考，具体劳动合规、薪酬税务和背景调查请结合当地法规与公司制度执行。</p>
+    </main>
   </div>
-</body>
-</html>
-            <li>构建国际竞争力的创新研发体系。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>AI制药研发端负责人</h3>
-          <p>把AI能力转化为实际管线推进与IND落地。</p>
-          <ul>
-            <li>搭建计算生物与AI药物发现平台。</li>
-            <li>将生物问题翻译为AIDD可解方案。</li>
-            <li>推动AI在靶点与载体设计中的落地。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>全球临床运营负责人</h3>
-          <p>主导国际多中心临床流程与质量管理。</p>
-          <ul>
-            <li>组建双语全球临床运营团队。</li>
-            <li>确保GCP/ICH/FDA/EMA合规执行。</li>
-            <li>推动欧美及亚太试验高质量落地。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>全球医学事务负责人</h3>
-          <p>负责全球医学战略与RWE学术网络。</p>
-          <ul>
-            <li>制定欧美、日韩及东南亚医学规划。</li>
-            <li>构建全球KOL与学术影响力。</li>
-            <li>支持海外医学推广与准入。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>全球供应链负责人</h3>
-          <p>保障细胞治疗冷链交付与全球供应稳定。</p>
-          <ul>
-            <li>搭建全球冷链物流与仓储体系。</li>
-            <li>优化跨国CDMO协同效率。</li>
-            <li>确保临床与商业供给稳定。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>全球商业化负责人</h3>
-          <p>推进自建与代理并举的海外商业化模式。</p>
-          <ul>
-            <li>制定差异化海外市场策略。</li>
-            <li>深度绑定顶级代理与分销伙伴。</li>
-            <li>提升全球市场销售转化。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>CFO</h3>
-          <p>为上市与全球资本运作提供财务战略支持。</p>
-          <ul>
-            <li>主导国际资本市场与上市规划。</li>
-            <li>构建跨境税务与内控体系。</li>
-            <li>保障财务合规与资本执行。</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="note">
-        <strong>说明：</strong>
-        页面已剔除冗余内容，仅保留战略关键点与核心岗位信息。
-      </div>
-    </section>
-  </div>
+  <script>
+    const form = document.querySelector("#jobForm");
+    const resetBtn = document.querySelector("#resetBtn");
+    const roleName = document.querySelector("#roleName");
+    const roleLevel = document.querySelector("#roleLevel");
+    const urgency = document.querySelector("#urgency");
+    const businessGoal = document.querySelector("#businessGoal");
+    const mustHave = document.querySelector("#mustHave");
+    const teamStage = document.querySelector("#teamStage");
+    const profileOutput = document.querySelector("#profileOutput");
+    const processOutput = document.querySelector("#processOutput");
+    const decisionOutput = document.querySelector("#decisionOutput");
+
+    function splitItems(value) {
+      return value
+        .split(/[、,，;；\n]/)
+        .map(item => item.trim())
+        .filter(Boolean)
+        .slice(0, 8);
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    function stageAdvice(stage) {
+      const advice = {
+        "从 0 到 1 搭建团队": "优先找有搭建经验的人，面试重点放在体系设计、招聘下属、流程落地和资源受限情况下的取舍能力。",
+        "已有团队但能力不足": "优先找能诊断团队能力并带教升级的人，面试重点放在组织盘点、绩效管理和变革沟通。",
+        "替换关键负责人": "优先控制信息风险和过渡风险，面试重点放在接盘复杂局面、稳定团队和快速建立信任。",
+        "扩张期补强管理层": "优先找能复制方法、培养梯队和跨区域协同的人，面试重点放在规模化管理和机制建设。"
+      };
+      return advice[stage] || advice["从 0 到 1 搭建团队"];
+    }
+
+    function urgencyAdvice(value) {
+      if (value.includes("30")) return "节奏建议：第 1 周完成岗位校准和目标公司清单，第 2-3 周集中面试，第 4 周做终面、背调和 offer。";
+      if (value.includes("60")) return "节奏建议：前 2 周校准画像和渠道，第 3-6 周面试比较，第 7-8 周完成终面、背调和 offer。";
+      return "节奏建议：先做 2 周市场摸底，再用 6-8 周稳定面试，最后 2 周完成决策和谈薪。";
+    }
+
+    function renderPlan() {
+      const role = escapeHtml(roleName.value.trim() || "目标岗位");
+      const level = escapeHtml(roleLevel.value);
+      const goal = escapeHtml(businessGoal.value.trim() || "完成关键业务目标");
+      const skills = splitItems(mustHave.value).map(escapeHtml);
+      const skillTags = skills.map(skill => `<span class="tag">${skill}</span>`).join("");
+
+      profileOutput.innerHTML = `
+        <h3>岗位画像 <span class="tag">${level}</span></h3>
+        <p><strong>${role}</strong> 的招聘不应只看履历头衔，而要验证候选人能否推动这件事：${goal}</p>
+        <ul>
+          <li><strong>首要成果：</strong>请把入职 6-12 个月的目标写成可验收结果，而不是职责描述。</li>
+          <li><strong>核心能力：</strong>${skills.length ? "必须围绕这些经验逐项取证：" : "请补充必须具备的经验。"} </li>
+          <li><strong>团队阶段：</strong>${stageAdvice(teamStage.value)}</li>
+        </ul>
+        <div class="tag-row">${skillTags}</div>
+      `;
+
+      processOutput.innerHTML = `
+        <h3>招聘推进建议</h3>
+        <ol>
+          <li><strong>开工会：</strong>业务负责人、HR、直属上级先对齐岗位成功标准和薪酬空间。</li>
+          <li><strong>渠道策略：</strong>列出 15-25 家目标公司，优先找做过相似阶段的人。</li>
+          <li><strong>面试分工：</strong>直属上级看业务成果，专业负责人看硬技能，HR 看动机、薪酬和风险。</li>
+          <li><strong>终面材料：</strong>要求候选人带来 90 天行动计划，评估其判断、优先级和沟通方式。</li>
+        </ol>
+        <p>${urgencyAdvice(urgency.value)}</p>
+      `;
+
+      decisionOutput.innerHTML = `
+        <h3>录用决策提醒</h3>
+        <ul>
+          <li>不要因为“背景很强”跳过证据验证。强公司、强头衔不等于能解决你的当前问题。</li>
+          <li>每位面试官必须写下支持录用或反对录用的具体证据。</li>
+          <li>最终比较候选人时，先看岗位成功概率，再看个人喜好和沟通舒适度。</li>
+        </ul>
+      `;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      renderPlan();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      form.reset();
+      roleName.value = "";
+      businessGoal.value = "";
+      mustHave.value = "";
+      renderPlan();
+    });
+
+    renderPlan();
+  </script>
 </body>
 </html>
