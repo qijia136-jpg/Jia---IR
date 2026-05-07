@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>高管招聘工作台 | HR 专家助手</title>
-  <meta name="description" content="面向非 HR 高管的招聘指导工具：定义岗位、设计面试、评估候选人并管理招聘风险。">
+  <title>IASO 战略招聘推荐 Agent</title>
+  <meta name="description" content="结合公司战略、业务阶段和能力缺口，为非 HR 高管推荐招聘岗位、优先级、候选人画像与面试验证重点。">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f7f9;
+      --bg: #f5f7f8;
       --panel: #ffffff;
-      --ink: #18202a;
-      --muted: #667085;
-      --line: #d9dee7;
+      --ink: #16212b;
+      --muted: #64717d;
+      --line: #d8dee6;
       --brand: #0f766e;
       --brand-dark: #0b5f59;
-      --accent: #b54708;
+      --blue: #22577a;
+      --amber: #9a5b00;
+      --red: #b42318;
       --soft: #e9f7f5;
-      --warn: #fff4df;
-      --danger: #b42318;
-      --shadow: 0 18px 50px rgba(17, 24, 39, .08);
+      --soft-blue: #edf5fa;
+      --warn: #fff5df;
+      --shadow: 0 18px 48px rgba(17, 24, 39, .08);
       --radius: 8px;
     }
 
@@ -27,12 +29,18 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        linear-gradient(180deg, rgba(233, 247, 245, .75), rgba(245, 247, 248, 0) 380px),
+        var(--bg);
       color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-      line-height: 1.55;
+      line-height: 1.56;
     }
 
     button,
@@ -42,135 +50,152 @@
       font: inherit;
     }
 
-    .app-shell {
-      min-height: 100vh;
+    .shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 22px 24px 52px;
     }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(255, 255, 255, .94);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(14px);
-    }
-
-    .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      max-width: 1240px;
-      margin: 0 auto;
+      margin: -22px -24px 20px;
       padding: 14px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 240px;
+      min-width: 260px;
     }
 
     .brand-mark {
       display: grid;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       place-items: center;
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--brand);
       color: #fff;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .brand-title {
       margin: 0;
+      color: #10252d;
       font-size: 17px;
-      font-weight: 750;
+      font-weight: 800;
+      line-height: 1.2;
     }
 
     .brand-subtitle {
-      margin: 0;
+      margin: 2px 0 0;
       color: var(--muted);
       font-size: 12px;
     }
 
-    .nav-tabs {
+    .nav {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 2px;
     }
 
-    .nav-tabs a {
+    .nav a {
+      min-height: 32px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 5px 10px;
       color: var(--muted);
       text-decoration: none;
       white-space: nowrap;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .nav-tabs a:hover {
-      color: var(--brand-dark);
+    .nav a:hover {
+      border-color: #c5e7e1;
       background: var(--soft);
-      border-color: #bfe7e1;
+      color: var(--brand-dark);
     }
 
     .hero {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 42px 24px 22px;
-    }
-
-    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+      gap: 18px;
       align-items: stretch;
     }
 
+    .hero-main,
+    .strategy-panel,
+    .panel,
+    .output-card,
+    .role-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 32px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
     .hero h1 {
+      max-width: 820px;
       margin: 0 0 16px;
-      max-width: 760px;
+      color: #10252d;
       font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.05;
+      line-height: 1.04;
       letter-spacing: 0;
     }
 
     .hero-copy {
-      max-width: 740px;
-      margin: 0 0 26px;
-      color: #405060;
-      font-size: 18px;
+      max-width: 780px;
+      margin: 0;
+      color: #41535d;
+      font-size: 17px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      margin-top: 24px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       min-height: 42px;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius);
       padding: 9px 14px;
       background: #fff;
       color: var(--ink);
       text-decoration: none;
       cursor: pointer;
-      transition: .15s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(17, 24, 39, .08);
+      font-weight: 760;
     }
 
     .button.primary {
@@ -179,40 +204,41 @@
       color: #fff;
     }
 
-    .button.ghost {
-      background: transparent;
+    .button:hover {
+      filter: brightness(.98);
+      box-shadow: 0 8px 18px rgba(17, 24, 39, .08);
     }
 
-    .expert-panel {
-      min-height: 100%;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      padding: 24px;
+    .strategy-panel {
+      padding: 20px;
     }
 
-    .expert-panel h2 {
-      margin: 0 0 14px;
+    .strategy-panel h2 {
+      margin: 0 0 12px;
+      color: #10252d;
       font-size: 20px;
     }
 
-    .expert-list {
+    .strategy-list {
       display: grid;
-      gap: 13px;
+      gap: 10px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .expert-list li {
+    .strategy-list li {
       display: grid;
       grid-template-columns: 28px 1fr;
       gap: 10px;
       align-items: start;
+      padding: 12px;
+      border: 1px solid #dce9e7;
+      border-radius: var(--radius);
+      background: #fbfdfd;
     }
 
-    .check {
+    .num {
       display: grid;
       width: 24px;
       height: 24px;
@@ -220,19 +246,28 @@
       border-radius: 50%;
       background: var(--soft);
       color: var(--brand-dark);
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .strategy-list strong {
+      display: block;
+      color: #172b33;
+      font-size: 14px;
+    }
+
+    .strategy-list span {
+      color: var(--muted);
       font-size: 13px;
     }
 
     main {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px 52px;
+      margin-top: 22px;
     }
 
     .section {
       margin-top: 26px;
-      scroll-margin-top: 90px;
+      scroll-margin-top: 84px;
     }
 
     .section-head {
@@ -245,6 +280,7 @@
 
     .section-head h2 {
       margin: 0;
+      color: #10252d;
       font-size: 24px;
     }
 
@@ -261,13 +297,6 @@
     }
 
     .panel {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 10px 30px rgba(17, 24, 39, .05);
-    }
-
-    .panel-pad {
       padding: 20px;
     }
 
@@ -278,18 +307,18 @@
 
     label {
       display: grid;
-      gap: 6px;
-      color: #26313d;
-      font-weight: 650;
+      gap: 7px;
+      color: #26343c;
       font-size: 14px;
+      font-weight: 760;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      border: 1px solid #cfd6e1;
-      border-radius: 8px;
+      border: 1px solid #cdd7df;
+      border-radius: var(--radius);
       background: #fff;
       color: var(--ink);
       padding: 10px 11px;
@@ -305,7 +334,7 @@
     select:focus,
     textarea:focus {
       border-color: var(--brand);
-      box-shadow: 0 0 0 3px rgba(15, 118, 110, .13);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, .14);
     }
 
     .inline-fields {
@@ -314,34 +343,38 @@
       gap: 12px;
     }
 
-    .result-grid {
+    .output-grid {
       display: grid;
       gap: 16px;
     }
 
     .output-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
       padding: 18px;
+      box-shadow: 0 10px 28px rgba(17, 24, 39, .05);
     }
 
-    .output-card h3 {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+    .output-card h3,
+    .role-card h3 {
       margin: 0 0 10px;
-      font-size: 18px;
+      color: #10252d;
+      font-size: 19px;
+    }
+
+    .output-card p,
+    .role-card p {
+      margin: 0 0 10px;
+      color: #40515b;
     }
 
     .output-card ul,
-    .output-card ol {
+    .output-card ol,
+    .role-card ul {
       margin: 0;
       padding-left: 20px;
     }
 
-    .output-card li + li {
+    .output-card li + li,
+    .role-card li + li {
       margin-top: 7px;
     }
 
@@ -355,50 +388,68 @@
     .tag {
       display: inline-flex;
       align-items: center;
+      min-height: 24px;
+      border: 1px solid #c5e7e1;
       border-radius: 999px;
-      border: 1px solid #c7e7e2;
       background: var(--soft);
       color: var(--brand-dark);
-      padding: 4px 9px;
+      padding: 3px 9px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .playbook-grid {
+    .tag.blue {
+      border-color: #c9deef;
+      background: var(--soft-blue);
+      color: var(--blue);
+    }
+
+    .tag.amber {
+      border-color: #ead4a6;
+      background: var(--warn);
+      color: var(--amber);
+    }
+
+    .role-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .step-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
+    .role-card {
       padding: 18px;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, .04);
     }
 
-    .step-card strong {
-      display: inline-grid;
-      width: 30px;
-      height: 30px;
-      place-items: center;
-      margin-bottom: 14px;
-      border-radius: 8px;
+    .role-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .priority {
+      min-width: 62px;
+      border-radius: 999px;
+      padding: 4px 9px;
       background: var(--brand);
       color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
     }
 
-    .step-card h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
+    .priority.p2 {
+      background: var(--blue);
     }
 
-    .step-card p {
-      margin: 0;
-      color: var(--muted);
+    .priority.p3 {
+      background: var(--amber);
     }
 
-    .score-table {
+    .matrix {
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
@@ -406,21 +457,21 @@
       background: #fff;
     }
 
-    .score-table th,
-    .score-table td {
+    .matrix th,
+    .matrix td {
       border-bottom: 1px solid var(--line);
       padding: 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    .score-table th {
-      background: #edf4f3;
-      color: #203431;
+    .matrix th {
+      background: #edf6f4;
+      color: #173c39;
       font-size: 13px;
     }
 
-    .score-table tr:last-child td {
+    .matrix tr:last-child td {
       border-bottom: 0;
     }
 
@@ -430,14 +481,69 @@
       gap: 16px;
     }
 
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mapping-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, .04);
+    }
+
+    .mapping-card h3 {
+      margin: 0 0 10px;
+      color: #10252d;
+      font-size: 17px;
+    }
+
+    .mapping-card ul,
+    .mapping-card ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .mapping-card li + li {
+      margin-top: 6px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pipeline-step {
+      border: 1px solid #d7e5e2;
+      border-radius: var(--radius);
+      background: #fbfdfd;
+      padding: 12px;
+    }
+
+    .pipeline-step strong {
+      display: block;
+      color: var(--brand-dark);
+      font-size: 13px;
+    }
+
+    .pipeline-step span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
     .warning {
-      border-left: 4px solid var(--accent);
+      border-left: 5px solid var(--amber);
       background: var(--warn);
     }
 
-    .redflag {
-      color: var(--danger);
-      font-weight: 750;
+    .danger-text {
+      color: var(--red);
+      font-weight: 800;
     }
 
     .footer {
@@ -448,329 +554,446 @@
     }
 
     @media (max-width: 980px) {
-      .topbar-inner,
-      .hero-grid,
+      .topbar,
+      .hero,
       .workspace,
       .two-col {
         grid-template-columns: 1fr;
       }
 
-      .topbar-inner {
+      .topbar {
+        position: static;
         display: grid;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
       }
 
-      .playbook-grid {
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .role-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mapping-grid,
+      .pipeline {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 620px) {
-      .topbar-inner,
-      .hero,
-      main {
-        padding-left: 16px;
-        padding-right: 16px;
+    @media (max-width: 640px) {
+      .shell {
+        padding: 14px;
       }
 
-      .hero {
-        padding-top: 28px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
+      .hero-main {
+        padding: 22px;
       }
 
       .inline-fields,
-      .playbook-grid {
+      .role-grid,
+      .mapping-grid,
+      .pipeline {
         grid-template-columns: 1fr;
       }
 
       .section-head {
         display: block;
       }
+
+      .button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="app-shell">
+  <div class="shell">
     <header class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">
-          <div class="brand-mark">HR</div>
-          <div>
-            <p class="brand-title">高管招聘工作台</p>
-            <p class="brand-subtitle">给非 HR 负责人的专业招聘导航</p>
-          </div>
+      <div class="brand">
+        <div class="brand-mark">HR</div>
+        <div>
+          <p class="brand-title">IASO 战略招聘推荐 Agent</p>
+          <p class="brand-subtitle">从公司战略反推关键岗位与招聘优先级</p>
         </div>
-        <nav class="nav-tabs" aria-label="页面导航">
-          <a href="#diagnosis">岗位诊断</a>
-          <a href="#playbook">招聘流程</a>
-          <a href="#interview">面试设计</a>
-          <a href="#scorecard">评估表</a>
-          <a href="#risk">风险清单</a>
-        </nav>
       </div>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#recommender">战略推荐</a>
+        <a href="#mapping">Mapping</a>
+        <a href="#roles">岗位池</a>
+        <a href="#matrix">能力矩阵</a>
+        <a href="#interview">验证问题</a>
+        <a href="#risk">决策风险</a>
+      </nav>
     </header>
 
     <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <h1>让业务高管也能像专业 HR 一样推进招聘。</h1>
-          <p class="hero-copy">把“我要招个人”拆成清晰的岗位定义、候选人画像、面试分工、评估标准和录用决策。适合 CEO、业务负责人、技术负责人和职能高管独立启动招聘。</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#diagnosis">开始生成招聘方案</a>
-            <a class="button" href="#scorecard">查看评估标准</a>
-          </div>
+      <div class="hero-main">
+        <span class="eyebrow">Strategy To Talent Recommendation</span>
+        <h1>不是讲招聘课，而是根据公司战略推荐该招谁。</h1>
+        <p class="hero-copy">面向想招人的非 HR 高管：输入公司阶段、战略重点、业务缺口和招聘约束，工具会推荐关键岗位组合、优先级、候选人画像、目标来源和面试验证重点。默认场景围绕 IASO 从本土细胞治疗公司走向全球化创新药企业的战略转型。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#recommender">生成推荐方案</a>
+          <a class="button" href="#roles">查看战略岗位池</a>
         </div>
-        <aside class="expert-panel" aria-label="HR 专家原则">
-          <h2>HR 专家会先问的 4 个问题</h2>
-          <ul class="expert-list">
-            <li><span class="check">1</span><span>这个岗位解决的业务问题是什么，而不只是头衔是什么？</span></li>
-            <li><span class="check">2</span><span>哪些能力是入职第一年必须兑现的成果，哪些只是加分项？</span></li>
-            <li><span class="check">3</span><span>面试官如何分工，避免每个人都问一遍“自我介绍”？</span></li>
-            <li><span class="check">4</span><span>录用标准是否提前写清楚，避免最后只凭感觉拍板？</span></li>
-          </ul>
-        </aside>
       </div>
+
+      <aside class="strategy-panel">
+        <h2>战略如何变成招聘推荐</h2>
+        <ul class="strategy-list">
+          <li><span class="num">1</span><span><strong>确认增长路径</strong><span>AI 制药、CAR-T 平台、海外临床、商业化或资本化。</span></span></li>
+          <li><span class="num">2</span><span><strong>识别能力缺口</strong><span>判断公司缺的是科学能力、注册临床、质量供应链还是市场进入。</span></span></li>
+          <li><span class="num">3</span><span><strong>推荐岗位组合</strong><span>按业务影响、稀缺度、到岗时效和组织依赖排序。</span></span></li>
+          <li><span class="num">4</span><span><strong>完成 Mapping</strong><span>直接输出方法论、公司池子、目标部门、搜索关键词和候选人分层。</span></span></li>
+        </ul>
+      </aside>
     </section>
 
     <main>
-      <section id="diagnosis" class="section">
+      <section id="recommender" class="section">
         <div class="section-head">
           <div>
-            <h2>岗位诊断生成器</h2>
-            <p>填写基本信息，自动生成一份可执行的招聘作战单。</p>
+            <h2>战略招聘推荐器</h2>
+            <p>先选战略，再生成推荐。它会告诉高管“为什么现在要招这个人”。</p>
           </div>
-          <button class="button ghost" type="button" id="resetBtn">清空</button>
+          <button class="button" type="button" id="resetBtn">重置</button>
         </div>
 
         <div class="workspace">
-          <form class="panel panel-pad form-grid" id="jobForm">
+          <form class="panel form-grid" id="strategyForm">
             <label>
-              岗位名称
-              <input id="roleName" value="全球临床运营负责人" placeholder="例如：销售总监、研发负责人、财务经理">
+              公司当前阶段
+              <select id="companyStage">
+                <option value="local_to_global">本土创新药公司向全球化转型</option>
+                <option value="clinical_acceleration">核心管线进入临床加速期</option>
+                <option value="commercial_launch">产品上市与商业化准备期</option>
+                <option value="platform_building">技术平台从科研走向工业化</option>
+              </select>
+            </label>
+
+            <label>
+              战略重点
+              <select id="strategyFocus">
+                <option value="global_clinical">海外临床与注册推进</option>
+                <option value="ai_drug">AI 制药平台建设</option>
+                <option value="cell_therapy">CAR-T / 细胞治疗技术升级</option>
+                <option value="quality_supply">全球质量与供应链体系</option>
+                <option value="commercial">海外商业化与市场准入</option>
+                <option value="capital">国际资本化与财务治理</option>
+              </select>
             </label>
 
             <div class="inline-fields">
               <label>
-                岗位级别
-                <select id="roleLevel">
-                  <option>高管 / VP</option>
-                  <option>总监 / Head</option>
-                  <option>经理 / Lead</option>
-                  <option>专家 / IC</option>
+                可新增 HC
+                <select id="headcount">
+                  <option value="1">1 个关键岗位</option>
+                  <option value="2">2 个关键岗位</option>
+                  <option value="3" selected>3 个关键岗位</option>
+                  <option value="5">5 个以内组合</option>
                 </select>
               </label>
               <label>
-                紧急程度
-                <select id="urgency">
-                  <option>30 天内必须到 shortlist</option>
-                  <option>60 天内完成录用</option>
-                  <option>90 天内稳妥推进</option>
+                到岗窗口
+                <select id="timeline">
+                  <option value="60">60 天内需要 shortlist</option>
+                  <option value="90" selected>90 天内完成录用</option>
+                  <option value="180">6 个月内分批到位</option>
                 </select>
               </label>
             </div>
 
             <label>
-              业务目标
-              <textarea id="businessGoal">搭建国际多中心临床运营体系，确保欧美及亚太临床试验按质量、预算和时间节点交付。</textarea>
+              目前最大业务缺口
+              <textarea id="gap">海外临床开发和 FDA/EMA 沟通经验不足，内部团队更熟悉中国临床和研发流程，缺少能把全球临床、注册策略、CRO 管理和质量合规串起来的负责人。</textarea>
             </label>
 
             <label>
-              必须具备的经验
-              <textarea id="mustHave">ICH-GCP、多区域临床试验、CRO 管理、FDA/EMA 沟通、跨文化团队管理</textarea>
+              已有团队基础
+              <textarea id="teamBase">已有研发、临床运营和质量团队，但国际化经验不足；希望通过少数关键高管带动体系升级。</textarea>
             </label>
 
-            <label>
-              团队现状
-              <select id="teamStage">
-                <option>从 0 到 1 搭建团队</option>
-                <option>已有团队但能力不足</option>
-                <option>替换关键负责人</option>
-                <option>扩张期补强管理层</option>
-              </select>
-            </label>
-
-            <button class="button primary" type="submit">生成招聘方案</button>
+            <button class="button primary" type="submit">生成战略招聘推荐</button>
           </form>
 
-          <div class="result-grid" aria-live="polite">
-            <article class="output-card" id="profileOutput"></article>
-            <article class="output-card" id="processOutput"></article>
-            <article class="output-card warning" id="decisionOutput"></article>
+          <div class="output-grid" aria-live="polite">
+            <article class="output-card" id="strategyOutput"></article>
+            <article class="output-card" id="recommendOutput"></article>
+            <article class="output-card warning" id="actionOutput"></article>
           </div>
         </div>
       </section>
 
-      <section id="playbook" class="section">
+      <section id="mapping" class="section">
         <div class="section-head">
           <div>
-            <h2>非 HR 高管的招聘流程</h2>
-            <p>不要从“发 JD”开始，从业务问题和判断标准开始。</p>
+            <h2>Mapping Agent</h2>
+            <p>没有外部 mapping 预算时，由 Agent 给出内部可执行的人才市场地图：方法论、公司池子、目标部门和筛选规则。</p>
           </div>
+          <button class="button primary" type="button" id="mappingBtn">刷新 Mapping</button>
         </div>
-        <div class="playbook-grid">
-          <article class="step-card">
-            <strong>1</strong>
-            <h3>定义成功</h3>
-            <p>写出入职 6-12 个月必须完成的 3 个业务成果，用成果倒推能力。</p>
-          </article>
-          <article class="step-card">
-            <strong>2</strong>
-            <h3>校准画像</h3>
-            <p>把经验拆成必须项、可培养项和文化匹配项，减少“完美候选人”幻想。</p>
-          </article>
-          <article class="step-card">
-            <strong>3</strong>
-            <h3>设计面试</h3>
-            <p>让每位面试官只负责 1-2 个维度，使用行为问题和案例题取证。</p>
-          </article>
-          <article class="step-card">
-            <strong>4</strong>
-            <h3>做出决策</h3>
-            <p>用同一张评分表比较候选人，先讨论证据，再讨论个人偏好。</p>
-          </article>
+        <div class="output-grid">
+          <article class="output-card" id="mappingSummary"></article>
+          <div class="mapping-grid" id="mappingBoard"></div>
+          <article class="output-card warning" id="outreachOutput"></article>
         </div>
       </section>
 
-      <section id="interview" class="section">
+      <section id="roles" class="section">
         <div class="section-head">
           <div>
-            <h2>面试问题库</h2>
-            <p>适合高管直接使用，每个问题都对应一个判断维度。</p>
+            <h2>IASO 战略岗位池</h2>
+            <p>这些岗位不是泛泛而招，而是对应全球化、平台化、商业化的关键能力。</p>
           </div>
         </div>
-        <div class="two-col">
-          <article class="output-card">
-            <h3>业务能力取证</h3>
-            <ol>
-              <li>请讲一个你接手复杂业务目标后，把目标拆成团队行动的案例。你的第一周做了什么？</li>
-              <li>上一份工作中，你最难推动的跨部门合作是什么？阻力来自哪里，你如何处理？</li>
-              <li>如果入职后发现资源比承诺少 30%，你会如何重新排序目标？</li>
-              <li>请拿一个失败项目举例：你当时判断错了什么，后来如何修正？</li>
-            </ol>
-          </article>
-          <article class="output-card">
-            <h3>领导力与动机取证</h3>
-            <ol>
-              <li>你最擅长带什么类型的人？最不擅长带什么类型的人？</li>
-              <li>当老板和团队对优先级判断相反时，你如何向上管理？</li>
-              <li>你为什么愿意离开现在的平台？你下一阶段真正想获得什么？</li>
-              <li>请描述一个你主动放弃短期利益、保护长期组织能力的决定。</li>
-            </ol>
-          </article>
-        </div>
+        <div class="role-grid" id="rolePool"></div>
       </section>
 
-      <section id="scorecard" class="section">
+      <section id="matrix" class="section">
         <div class="section-head">
           <div>
-            <h2>候选人评估表</h2>
-            <p>建议所有面试官按同一标准打分，5 分代表有明确证据支撑。</p>
+            <h2>战略能力矩阵</h2>
+            <p>用这张表判断：这个岗位到底补哪块战略能力。</p>
           </div>
         </div>
         <div class="panel">
-          <table class="score-table">
+          <table class="matrix">
             <thead>
               <tr>
-                <th>维度</th>
-                <th>权重</th>
-                <th>看什么证据</th>
-                <th>低分信号</th>
+                <th>战略方向</th>
+                <th>必须补齐的能力</th>
+                <th>推荐岗位</th>
+                <th>不招聘的代价</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>业务成果匹配</td>
-                <td>30%</td>
-                <td>过去是否做成过相似规模、阶段和复杂度的事情。</td>
-                <td>只讲参与，不讲自己负责的结果。</td>
+                <td>海外临床与注册</td>
+                <td>MRCT 设计、FDA/EMA 沟通、CRO 治理、临床质量体系</td>
+                <td>全球临床开发负责人、法规事务负责人</td>
+                <td>海外试验延误、注册路径反复、数据质量不被认可</td>
               </tr>
               <tr>
-                <td>关键专业能力</td>
-                <td>25%</td>
-                <td>是否掌握岗位不可替代的硬技能、方法论和判断框架。</td>
-                <td>概念熟悉，但无法解释具体决策。</td>
+                <td>AI 制药平台</td>
+                <td>算法、数据治理、湿实验闭环、药化与生物问题翻译</td>
+                <td>AI 制药平台负责人、计算生物学负责人</td>
+                <td>AI 只停留在展示层，无法产出可推进管线</td>
               </tr>
               <tr>
-                <td>领导与协作</td>
-                <td>20%</td>
-                <td>能否影响资源、建设团队、处理冲突并承担结果。</td>
-                <td>把问题主要归因于上级、同事或环境。</td>
+                <td>细胞治疗技术升级</td>
+                <td>CAR-T 工艺、CMC、转化医学、IND 资料闭环</td>
+                <td>细胞治疗技术总监、CMC 负责人</td>
+                <td>研发成果难以稳定生产和申报，平台价值被削弱</td>
               </tr>
               <tr>
-                <td>动机与稳定性</td>
-                <td>15%</td>
-                <td>加入原因是否与公司阶段、岗位挑战和个人追求一致。</td>
-                <td>只被薪酬、头衔或短期机会驱动。</td>
+                <td>全球质量供应链</td>
+                <td>GMP/GSP、冷链、供应连续性、偏差/CAPA、供应商审计</td>
+                <td>全球质量负责人、全球供应链负责人</td>
+                <td>临床和商业供给不稳定，审计风险放大</td>
               </tr>
               <tr>
-                <td>文化与价值观</td>
-                <td>10%</td>
-                <td>决策方式、沟通习惯、风险偏好是否适配组织。</td>
-                <td>对透明反馈、流程约束或团队协作明显排斥。</td>
+                <td>海外商业化</td>
+                <td>市场准入、定价报销、渠道伙伴、本地医学商业协同</td>
+                <td>商业化 VP、市场准入负责人</td>
+                <td>产品获批后上市慢，收入兑现弱</td>
+              </tr>
+              <tr>
+                <td>国际资本化</td>
+                <td>融资故事、预算治理、国际会计准则、投资者沟通</td>
+                <td>CFO、财务规划总监</td>
+                <td>战略投入缺少资本支撑，全球扩张预算失控</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section id="risk" class="section">
+      <section id="interview" class="section">
         <div class="section-head">
           <div>
-            <h2>招聘风险清单</h2>
-            <p>高管招聘最容易贵在“看起来对”，真正风险通常在证据不足处。</p>
+            <h2>战略型面试验证</h2>
+            <p>面试不是问履历，而是验证候选人能否承担战略结果。</p>
           </div>
         </div>
         <div class="two-col">
           <article class="output-card">
-            <h3>必须追问的红旗</h3>
-            <ul>
-              <li><span class="redflag">成果归属不清：</span>候选人说“我们做了”，但无法说明自己的决策和贡献。</li>
-              <li><span class="redflag">频繁跳槽无逻辑：</span>每次离开都归因于外部问题，缺少自我复盘。</li>
-              <li><span class="redflag">只会大平台：</span>资源丰富时表现好，但没有在不确定环境里搭体系的证据。</li>
-              <li><span class="redflag">管理语言空泛：</span>讲价值观很多，讲具体管理动作很少。</li>
-            </ul>
+            <h3>必须问的战略问题</h3>
+            <ol>
+              <li>如果你接手这个战略方向，前 90 天会先验证哪三个假设？</li>
+              <li>你过去做过最接近我们阶段的项目是什么？当时资源、风险和结果分别是什么？</li>
+              <li>如果 CEO 要速度、质量负责人要合规、业务团队要灵活，你如何做取舍？</li>
+              <li>你会如何把个人经验变成组织能力，而不是只有你本人能做？</li>
+            </ol>
           </article>
           <article class="output-card">
-            <h3>录用前检查</h3>
+            <h3>必须拿到的证据</h3>
             <ul>
-              <li>至少完成 2 位与候选人共事过的背调，不只找候选人提供的推荐人。</li>
-              <li>确认薪酬、奖金、股权、汇报线、决策权限和试用期目标。</li>
-              <li>要求候选人提交 90 天入职计划，用它校验思考质量。</li>
-              <li>提前约定 30/60/90 天复盘机制，避免入职后才发现期待不一致。</li>
+              <li>做成过相似阶段、相似复杂度的结果，而不是只在大平台参与过。</li>
+              <li>能讲清关键决策背后的判断框架、数据和失败复盘。</li>
+              <li>能提出 90 天落地计划，包含人、流程、预算、里程碑和风险。</li>
+              <li>能说明如何培养团队和建立机制，避免公司对单点人才过度依赖。</li>
             </ul>
           </article>
         </div>
       </section>
 
-      <p class="footer">本工具用于招聘管理参考，具体劳动合规、薪酬税务和背景调查请结合当地法规与公司制度执行。</p>
+      <section id="risk" class="section">
+        <div class="section-head">
+          <div>
+            <h2>推荐决策风险</h2>
+            <p>战略招聘最怕招到“履历正确但阶段错误”的人。</p>
+          </div>
+        </div>
+        <div class="two-col">
+          <article class="output-card">
+            <h3>红旗信号</h3>
+            <ul>
+              <li><span class="danger-text">只适合成熟大公司：</span>资源充分时很强，但没有从 0 到 1 或从 1 到 10 搭体系证据。</li>
+              <li><span class="danger-text">战略语言很大：</span>讲趋势很多，讲具体路径、预算、团队配置很少。</li>
+              <li><span class="danger-text">成果归属不清：</span>无法说清自己做了哪些关键决策。</li>
+              <li><span class="danger-text">文化适配差：</span>无法接受创业公司速度、不确定性和跨职能补位。</li>
+            </ul>
+          </article>
+          <article class="output-card">
+            <h3>录用前动作</h3>
+            <ul>
+              <li>让候选人提交一页战略落地方案，评估判断质量。</li>
+              <li>背调至少覆盖上级、平级和下属三个视角。</li>
+              <li>明确入职 30/60/90 天成果，不只谈职位和薪酬。</li>
+              <li>把岗位权责、预算边界和决策权限写进 offer 沟通。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer">本工具用于战略招聘推荐和管理决策参考，具体劳动合规、薪酬税务、背景调查和录用流程请结合当地法规与公司制度执行。</p>
     </main>
   </div>
 
   <script>
-    const form = document.querySelector("#jobForm");
-    const resetBtn = document.querySelector("#resetBtn");
-    const roleName = document.querySelector("#roleName");
-    const roleLevel = document.querySelector("#roleLevel");
-    const urgency = document.querySelector("#urgency");
-    const businessGoal = document.querySelector("#businessGoal");
-    const mustHave = document.querySelector("#mustHave");
-    const teamStage = document.querySelector("#teamStage");
-    const profileOutput = document.querySelector("#profileOutput");
-    const processOutput = document.querySelector("#processOutput");
-    const decisionOutput = document.querySelector("#decisionOutput");
+    const roleData = [
+      {
+        id: "global_clinical_head",
+        title: "全球临床开发负责人",
+        focus: ["global_clinical"],
+        priority: 1,
+        reason: "把海外临床策略、MRCT 设计、CRO 管理和注册沟通串成一个体系。",
+        profile: "有 FDA/EMA 或多区域临床开发经验，能管理 CRO 和跨文化临床团队。",
+        source: "诺华、罗氏、强生、吉利德、BMS、百济神州等有全球临床经验的平台。",
+        interview: "请候选人拆解一个 MRCT 项目从方案设计到数据提交的关键风险。"
+      },
+      {
+        id: "regulatory_head",
+        title: "全球法规事务负责人",
+        focus: ["global_clinical"],
+        priority: 2,
+        reason: "提前设计 FDA/EMA 沟通路径，降低海外注册反复和审评延误。",
+        profile: "熟悉 ICH、FDA/EMA 申报、孤儿药/突破性疗法等路径，有审评沟通经验。",
+        source: "跨国药企法规团队、CRO 注册团队、创新药出海公司。",
+        interview: "请候选人说明如何为一个 CAR-T 管线设计美国和欧洲注册路径。"
+      },
+      {
+        id: "ai_platform_head",
+        title: "AI 制药平台负责人",
+        focus: ["ai_drug"],
+        priority: 1,
+        reason: "让 AI 从概念展示变成真实管线产能，打通算法、数据和实验验证闭环。",
+        profile: "懂机器学习、计算生物、药物化学或生物问题建模，做过平台产品化。",
+        source: "AI 制药公司、头部药企计算平台、顶尖高校转化团队。",
+        interview: "请候选人讲一个模型预测失败后如何通过数据和实验闭环修正的案例。"
+      },
+      {
+        id: "cell_therapy_director",
+        title: "细胞治疗技术总监",
+        focus: ["cell_therapy"],
+        priority: 1,
+        reason: "支撑 CAR-T 技术升级、工艺转化和 IND 资料质量，决定平台可复制性。",
+        profile: "熟悉 CAR-T、免疫学、CMC/工艺开发、临床前转化和质量一致性。",
+        source: "传奇生物、科济、药明巨诺、Gilead/Kite、BMS/Juno 等细胞治疗团队。",
+        interview: "请候选人解释如何把一个实验室 CAR-T 方案推进到可申报工艺。"
+      },
+      {
+        id: "quality_supply_head",
+        title: "全球质量与供应链负责人",
+        focus: ["quality_supply"],
+        priority: 1,
+        reason: "建立全球 GMP/GSP、冷链、供应商审计、偏差和 CAPA 闭环。",
+        profile: "有细胞治疗或生物制品质量体系经验，理解全球临床和商业供给要求。",
+        source: "跨国药企质量体系、CDMO、细胞治疗商业化供应链团队。",
+        interview: "请候选人复盘一次重大偏差或冷链异常的调查和 CAPA。"
+      },
+      {
+        id: "commercial_vp",
+        title: "海外商业化 VP",
+        focus: ["commercial"],
+        priority: 1,
+        reason: "把产品获批转化为市场准入、渠道、定价和收入兑现。",
+        profile: "做过肿瘤/血液领域上市准备、市场准入、渠道伙伴和本地团队建设。",
+        source: "诺华、罗氏、阿斯利康、武田、赛诺菲及创新药出海商业团队。",
+        interview: "请候选人给出一个美国或欧洲细胞治疗产品上市前 12 个月计划。"
+      },
+      {
+        id: "medical_affairs_vp",
+        title: "全球医学事务负责人",
+        focus: ["commercial", "global_clinical"],
+        priority: 2,
+        reason: "建立 KOL 网络、医学证据、真实世界研究和学术影响力。",
+        profile: "有肿瘤/血液医学事务经验，能连接临床开发、注册和商业化。",
+        source: "跨国药企医学事务、临床开发医学负责人、国际学术网络型人才。",
+        interview: "请候选人设计一个支持海外准入和医生教育的医学证据计划。"
+      },
+      {
+        id: "cfo",
+        title: "国际化 CFO / 财务规划负责人",
+        focus: ["capital"],
+        priority: 1,
+        reason: "支撑全球扩张预算、资本市场沟通、融资节奏和跨境内控。",
+        profile: "懂生物科技资本市场、国际会计准则、预算治理和投资人沟通。",
+        source: "已上市 Biotech、投行医疗组、跨国药企财务战略团队。",
+        interview: "请候选人说明如何为 3 年全球化扩张设计融资和预算节奏。"
+      }
+    ];
 
-    function splitItems(value) {
-      return value
-        .split(/[、,，;；\n]/)
-        .map(item => item.trim())
-        .filter(Boolean)
-        .slice(0, 8);
-    }
+    const form = document.querySelector("#strategyForm");
+    const resetBtn = document.querySelector("#resetBtn");
+    const companyStage = document.querySelector("#companyStage");
+    const strategyFocus = document.querySelector("#strategyFocus");
+    const headcount = document.querySelector("#headcount");
+    const timeline = document.querySelector("#timeline");
+    const gap = document.querySelector("#gap");
+    const teamBase = document.querySelector("#teamBase");
+    const strategyOutput = document.querySelector("#strategyOutput");
+    const recommendOutput = document.querySelector("#recommendOutput");
+    const actionOutput = document.querySelector("#actionOutput");
+    const rolePool = document.querySelector("#rolePool");
+    const mappingBtn = document.querySelector("#mappingBtn");
+    const mappingSummary = document.querySelector("#mappingSummary");
+    const mappingBoard = document.querySelector("#mappingBoard");
+    const outreachOutput = document.querySelector("#outreachOutput");
+
+    const stageText = {
+      local_to_global: "本土创新药公司向全球化转型",
+      clinical_acceleration: "核心管线进入临床加速期",
+      commercial_launch: "产品上市与商业化准备期",
+      platform_building: "技术平台从科研走向工业化"
+    };
+
+    const focusText = {
+      global_clinical: "海外临床与注册推进",
+      ai_drug: "AI 制药平台建设",
+      cell_therapy: "CAR-T / 细胞治疗技术升级",
+      quality_supply: "全球质量与供应链体系",
+      commercial: "海外商业化与市场准入",
+      capital: "国际资本化与财务治理"
+    };
 
     function escapeHtml(value) {
-      return value.replace(/[&<>"']/g, char => ({
+      return String(value).replace(/[&<>"']/g, char => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -779,75 +1002,252 @@
       }[char]));
     }
 
-    function stageAdvice(stage) {
-      const advice = {
-        "从 0 到 1 搭建团队": "优先找有搭建经验的人，面试重点放在体系设计、招聘下属、流程落地和资源受限情况下的取舍能力。",
-        "已有团队但能力不足": "优先找能诊断团队能力并带教升级的人，面试重点放在组织盘点、绩效管理和变革沟通。",
-        "替换关键负责人": "优先控制信息风险和过渡风险，面试重点放在接盘复杂局面、稳定团队和快速建立信任。",
-        "扩张期补强管理层": "优先找能复制方法、培养梯队和跨区域协同的人，面试重点放在规模化管理和机制建设。"
+    function getRecommendations() {
+      const focus = strategyFocus.value;
+      const count = Number(headcount.value);
+      const direct = roleData.filter(role => role.focus.includes(focus));
+      const supportMap = {
+        global_clinical: ["quality_supply_head", "medical_affairs_vp", "regulatory_head"],
+        ai_drug: ["cell_therapy_director", "global_clinical_head"],
+        cell_therapy: ["quality_supply_head", "global_clinical_head"],
+        quality_supply: ["global_clinical_head", "cell_therapy_director"],
+        commercial: ["medical_affairs_vp", "quality_supply_head", "cfo"],
+        capital: ["commercial_vp", "global_clinical_head"]
       };
-      return advice[stage] || advice["从 0 到 1 搭建团队"];
+      const support = (supportMap[focus] || [])
+        .map(id => roleData.find(role => role.id === id))
+        .filter(Boolean);
+      const merged = [...direct, ...support].filter((role, index, arr) => arr.findIndex(item => item.id === role.id) === index);
+      return merged.slice(0, count).map((role, index) => ({ ...role, rank: index + 1 }));
     }
 
-    function urgencyAdvice(value) {
-      if (value.includes("30")) return "节奏建议：第 1 周完成岗位校准和目标公司清单，第 2-3 周集中面试，第 4 周做终面、背调和 offer。";
-      if (value.includes("60")) return "节奏建议：前 2 周校准画像和渠道，第 3-6 周面试比较，第 7-8 周完成终面、背调和 offer。";
-      return "节奏建议：先做 2 周市场摸底，再用 6-8 周稳定面试，最后 2 周完成决策和谈薪。";
+    function urgencyText() {
+      if (timeline.value === "60") return "60 天内应先拿到 shortlist，建议同时启动公司池 mapping、内部推荐和行业专家转介绍。";
+      if (timeline.value === "90") return "90 天窗口适合完成岗位校准、候选人比较、背调和 offer，但第一周必须锁定画像。";
+      return "6 个月窗口可以分批到位，先招一号位，再由一号位参与下属岗位画像校准。";
     }
 
-    function renderPlan() {
-      const role = escapeHtml(roleName.value.trim() || "目标岗位");
-      const level = escapeHtml(roleLevel.value);
-      const goal = escapeHtml(businessGoal.value.trim() || "完成关键业务目标");
-      const skills = splitItems(mustHave.value).map(escapeHtml);
-      const skillTags = skills.map(skill => `<span class="tag">${skill}</span>`).join("");
+    const companyPools = {
+      global_clinical_head: {
+        core: ["Novartis", "Roche / Genentech", "Johnson & Johnson", "Gilead / Kite", "BMS", "AstraZeneca", "MSD / Merck"],
+        china: ["百济神州", "信达生物", "康方生物", "传奇生物", "科济药业", "药明巨诺"],
+        adjacent: ["IQVIA", "Parexel", "PPD / Thermo Fisher", "ICON", "Syneos Health"]
+      },
+      regulatory_head: {
+        core: ["Novartis", "Roche", "BMS", "Gilead / Kite", "AstraZeneca", "Pfizer", "Takeda"],
+        china: ["百济神州", "信达生物", "和黄医药", "君实生物", "再鼎医药"],
+        adjacent: ["IQVIA Regulatory", "Parexel Regulatory", "药明康德注册团队", "昆翎医药"]
+      },
+      ai_platform_head: {
+        core: ["Schrodinger", "Recursion", "Insilico Medicine", "Exscientia", "XtalPi / 晶泰科技", "Atomwise"],
+        china: ["英矽智能", "望石智慧", "深势科技", "剂泰医药", "星药科技"],
+        adjacent: ["Novartis AI", "Roche pRED", "AstraZeneca Data Science", "BMS Informatics"]
+      },
+      cell_therapy_director: {
+        core: ["Gilead / Kite", "BMS / Juno", "Novartis Cell & Gene", "Legend Biotech", "Autolus", "Adaptimmune"],
+        china: ["传奇生物", "科济药业", "药明巨诺", "驯鹿生物", "亘喜生物", "合源生物"],
+        adjacent: ["药明生基", "金斯瑞蓬勃生物", "Lonza Cell & Gene", "Thermo Fisher Cell Therapy"]
+      },
+      quality_supply_head: {
+        core: ["Novartis", "Roche", "Gilead / Kite", "BMS", "Lonza", "Catalent"],
+        china: ["药明生基", "金斯瑞蓬勃生物", "传奇生物", "药明巨诺", "复星凯特"],
+        adjacent: ["World Courier", "Cryoport", "Thermo Fisher", "DHL Life Sciences", "UPS Healthcare"]
+      },
+      commercial_vp: {
+        core: ["Novartis Oncology", "Roche Oncology", "AstraZeneca Oncology", "Takeda Oncology", "Gilead / Kite", "BMS"],
+        china: ["百济神州", "再鼎医药", "信达生物", "君实生物", "传奇生物"],
+        adjacent: ["细胞治疗渠道伙伴", "特药平台", "市场准入咨询公司", "真实世界研究服务商"]
+      },
+      medical_affairs_vp: {
+        core: ["Novartis Oncology", "Roche / Genentech", "BMS", "Gilead / Kite", "AstraZeneca", "Takeda"],
+        china: ["百济神州", "再鼎医药", "传奇生物", "信达生物", "康方生物"],
+        adjacent: ["国际医学传播机构", "RWE 平台", "肿瘤/血液病 KOL 网络"]
+      },
+      cfo: {
+        core: ["已上市 Biotech CFO/FP&A 团队", "跨国药企中国区财务", "Biotech 投资者关系团队"],
+        china: ["百济神州", "再鼎医药", "和黄医药", "信达生物", "君实生物", "康方生物"],
+        adjacent: ["Morgan Stanley Healthcare", "Goldman Sachs Healthcare", "CICC 医疗组", "华兴医疗组", "PwC / Deloitte 生命科学团队"]
+      }
+    };
 
-      profileOutput.innerHTML = `
-        <h3>岗位画像 <span class="tag">${level}</span></h3>
-        <p><strong>${role}</strong> 的招聘不应只看履历头衔，而要验证候选人能否推动这件事：${goal}</p>
-        <ul>
-          <li><strong>首要成果：</strong>请把入职 6-12 个月的目标写成可验收结果，而不是职责描述。</li>
-          <li><strong>核心能力：</strong>${skills.length ? "必须围绕这些经验逐项取证：" : "请补充必须具备的经验。"} </li>
-          <li><strong>团队阶段：</strong>${stageAdvice(teamStage.value)}</li>
-        </ul>
-        <div class="tag-row">${skillTags}</div>
-      `;
+    function getCompanyPool(role) {
+      return companyPools[role.id] || {
+        core: ["跨国药企", "头部创新药公司", "成熟 Biotech"],
+        china: ["中国创新药出海公司", "细胞治疗公司"],
+        adjacent: ["CRO", "CDMO", "行业服务平台"]
+      };
+    }
 
-      processOutput.innerHTML = `
-        <h3>招聘推进建议</h3>
+    function mappingKeywords(role) {
+      const keywordMap = {
+        global_clinical_head: ["Global Clinical Development", "MRCT", "Oncology Clinical", "CRO Management", "FDA", "EMA", "Cell Therapy"],
+        regulatory_head: ["Regulatory Affairs", "FDA", "EMA", "IND", "BLA", "ICH", "Cell Therapy"],
+        ai_platform_head: ["AI Drug Discovery", "Computational Biology", "Machine Learning", "Drug Design", "Cheminformatics", "Translational Data"],
+        cell_therapy_director: ["CAR-T", "Cell Therapy", "CMC", "Process Development", "IND", "Immunology", "Vector"],
+        quality_supply_head: ["GMP", "GSP", "Quality Systems", "Cold Chain", "CAPA", "Supplier Audit", "Cell Therapy"],
+        commercial_vp: ["Commercialization", "Market Access", "Launch", "Oncology", "Cell Therapy", "Pricing", "Reimbursement"],
+        medical_affairs_vp: ["Medical Affairs", "KOL", "RWE", "Oncology", "Hematology", "Evidence Generation", "Cell Therapy"],
+        cfo: ["Biotech CFO", "FP&A", "Capital Markets", "IPO", "Investor Relations", "IFRS", "Cross-border Finance"]
+      };
+      return keywordMap[role.id] || [role.title, "Biotech", "Global", "Leadership"];
+    }
+
+    function mappingFunctions(role) {
+      const functionMap = {
+        global_clinical_head: ["Clinical Development", "Clinical Operations", "Clinical Science", "Global Program Lead"],
+        regulatory_head: ["Regulatory Affairs", "Regulatory Strategy", "CMC Regulatory", "Global Submission"],
+        ai_platform_head: ["AI Platform", "Computational Biology", "Data Science", "Drug Discovery"],
+        cell_therapy_director: ["Process Development", "CMC", "Translational Research", "Cell Therapy Platform"],
+        quality_supply_head: ["Quality Assurance", "Quality Systems", "Supply Chain", "Cold Chain Logistics"],
+        commercial_vp: ["Commercial Strategy", "Market Access", "Launch Excellence", "Business Operations"],
+        medical_affairs_vp: ["Medical Affairs", "Medical Strategy", "Evidence Generation", "KOL Engagement"],
+        cfo: ["Finance", "FP&A", "Investor Relations", "Corporate Strategy"]
+      };
+      return functionMap[role.id] || ["Strategy", "Operations", "Business Leadership"];
+    }
+
+    function booleanSearch(role) {
+      const keywords = mappingKeywords(role).slice(0, 5);
+      return `("${keywords.slice(0, 2).join('" OR "')}" OR "${role.title}") AND ("Biotech" OR "Pharma" OR "Cell Therapy") AND ("Director" OR "Head" OR "VP")`;
+    }
+
+    function renderMapping(selected = getRecommendations()) {
+      const totalTarget = selected.length * 35;
+      const shortlistTarget = Math.max(selected.length * 5, 5);
+
+      mappingSummary.innerHTML = `
+        <h3>我的 Mapping 方法论</h3>
+        <p><strong>本轮 mapping 目标：</strong>围绕 ${selected.map(role => role.title).join("、")} 建立第一版候选人市场地图，不依赖外部供应商。</p>
         <ol>
-          <li><strong>开工会：</strong>业务负责人、HR、直属上级先对齐岗位成功标准和薪酬空间。</li>
-          <li><strong>渠道策略：</strong>列出 15-25 家目标公司，优先找做过相似阶段的人。</li>
-          <li><strong>面试分工：</strong>直属上级看业务成果，专业负责人看硬技能，HR 看动机、薪酬和风险。</li>
-          <li><strong>终面材料：</strong>要求候选人带来 90 天行动计划，评估其判断、优先级和沟通方式。</li>
+          <li><strong>战略反推：</strong>先确认岗位补的是哪一块战略能力，而不是从头衔出发。</li>
+          <li><strong>公司池分层：</strong>把来源拆成核心标杆公司、中国可挖公司、相邻能力公司三层。</li>
+          <li><strong>部门定位：</strong>锁定候选人所在职能、项目组和常见 title，减少无效搜索。</li>
+          <li><strong>证据筛选：</strong>只保留有相似阶段、相似复杂度和明确成果的人。</li>
+          <li><strong>长名单校准：</strong>先做 30-40 人市场地图，再挑 5-8 人进入深度沟通。</li>
         </ol>
-        <p>${urgencyAdvice(urgency.value)}</p>
+        <div class="pipeline">
+          <div class="pipeline-step"><strong>公司池</strong><span>${selected.length * 12}-18 家/岗位</span></div>
+          <div class="pipeline-step"><strong>候选人长名单</strong><span>约 ${totalTarget} 人</span></div>
+          <div class="pipeline-step"><strong>优先沟通</strong><span>${shortlistTarget}-15 人</span></div>
+          <div class="pipeline-step"><strong>首轮校准</strong><span>7 天内完成</span></div>
+          <div class="pipeline-step"><strong>Shortlist</strong><span>${timeline.value} 天窗口</span></div>
+        </div>
       `;
 
-      decisionOutput.innerHTML = `
-        <h3>录用决策提醒</h3>
+      mappingBoard.innerHTML = selected.map(role => {
+        const pool = getCompanyPool(role);
+        const functions = mappingFunctions(role);
+        const keywords = mappingKeywords(role);
+        return `
+          <article class="mapping-card">
+            <h3>P${role.rank} ${role.title}</h3>
+            <p><strong>公司池子：</strong></p>
+            <ul>
+              <li><strong>标杆公司：</strong>${pool.core.join("、")}</li>
+              <li><strong>中国/亚太可挖：</strong>${pool.china.join("、")}</li>
+              <li><strong>相邻能力来源：</strong>${pool.adjacent.join("、")}</li>
+            </ul>
+            <p><strong>目标部门：</strong></p>
+            <ul>${functions.map(item => `<li>${item}</li>`).join("")}</ul>
+            <p><strong>关键词：</strong></p>
+            <div class="tag-row">${keywords.map(item => `<span class="tag blue">${item}</span>`).join("")}</div>
+            <p><strong>Boolean 搜索：</strong></p>
+            <p>${escapeHtml(booleanSearch(role))}</p>
+          </article>
+        `;
+      }).join("");
+
+      outreachOutput.innerHTML = `
+        <h3>候选人分层与内部执行规则</h3>
         <ul>
-          <li>不要因为“背景很强”跳过证据验证。强公司、强头衔不等于能解决你的当前问题。</li>
-          <li>每位面试官必须写下支持录用或反对录用的具体证据。</li>
-          <li>最终比较候选人时，先看岗位成功概率，再看个人喜好和沟通舒适度。</li>
+          <li><strong>信息访谈话术：</strong>我们正在梳理细胞治疗/创新药公司在 ${focusText[strategyFocus.value]} 方向的人才市场，希望请教你对该领域组织能力和关键岗位的判断；如果你本人或你熟悉的人做过类似阶段，也希望进一步交流。</li>
+          <li><strong>A 类候选人：</strong>做成过相似阶段结果，能说清方法论，有跨区域或跨职能复杂项目经验。</li>
+          <li><strong>B 类候选人：</strong>专业能力强，但一号位经验不足，可作为下一级岗位或 succession pipeline。</li>
+          <li><strong>暂缓候选人：</strong>只在成熟大平台执行局部模块，无法说明自己主导过的业务结果。</li>
+          <li><strong>内部表格字段：</strong>姓名/现公司/现职位/目标岗位/公司池层级/匹配证据/风险点/信息来源/沟通状态/下一步动作。</li>
         </ul>
       `;
+    }
+
+    function renderRecommendations() {
+      const selected = getRecommendations();
+      const roleItems = selected.map(role => `
+        <li><strong>P${role.rank} ${role.title}：</strong>${role.reason}</li>
+      `).join("");
+      const interviewItems = selected.map(role => `
+        <li><strong>${role.title}：</strong>${role.interview}</li>
+      `).join("");
+      const sourceItems = selected.map(role => `
+        <li><strong>${role.title}：</strong>${role.source}</li>
+      `).join("");
+
+      strategyOutput.innerHTML = `
+        <h3>战略判断</h3>
+        <p><strong>公司阶段：</strong>${stageText[companyStage.value]}</p>
+        <p><strong>战略重点：</strong>${focusText[strategyFocus.value]}</p>
+        <p><strong>业务缺口：</strong>${escapeHtml(gap.value.trim() || "尚未填写")}</p>
+        <p><strong>团队基础：</strong>${escapeHtml(teamBase.value.trim() || "尚未填写")}</p>
+        <div class="tag-row">
+          <span class="tag">战略牵引</span>
+          <span class="tag blue">能力补位</span>
+          <span class="tag amber">${headcount.value} 个 HC</span>
+        </div>
+      `;
+
+      recommendOutput.innerHTML = `
+        <h3>推荐招聘顺序</h3>
+        <ol>${roleItems}</ol>
+        <p><strong>推荐逻辑：</strong>先补对战略结果影响最大的能力，再补让该能力可复制、可合规、可落地的支撑岗位。</p>
+      `;
+
+      actionOutput.innerHTML = `
+        <h3>招聘动作建议</h3>
+        <ul>
+          <li><strong>节奏：</strong>${urgencyText()}</li>
+          <li><strong>目标来源：</strong><ul>${sourceItems}</ul></li>
+          <li><strong>面试验证：</strong><ul>${interviewItems}</ul></li>
+          <li><strong>录用条件：</strong>要求候选人提交 90 天战略落地计划，内容必须包含里程碑、团队配置、预算依赖和主要风险。</li>
+        </ul>
+      `;
+
+      renderMapping(selected);
+    }
+
+    function renderRolePool() {
+      rolePool.innerHTML = roleData.map(role => `
+        <article class="role-card">
+          <div class="role-head">
+            <h3>${role.title}</h3>
+            <span class="priority p${Math.min(role.priority, 3)}">P${role.priority}</span>
+          </div>
+          <p>${role.reason}</p>
+          <ul>
+            <li><strong>候选人画像：</strong>${role.profile}</li>
+            <li><strong>目标来源：</strong>${role.source}</li>
+          </ul>
+          <div class="tag-row">
+            ${role.focus.map(item => `<span class="tag">${focusText[item]}</span>`).join("")}
+          </div>
+        </article>
+      `).join("");
     }
 
     form.addEventListener("submit", event => {
       event.preventDefault();
-      renderPlan();
+      renderRecommendations();
+    });
+
+    mappingBtn.addEventListener("click", () => {
+      renderMapping();
     });
 
     resetBtn.addEventListener("click", () => {
       form.reset();
-      roleName.value = "";
-      businessGoal.value = "";
-      mustHave.value = "";
-      renderPlan();
+      renderRecommendations();
     });
 
-    renderPlan();
+    renderRolePool();
+    renderRecommendations();
   </script>
 </body>
 </html>
